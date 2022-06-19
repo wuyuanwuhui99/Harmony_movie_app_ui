@@ -1,0 +1,44 @@
+{
+  "string": [
+    {
+      "name": "entry_MainAbility",
+      "value": "entry_MainAbility"
+    },
+    {
+      "name": "mainability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "mainability_HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "bottomBar_home",
+      "value": "首页"
+    },
+    {
+      "name": "bottomBar_movie",
+      "value": "电影"
+    },
+    {
+      "name": "bottomBar_tv",
+      "value": "电视剧"
+    },
+    {
+      "name": "bottomBar_my",
+      "value": "我的"
+    },
+    {
+      "name": "normal_font_size",
+      "value": "16vp"
+    },
+    {
+      "name": "small_margin_size",
+      "value": "10vp"
+    },
+    {
+      "name": "bottomBar_icon_size",
+      "value": "30vp"
+    }
+  ]
+}

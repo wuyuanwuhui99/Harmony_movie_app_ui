@@ -1,0 +1,20 @@
+{
+  "color": [
+    {
+      "name": "page_background_color",
+      "value": "#eee"
+    },
+    {
+      "name": "buttom_nav_background_color",
+      "value": "#f6fbf7"
+    },
+    {
+      "name": "buttom_nav_normal_color",
+      "value": "#666666"
+    },
+    {
+      "name": "buttom_nav_active_color",
+      "value": "#f69700"
+    }
+  ]
+}
