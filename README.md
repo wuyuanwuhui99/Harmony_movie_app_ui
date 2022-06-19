@@ -2,7 +2,7 @@
 
 开发者：吴怨吴悔
 
-首次使用java语言编写的Harmony鸿蒙电影APP，正在努力开发中。。。
+首次使用java语言编写的Harmony鸿蒙电影APP，有flutter、android、react-native、harmony四个版本的，正在努力开发中。。。
 
 其他完整版本APP请查看个人主页
 
