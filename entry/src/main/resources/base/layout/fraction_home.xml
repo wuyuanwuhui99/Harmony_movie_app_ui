@@ -3,10 +3,14 @@
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_parent"
     ohos:width="match_parent"
+    ohos:padding="15vp"
+    ohos:margin="15vp"
+    ohos:background_element="$graphic:box_decoration"
     ohos:orientation="vertical">
-    <Text
-        ohos:text="首页"
+    <DirectionalLayout
+        ohos:id="$+id:avater_wrapper"
+        ohos:orientation="horizontal"
         ohos:height="match_parent"
-        ohos:width="match_parent"
-        ohos:text_alignment="center"/>
+        ohos:width="match_content">
+    </DirectionalLayout>
 </DirectionalLayout>

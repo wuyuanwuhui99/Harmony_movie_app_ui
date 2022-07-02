@@ -5,13 +5,44 @@
     ohos:height="match_parent"
     ohos:width="match_parent"
     ohos:orientation="vertical">
-    <StackLayout
-        ohos:id="$+id:main_content"
+
+    <ScrollView
+        ohos:weight="1"
         ohos:height="0vp"
-        ohos:width="match_parent"
-        ohos:background_element="$color:page_background_color"
-        ohos:weight="1">
-    </StackLayout>
+        ohos:width="match_parent">
+        <DirectionalLayout
+            ohos:id="$+id:home_layout"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:background_element="$color:page_background_color"
+            ohos:weight="1">
+        </DirectionalLayout>
+        <DirectionalLayout
+            ohos:visibility="hide"
+            ohos:id="$+id:movie_layout"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:background_element="$color:page_background_color"
+            ohos:weight="1">
+        </DirectionalLayout>
+        <DirectionalLayout
+            ohos:visibility="hide"
+            ohos:id="$+id:tv_layout"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:background_element="$color:page_background_color"
+            ohos:weight="1">
+        </DirectionalLayout>
+        <DirectionalLayout
+            ohos:visibility="hide"
+            ohos:id="$+id:my_layout"
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:background_element="$color:page_background_color"
+            ohos:weight="1">
+        </DirectionalLayout>
+    </ScrollView>
+
     <DirectionalLayout
         ohos:background_element="$color:buttom_nav_background_color"
         ohos:orientation="horizontal"
@@ -23,21 +54,21 @@
             ohos:weight="1"
             ohos:orientation="vertical"
             ohos:alignment="horizontal_center"
-            ohos:padding="$size:small_margin_size"
+            ohos:padding="$string:small_margin_size"
             >
             <Image
                 ohos:id="$+id:home_img"
-                ohos:height="$size:bottomBar_icon_size"
-                ohos:width="$size:bottomBar_icon_size"
+                ohos:height="$string:bottomBar_icon_size"
+                ohos:width="$string:bottomBar_icon_size"
                 ohos:scale_mode="zoom_center"
                 ohos:image_src="$media:icon_home_active"
                 />
             <Text
                 ohos:id="$+id:home_text"
-                ohos:top_margin="$size:small_margin_size"
+                ohos:top_margin="$string:small_margin_size"
                 ohos:height="match_content"
                 ohos:width="match_content"
-                ohos:text_size="$size:normal_font_size"
+                ohos:text_size="$string:normal_font_size"
                 ohos:text_color="$color:buttom_nav_active_color"
                 ohos:text="$string:bottomBar_home"/>
         </DirectionalLayout>
@@ -47,21 +78,21 @@
             ohos:weight="1"
             ohos:orientation="vertical"
             ohos:alignment="horizontal_center"
-            ohos:padding="$size:small_margin_size"
+            ohos:padding="$string:small_margin_size"
             >
             <Image
                 ohos:id="$+id:movie_img"
-                ohos:height="$size:bottomBar_icon_size"
-                ohos:width="$size:bottomBar_icon_size"
+                ohos:height="$string:bottomBar_icon_size"
+                ohos:width="$string:bottomBar_icon_size"
                 ohos:scale_mode="zoom_center"
                 ohos:image_src="$media:icon_movie"
                 />
             <Text
                 ohos:id="$+id:movie_text"
-                ohos:top_margin="$size:small_margin_size"
+                ohos:top_margin="$string:small_margin_size"
                 ohos:height="match_content"
                 ohos:width="match_content"
-                ohos:text_size="$size:normal_font_size"
+                ohos:text_size="$string:normal_font_size"
                 ohos:text="$string:bottomBar_movie"/>
         </DirectionalLayout>
         <DirectionalLayout
@@ -74,17 +105,17 @@
             >
             <Image
                 ohos:id="$+id:tv_img"
-                ohos:height="$size:bottomBar_icon_size"
-                ohos:width="$size:bottomBar_icon_size"
+                ohos:height="$string:bottomBar_icon_size"
+                ohos:width="$string:bottomBar_icon_size"
                 ohos:scale_mode="zoom_center"
                 ohos:image_src="$media:icon_tv"
                 />
             <Text
                 ohos:id="$+id:tv_text"
-                ohos:top_margin="$size:small_margin_size"
+                ohos:top_margin="$string:small_margin_size"
                 ohos:height="match_content"
                 ohos:width="match_content"
-                ohos:text_size="$size:normal_font_size"
+                ohos:text_size="$string:normal_font_size"
                 ohos:text="$string:bottomBar_tv"/>
         </DirectionalLayout>
         <DirectionalLayout
@@ -93,18 +124,18 @@
             ohos:weight="1"
             ohos:orientation="vertical"
             ohos:alignment="horizontal_center"
-            ohos:padding="$size:small_margin_size"
+            ohos:padding="$string:small_margin_size"
             >
             <Image
                 ohos:id="$+id:my_img"
-                ohos:height="$size:bottomBar_icon_size"
-                ohos:width="$size:bottomBar_icon_size"
+                ohos:height="$string:bottomBar_icon_size"
+                ohos:width="$string:bottomBar_icon_size"
                 ohos:scale_mode="zoom_center"
                 ohos:image_src="$media:icon_user"
                 />
             <Text
                 ohos:id="$+id:my_text"
-                ohos:top_margin="$size:small_margin_size"
+                ohos:top_margin="$string:small_margin_size"
                 ohos:height="match_content"
                 ohos:width="match_content"
                 ohos:text_size="$string:normal_font_size"

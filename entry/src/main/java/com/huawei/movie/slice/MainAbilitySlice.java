@@ -9,9 +9,7 @@ import com.huawei.movie.fraction.TvFraction;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.fraction.FractionScheduler;
 import ohos.aafwk.content.Intent;
-import ohos.agp.components.Component;
-import ohos.agp.components.Image;
-import ohos.agp.components.Text;
+import ohos.agp.components.*;
 import ohos.agp.utils.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +19,18 @@ public class MainAbilitySlice extends AbilitySlice {
     List<List<Component>> navComponents = new ArrayList<>();//底部导航栏
     List<List<Integer>> navResourceTables = new ArrayList<>();// 导航图标集合
     int currentTabIndex = 0;
+
+    HomeFraction homeFraction;
+    MovieFraction movieFraction;
+    MyFraction myFraction;
+    TvFraction tvFraction;
+
+    int oldCurrentIndex = 0;
+
+    List<DirectionalLayout>tabDirectionalLayout = new ArrayList<>();// 四个滚动内容
+
+    StackLayout stackLayout;
+
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
@@ -93,6 +103,11 @@ public class MainAbilitySlice extends AbilitySlice {
         navResourceTables.add(movieResourceTables);
         navResourceTables.add(tvResourceTables);
         navResourceTables.add(myResourceTables);
+
+        tabDirectionalLayout.add((DirectionalLayout) findComponentById(ResourceTable.Id_home_layout));
+        tabDirectionalLayout.add((DirectionalLayout) findComponentById(ResourceTable.Id_movie_layout));
+        tabDirectionalLayout.add((DirectionalLayout) findComponentById(ResourceTable.Id_tv_layout));
+        tabDirectionalLayout.add((DirectionalLayout) findComponentById(ResourceTable.Id_my_layout));
     }
 
     // 循环绑定点击时间
@@ -127,23 +142,37 @@ public class MainAbilitySlice extends AbilitySlice {
         //建立FractionScheduler和Fraction之间的关系
         switch (type) {
             case 0 :{
-                scheduler.replace(ResourceTable.Id_main_content,new HomeFraction());
+                if(homeFraction == null){
+                    homeFraction = new HomeFraction(this);
+                    scheduler.replace(ResourceTable.Id_home_layout,homeFraction);
+                }
                 break;
             }
             case 1 :{
-                scheduler.replace(ResourceTable.Id_main_content,new MovieFraction());
+                if(movieFraction == null){
+                    movieFraction = new MovieFraction();
+                    scheduler.replace(ResourceTable.Id_movie_layout,movieFraction);
+                }
                 break;
             }
             case 2 :{
-                scheduler.replace(ResourceTable.Id_main_content,new TvFraction());
+                if(tvFraction == null){
+                    tvFraction = new TvFraction();
+                    scheduler.replace(ResourceTable.Id_tv_layout,tvFraction);
+                }
                 break;
             }
             case 3 :{
-                scheduler.replace(ResourceTable.Id_main_content,new MyFraction());
+                if(myFraction == null){
+                    myFraction = new MyFraction();
+                    scheduler.replace(ResourceTable.Id_my_layout,myFraction);
+                }
                 break;
             }
         }
         scheduler.submit();
+        tabDirectionalLayout.get(oldCurrentIndex).setVisibility(Component.HIDE);
+        tabDirectionalLayout.get(type).setVisibility(Component.VISIBLE);
+        oldCurrentIndex = type;
     }
-
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="50vp"
+    ohos:width="50vp"
+    ohos:id="$+id:avater_layout"
+    ohos:orientation="vertical">
+    <Image
+        ohos:scale_mode="zoom_center"
+        ohos:image_src="$media:avater_img"
+        ohos:id="$+id:avater"
+        ohos:height="match_parent"
+        ohos:width="match_parent"/>
+</DirectionalLayout>
