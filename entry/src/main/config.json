@@ -17,7 +17,7 @@
   "module": {
     "reqPermissions": [
       {
-        "name": "com.huawei.movie.ability.DataAbility.DATA"
+        "name": "com.huawei.movie.DataAbilityShellProvider.PROVIDER"
       },
       {
         "name": "ohos.permission.GET_NETWORK_INFO"

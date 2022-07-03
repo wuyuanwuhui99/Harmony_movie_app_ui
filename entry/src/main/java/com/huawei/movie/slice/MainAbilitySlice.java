@@ -185,7 +185,6 @@ public class MainAbilitySlice extends AbilitySlice {
         DataAbilityHelper creator = DataAbilityHelper.creator(this);
         String[] columns = {"token"};
         DataAbilityPredicates predicates = new DataAbilityPredicates();
-        predicates.beginsWith("token","token");
         try {
             ResultSet resultSet = creator.query(Uri.parse("dataability:///com.huawei.movie.ability.DataAbility/token"), columns, predicates);
             if(resultSet.getRowCount() > 0){
@@ -195,6 +194,5 @@ public class MainAbilitySlice extends AbilitySlice {
         } catch (DataAbilityRemoteException e) {
             e.printStackTrace();
         }
-
     }
 }

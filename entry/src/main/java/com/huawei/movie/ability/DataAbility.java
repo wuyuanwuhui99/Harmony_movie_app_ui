@@ -22,13 +22,12 @@ public class DataAbility extends Ability {
     private static final HiLogLabel LABEL_LOG = new HiLogLabel(3, 0xD001100, "Demo");
     private RdbOpenCallback rdbOpenCallback = new RdbOpenCallback() {
         @Override
-        public void onCreate(RdbStore rdbStore) {
-//            rdbStore.executeSql("create table if not exists user(user_id text primary key,password text," +
-//                    "create_date text,update_date text,username text,telephone text,email text,avater text," +
-//                    "birthday text,sex text,role text,sign text,region text,disabled integer)");
-
-            rdbStore.executeSql("create table if not exists token(token text,create_time text,update_time text");
-//            rdbStore.executeSql("create table if not exists search_record(name text,create_time text");
+        public void onCreate(RdbStore myRdbStore) {
+            myRdbStore.executeSql("create table if not exists user(user_id text primary key,password text," +
+                    "create_date text,update_date text,username text,telephone text,email text,avater text," +
+                    "birthday text,sex text,role text,sign text,region text,disabled integer)");
+            myRdbStore.executeSql("create table if not exists token(token text primary key,create_time text,update_time text)");
+            myRdbStore.executeSql("create table if not exists search_record(name text,create_time text)");
         }
 
         @Override
@@ -40,8 +39,6 @@ public class DataAbility extends Ability {
     public void onStart(Intent intent) {
         super.onStart(intent);
         HiLog.info(LABEL_LOG, "DataAbility onStart");
-
-
         DatabaseHelper helper = new DatabaseHelper(this);
         rdbStore = helper.getRdbStore(storeConfig,1,rdbOpenCallback);
     }
@@ -55,8 +52,11 @@ public class DataAbility extends Ability {
     public ResultSet query(Uri uri, String[] columns, DataAbilityPredicates predicates) {
         String tableName = getTableName(uri);
         RdbPredicates rdbPredicates = DataAbilityUtils.createRdbPredicates(predicates, tableName);
-        ResultSet resultSet = rdbStore.query(rdbPredicates,columns);
-        return resultSet;
+        if(rdbStore != null){
+            ResultSet resultSet = rdbStore.query(rdbPredicates,columns);
+            return resultSet;
+        }
+        return null;
     }
 
     /**
