@@ -12,7 +12,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class HttpRequest {
-    public static void loadImageData(Image img, String src, Fraction fraction){
+    public static final void loadImageData(Image img, String src, Fraction fraction){
         HttpURLConnection connection = null;
         try {
             URL url = new URL(src);

@@ -1,11 +1,16 @@
 package com.huawei.movie.slice;
 
+import com.google.gson.Gson;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.ability.MainAbility;
+import com.huawei.movie.config.Config;
+import com.huawei.movie.entity.UserEntity;
 import com.huawei.movie.fraction.HomeFraction;
 import com.huawei.movie.fraction.MovieFraction;
 import com.huawei.movie.fraction.MyFraction;
 import com.huawei.movie.fraction.TvFraction;
+import com.huawei.movie.http.RequestUtils;
+import com.huawei.movie.http.ResultEntity;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.DataAbilityHelper;
 import ohos.aafwk.ability.DataAbilityRemoteException;
@@ -16,6 +21,9 @@ import ohos.agp.utils.Color;
 import ohos.data.dataability.DataAbilityPredicates;
 import ohos.data.resultset.ResultSet;
 import ohos.utils.net.Uri;
+import poetry.jianjia.Call;
+import poetry.jianjia.Callback;
+import poetry.jianjia.Response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +38,8 @@ public class MainAbilitySlice extends AbilitySlice {
     MovieFraction movieFraction;
     MyFraction myFraction;
     TvFraction tvFraction;
+
+    UserEntity userEntity;
 
     int oldCurrentIndex = 0;
 
@@ -189,8 +199,21 @@ public class MainAbilitySlice extends AbilitySlice {
             ResultSet resultSet = creator.query(Uri.parse("dataability:///com.huawei.movie.ability.DataAbility/token"), columns, predicates);
             if(resultSet.getRowCount() > 0){
                 resultSet.goToFirstRow();
-                String token = resultSet.getString(0);
+                Config.token = resultSet.getString(0);
             };
+            Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
+            userData.enqueue(new Callback<ResultEntity>() {
+                @Override
+                public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
+                    Gson gson = new Gson();
+                    userEntity = gson.fromJson(gson.toJson(response.body().getData()), UserEntity.class);
+                }
+
+                @Override
+                public void onFailure(Call<ResultEntity> call, Throwable throwable) {
+                    System.out.println(throwable);
+                }
+            });
         } catch (DataAbilityRemoteException e) {
             e.printStackTrace();
         }

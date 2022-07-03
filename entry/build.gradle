@@ -22,6 +22,16 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     ohosTestImplementation 'com.huawei.ohos.testkit:runner:1.0.0.100'
     implementation 'io.openharmony.tpc.thirdlib:glide:1.1.2'
+    // 蒹葭的核心代码
+    implementation 'io.gitee.zhongte:jianjia:1.0.1'
+    // 数据转换器，数据转换器使用gson来帮我们解析json，不需要我们手动解析json
+    implementation 'io.gitee.zhongte:converter-gson:1.0.1'
+    implementation "com.google.code.gson:gson:2.8.2"
+    // 日志拦截器，通过日志拦截器可以看到请求头、请求体、响应头、响应体
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+    // 如果服务端返回的json有特殊字符，比如中文的双引号，gson在解析的时候会对特殊字符进行转义
+    // 这时就需要将转义后的字符串进行反转义，commons-lang可以对特殊字符进行转义和反转义
+    implementation 'commons-lang:commons-lang:2.6'
 }
 decc {
     supportType = ['html','xml']
