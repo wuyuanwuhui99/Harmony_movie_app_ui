@@ -29,8 +29,20 @@
       "value": "我的"
     },
     {
+      "name": "big_radius_size",
+      "value": "30vp"
+    },
+    {
       "name": "normal_font_size",
       "value": "16vp"
+    },
+    {
+      "name": "container_padding_size",
+      "value": "15vp"
+    },
+    {
+      "name": "middel_avater_size",
+      "value": "50vp"
     },
     {
       "name": "small_margin_size",
@@ -39,6 +51,10 @@
     {
       "name": "bottomBar_icon_size",
       "value": "30vp"
+    },
+    {
+      "name": "dataability_description",
+      "value": "hap sample empty provider"
     }
   ]
 }

@@ -7,10 +7,16 @@ import com.huawei.movie.fraction.MovieFraction;
 import com.huawei.movie.fraction.MyFraction;
 import com.huawei.movie.fraction.TvFraction;
 import ohos.aafwk.ability.AbilitySlice;
+import ohos.aafwk.ability.DataAbilityHelper;
+import ohos.aafwk.ability.DataAbilityRemoteException;
 import ohos.aafwk.ability.fraction.FractionScheduler;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
 import ohos.agp.utils.Color;
+import ohos.data.dataability.DataAbilityPredicates;
+import ohos.data.resultset.ResultSet;
+import ohos.utils.net.Uri;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,12 +35,11 @@ public class MainAbilitySlice extends AbilitySlice {
 
     List<DirectionalLayout>tabDirectionalLayout = new ArrayList<>();// 四个滚动内容
 
-    StackLayout stackLayout;
-
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_main);
+        getUserData();
         initUI();
         setListeners();
         loadFraction(currentTabIndex);
@@ -143,7 +148,7 @@ public class MainAbilitySlice extends AbilitySlice {
         switch (type) {
             case 0 :{
                 if(homeFraction == null){
-                    homeFraction = new HomeFraction(this);
+                    homeFraction = new HomeFraction();
                     scheduler.replace(ResourceTable.Id_home_layout,homeFraction);
                 }
                 break;
@@ -174,5 +179,22 @@ public class MainAbilitySlice extends AbilitySlice {
         tabDirectionalLayout.get(oldCurrentIndex).setVisibility(Component.HIDE);
         tabDirectionalLayout.get(type).setVisibility(Component.VISIBLE);
         oldCurrentIndex = type;
+    }
+
+    private void getUserData() {
+        DataAbilityHelper creator = DataAbilityHelper.creator(this);
+        String[] columns = {"token"};
+        DataAbilityPredicates predicates = new DataAbilityPredicates();
+        predicates.beginsWith("token","token");
+        try {
+            ResultSet resultSet = creator.query(Uri.parse("dataability:///com.huawei.movie.ability.DataAbility/token"), columns, predicates);
+            if(resultSet.getRowCount() > 0){
+                resultSet.goToFirstRow();
+                String token = resultSet.getString(0);
+            };
+        } catch (DataAbilityRemoteException e) {
+            e.printStackTrace();
+        }
+
     }
 }

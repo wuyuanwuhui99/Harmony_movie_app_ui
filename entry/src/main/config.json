@@ -17,6 +17,9 @@
   "module": {
     "reqPermissions": [
       {
+        "name": "com.huawei.movie.ability.DataAbility.DATA"
+      },
+      {
         "name": "ohos.permission.GET_NETWORK_INFO"
       },
       {
@@ -57,6 +60,16 @@
         "label": "$string:entry_MainAbility",
         "type": "page",
         "launchType": "standard"
+      },
+      {
+        "permissions": [
+          "com.huawei.movie.ability.DataAbility.DATA"
+        ],
+        "name": "com.huawei.movie.ability.DataAbility",
+        "icon": "$media:icon",
+        "description": "$string:dataability_description",
+        "type": "data",
+        "uri": "dataability://com.huawei.movie.ability.DataAbility"
       }
     ],
     "metaData": {

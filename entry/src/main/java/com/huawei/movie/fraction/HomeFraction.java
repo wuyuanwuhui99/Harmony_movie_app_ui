@@ -15,7 +15,6 @@ import com.huawei.movie.ResourceTable;
 
 public class HomeFraction extends Fraction {
     Component rootComponent;
-    AbilitySlice abilitySlice;
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
         if(rootComponent == null){
@@ -23,10 +22,6 @@ public class HomeFraction extends Fraction {
         }
         //指定布局文件
         return rootComponent;
-    }
-
-    public HomeFraction(AbilitySlice abilitySlice){
-        this.abilitySlice = abilitySlice;
     }
 
     @Override
@@ -37,7 +32,8 @@ public class HomeFraction extends Fraction {
             public void run() {
                 getFractionAbility().getFractionManager()
                         .startFractionScheduler()
-                        .add(ResourceTable.Id_avater_wrapper, new AvaterFraction(abilitySlice))
+                        .add(ResourceTable.Id_avater_wrapper, new AvaterFraction())
+                        .add(ResourceTable.Id_avater_wrapper,new SearchFraction())
                         .submit();
             }
         });

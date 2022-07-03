@@ -4,8 +4,8 @@
     ohos:shape="rectangle">
     <!-- 设置输入框的圆角 -->
     <corners
-        ohos:radius="$string:container_padding_size"
+        ohos:radius="$string:big_radius_size"
         />
     <!-- 设置输入框的边框颜色 -->
-    <solid ohos:color="#FFFFFF"/>
+    <solid ohos:color="$color:page_background_color"/>
 </shape>
