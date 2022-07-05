@@ -10,7 +10,7 @@ public  class  RequestUtils {
     public static RequestService getInstance() {
         if(instance == null){
             instance = new JianJia.Builder()
-                    .baseUrl(Api.HOST)
+                    .baseUrl(Api.PROXY)
                     .client(new TokenHeaderInterceptor().getClient().build())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build().create(RequestService.class);

@@ -10,7 +10,7 @@
   "deviceConfig": {
     "default": {
       "network": {
-        "cleartextTraffic": true
+        "cleartextTraffic": true,
       }
     }
   },
@@ -43,6 +43,7 @@
     },
     "abilities": [
       {
+
         "skills": [
           {
             "entities": [

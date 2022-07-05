@@ -2,6 +2,7 @@ package com.huawei.movie.config;
 
 public class Api {
     public static final String HOST = "http://192.168.0.103:5001";
+    public static final String PROXY = "http://wuyuanwuhui.gnway.cc";// D代理
     public static final String GETUSERDATA = "/service/movie/getUserData";// 获取用户信息
     public static final String GETCATEGORYLIST = "/service/movie/getCategoryList";// 获取分类影片
     public static final String GETTOPMOVIELIST = "/service/movie/getTopMovieList";// 根据分类前20条影片数据
