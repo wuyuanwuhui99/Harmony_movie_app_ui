@@ -11,27 +11,32 @@ import com.huawei.movie.fraction.MyFraction;
 import com.huawei.movie.fraction.TvFraction;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
-import com.huawei.movie.utils.HttpRequest;
-import com.zzrv5.mylibrary.ZZRCallBack;
-import com.zzrv5.mylibrary.ZZRHttp;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.DataAbilityHelper;
 import ohos.aafwk.ability.DataAbilityRemoteException;
 import ohos.aafwk.ability.fraction.FractionScheduler;
 import ohos.aafwk.content.Intent;
+import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
 import ohos.agp.utils.Color;
-import ohos.app.dispatcher.TaskDispatcher;
-import ohos.app.dispatcher.task.TaskPriority;
 import ohos.data.dataability.DataAbilityPredicates;
+import ohos.data.rdb.ValuesBucket;
 import ohos.data.resultset.ResultSet;
+import ohos.event.commonevent.*;
+import ohos.eventhandler.EventHandler;
+import ohos.eventhandler.EventRunner;
+import ohos.eventhandler.InnerEvent;
+import ohos.rpc.RemoteException;
 import ohos.utils.net.Uri;
 import poetry.jianjia.Call;
 import poetry.jianjia.Callback;
+import poetry.jianjia.LogUtils;
 import poetry.jianjia.Response;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static ohos.data.search.schema.PhotoItem.TAG;
 
 public class MainAbilitySlice extends AbilitySlice {
     List<Component>navDirectionalLayout = new ArrayList<>();// 澳航布局
@@ -44,21 +49,22 @@ public class MainAbilitySlice extends AbilitySlice {
     MyFraction myFraction;
     TvFraction tvFraction;
 
-    UserEntity userEntity;
-
     int oldCurrentIndex = 0;
 
     List<DirectionalLayout>tabDirectionalLayout = new ArrayList<>();// 四个滚动内容
+
+    private MyCommonEventSubscriber subscriber;
+    // EventRunner创建新线程，将耗时的操作放到新的线程上执行
+    // MyEventHandler为EventHandler的派生类，在不同线程间分发和处理事件和Runnable任务
+    private MyEventHandle myEventHandle=new MyEventHandle(EventRunner.create());
 
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_main);
         getUserData();
-        initUI();
-        setListeners();
-        loadFraction(currentTabIndex);
     }
+
 
     @Override
     public void onActive() {
@@ -70,6 +76,10 @@ public class MainAbilitySlice extends AbilitySlice {
         super.onForeground(intent);
     }
 
+    /**
+     * @desc初始化首页布局
+     * @since 2022-06-25
+     * */
     private void initUI(){
         navDirectionalLayout.add(findComponentById(ResourceTable.Id_home_dir));
         navDirectionalLayout.add(findComponentById(ResourceTable.Id_movie_dir));
@@ -130,7 +140,10 @@ public class MainAbilitySlice extends AbilitySlice {
         tabDirectionalLayout.add((DirectionalLayout) findComponentById(ResourceTable.Id_my_layout));
     }
 
-    // 循环绑定点击时间
+    /**
+     * @desc 循环绑定点击tab导航时间
+     * @since 2022-06-25
+     * */
     private void setListeners() {
         for (int i = 0; i < navDirectionalLayout.size();i++){
             int finalI = i;
@@ -154,6 +167,11 @@ public class MainAbilitySlice extends AbilitySlice {
         }
     }
 
+    /**
+     * @desc 采用懒加载方式，按照下标加载Fraction，如果已经加载过了点击时不用在加载
+     * @param type tab页的下标
+     * @since 2022-06-25
+     * */
     private void loadFraction(int type){
         //获取小部分的管理器
         MainAbility mainAbility = (MainAbility) getAbility();
@@ -196,31 +214,106 @@ public class MainAbilitySlice extends AbilitySlice {
         oldCurrentIndex = type;
     }
 
+    /**
+     * @desc获取用户数据
+     * @since 2022-07-05
+     * */
     private void getUserData() {
-        DataAbilityHelper creator = DataAbilityHelper.creator(this);
+
+        DataAbilityHelper creator = DataAbilityHelper.creator(getContext());
         String[] columns = {"token"};
         DataAbilityPredicates predicates = new DataAbilityPredicates();
+        ResultSet resultSet = null;
         try {
-            ResultSet resultSet = creator.query(Uri.parse("dataability:///com.huawei.movie.ability.DataAbility/token"), columns, predicates);
-            if(resultSet.getRowCount() > 0){
-                resultSet.goToFirstRow();
-                Config.token = resultSet.getString(0);
-            };
-            Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
-            userData.enqueue(new Callback<ResultEntity>() {
-                @Override
-                public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                    Gson gson = new Gson();
-                    userEntity = gson.fromJson(gson.toJson(response.body().getData()), UserEntity.class);
-                }
-
-                @Override
-                public void onFailure(Call<ResultEntity> call, Throwable throwable) {
-                    System.out.println(throwable);
-                }
-            });
+            resultSet = creator.query(Uri.parse(Config.tokenUri), columns, predicates);
         } catch (DataAbilityRemoteException e) {
             e.printStackTrace();
         }
+        if(resultSet.getRowCount() > 0){
+            resultSet.goToFirstRow();
+            Config.token = resultSet.getString(0);
+        };
+        Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
+        userData.enqueue(new Callback<ResultEntity>() {
+            @Override
+            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
+                Gson gson = new Gson();
+                Config.userEntity = gson.fromJson(gson.toJson(response.body().getData()), UserEntity.class);
+                Config.token = response.body().getToken();
+                ValuesBucket valuesBucket = new ValuesBucket();
+                valuesBucket.putString("token",Config.token);
+                // 保存token
+                try {
+                    creator.insert(Uri.parse(Config.tokenUri),valuesBucket);
+                } catch (DataAbilityRemoteException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    Intent intent = new Intent();
+                    Operation operation = new Intent.OperationBuilder().withAction(Config.ACTION).build();
+                    intent.setOperation(operation);
+                    intent.setParam("result","commonEventData");
+                    intent.setParam("isCommonEvent",true);
+                    CommonEventData eventData = new CommonEventData(intent);
+                    CommonEventManager.publishCommonEvent(eventData);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResultEntity> call, Throwable throwable) {
+                System.out.println(throwable);
+            }
+        });
     }
+
+    private class MyCommonEventSubscriber extends CommonEventSubscriber {
+        MyCommonEventSubscriber(CommonEventSubscribeInfo info) {
+            super(info);
+        }
+
+        @Override
+        public void onReceiveEvent(CommonEventData commonEventData) {
+            //以下为如果有耗时操作时，执行的代码
+            final AsyncCommonEventResult result = goAsyncCommonEvent();
+            Runnable runnable=new Runnable() {
+                @Override
+                public void run() {
+                    // 待执行的操作，由开发者定义
+                    myEventHandle.sendEvent(100);
+                    result.finishCommonEvent(); // 调用finish结束异步操作
+                }
+            };
+            myEventHandle.postTask(runnable);
+        }
+
+    }
+
+    private class MyEventHandle extends EventHandler{
+        public MyEventHandle(EventRunner runner) throws IllegalArgumentException {
+            super(runner);
+        }
+
+        @Override
+        protected void processEvent(InnerEvent event) {
+            super.processEvent(event);
+            //处理事件，由开发者撰写
+            int evnetID=event.eventId;
+            LogUtils.info(TAG,"evnetID:"+evnetID);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        try {
+            CommonEventManager.unsubscribeCommonEvent(subscriber);
+            LogUtils.info(TAG, "unsubscribeCommonEvent success.");
+        } catch (RemoteException e) {
+            LogUtils.error(TAG, "Exception occurred during unsubscribeCommonEvent invocation.");
+        }
+    }
+    
 }

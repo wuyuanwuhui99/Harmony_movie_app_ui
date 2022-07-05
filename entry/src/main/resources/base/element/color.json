@@ -1,13 +1,13 @@
 {
   "color": [
-//    {
-//      "name": "page_background_color",
-//      "value": "#eee"
-//    },
     {
       "name": "page_background_color",
-      "value": "#ff0000"
+      "value": "#eee"
     },
+//    {
+//      "name": "page_background_color",
+//      "value": "#ff0000"
+//    },
     {
       "name": "buttom_nav_background_color",
       "value": "#f6fbf7"

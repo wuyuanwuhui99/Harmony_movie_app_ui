@@ -2,6 +2,7 @@ package com.huawei.movie.fraction;
 
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Api;
+import com.huawei.movie.config.Config;
 import com.huawei.movie.utils.HttpRequest;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.fraction.Fraction;
@@ -24,7 +25,7 @@ public class AvaterFraction extends Fraction {
     protected void onStart(Intent intent) {
         super.onStart(intent);
         Image avaterImg = (Image) component.findComponentById(ResourceTable.Id_avater);
-        HttpRequest.loadImageData(avaterImg, Api.HOST + "/static/user/avater/%E5%90%B4%E6%80%A8%E5%90%B4%E6%82%94.jpg",this);
+        HttpRequest.loadImageData(avaterImg, Api.HOST + Config.userEntity.getAvater(),this);
         avaterImg.setCornerRadius(100f);
     }
 }
