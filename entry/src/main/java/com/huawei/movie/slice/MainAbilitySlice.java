@@ -53,11 +53,6 @@ public class MainAbilitySlice extends AbilitySlice {
 
     List<DirectionalLayout>tabDirectionalLayout = new ArrayList<>();// 四个滚动内容
 
-    private MyCommonEventSubscriber subscriber;
-    // EventRunner创建新线程，将耗时的操作放到新的线程上执行
-    // MyEventHandler为EventHandler的派生类，在不同线程间分发和处理事件和Runnable任务
-    private MyEventHandle myEventHandle=new MyEventHandle(EventRunner.create());
-
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
@@ -233,6 +228,7 @@ public class MainAbilitySlice extends AbilitySlice {
             resultSet.goToFirstRow();
             Config.token = resultSet.getString(0);
         };
+        // 获取用户信息
         Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
         userData.enqueue(new Callback<ResultEntity>() {
             @Override
@@ -248,18 +244,12 @@ public class MainAbilitySlice extends AbilitySlice {
                 } catch (DataAbilityRemoteException e) {
                     e.printStackTrace();
                 }
-                try {
-                    Intent intent = new Intent();
-                    Operation operation = new Intent.OperationBuilder().withAction(Config.ACTION).build();
-                    intent.setOperation(operation);
-                    intent.setParam("result","commonEventData");
-                    intent.setParam("isCommonEvent",true);
-                    CommonEventData eventData = new CommonEventData(intent);
-                    CommonEventManager.publishCommonEvent(eventData);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
+                // 初始化UI
+                getContext().getUITaskDispatcher().asyncDispatch(()->{
+                    initUI();
+                    setListeners();
+                    loadFraction(currentTabIndex);
+                });
             }
 
             @Override
@@ -269,51 +259,9 @@ public class MainAbilitySlice extends AbilitySlice {
         });
     }
 
-    private class MyCommonEventSubscriber extends CommonEventSubscriber {
-        MyCommonEventSubscriber(CommonEventSubscribeInfo info) {
-            super(info);
-        }
-
-        @Override
-        public void onReceiveEvent(CommonEventData commonEventData) {
-            //以下为如果有耗时操作时，执行的代码
-            final AsyncCommonEventResult result = goAsyncCommonEvent();
-            Runnable runnable=new Runnable() {
-                @Override
-                public void run() {
-                    // 待执行的操作，由开发者定义
-                    myEventHandle.sendEvent(100);
-                    result.finishCommonEvent(); // 调用finish结束异步操作
-                }
-            };
-            myEventHandle.postTask(runnable);
-        }
-
-    }
-
-    private class MyEventHandle extends EventHandler{
-        public MyEventHandle(EventRunner runner) throws IllegalArgumentException {
-            super(runner);
-        }
-
-        @Override
-        protected void processEvent(InnerEvent event) {
-            super.processEvent(event);
-            //处理事件，由开发者撰写
-            int evnetID=event.eventId;
-            LogUtils.info(TAG,"evnetID:"+evnetID);
-        }
-    }
-
     @Override
     protected void onStop() {
         super.onStop();
-        try {
-            CommonEventManager.unsubscribeCommonEvent(subscriber);
-            LogUtils.info(TAG, "unsubscribeCommonEvent success.");
-        } catch (RemoteException e) {
-            LogUtils.error(TAG, "Exception occurred during unsubscribeCommonEvent invocation.");
-        }
     }
-    
+
 }

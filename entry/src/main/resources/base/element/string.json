@@ -33,6 +33,22 @@
       "value": "30vp"
     },
     {
+      "name": "hot_text",
+      "value": "热门"
+    },
+    {
+      "name": "play_text",
+      "value": "预告"
+    },
+    {
+      "name": "new_text",
+      "value": "最新"
+    },
+    {
+      "name": "classify_text",
+      "value": "分类"
+    },
+    {
       "name": "normal_font_size",
       "value": "16vp"
     },
@@ -55,6 +71,10 @@
     {
       "name": "dataability_description",
       "value": "hap sample empty provider"
+    },
+    {
+      "name": "big_icon_size",
+      "value": "40vp"
     }
   ]
 }

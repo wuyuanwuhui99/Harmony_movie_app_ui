@@ -2,12 +2,8 @@
   "color": [
     {
       "name": "page_background_color",
-      "value": "#eee"
+      "value": "#eeeeee"
     },
-//    {
-//      "name": "page_background_color",
-//      "value": "#ff0000"
-//    },
     {
       "name": "buttom_nav_background_color",
       "value": "#f6fbf7"
@@ -19,6 +15,10 @@
     {
       "name": "buttom_nav_active_color",
       "value": "#f69700"
+    },
+    {
+      "name": "disable_color",
+      "value": "#bbbbbb"
     }
   ]
 }

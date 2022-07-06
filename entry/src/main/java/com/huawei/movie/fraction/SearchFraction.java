@@ -1,12 +1,10 @@
 package com.huawei.movie.fraction;
 
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.utils.HttpRequest;
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Component;
 import ohos.agp.components.ComponentContainer;
-import ohos.agp.components.Image;
 import ohos.agp.components.LayoutScatter;
 
 public class SearchFraction extends Fraction {
