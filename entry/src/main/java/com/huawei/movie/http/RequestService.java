@@ -1,10 +1,10 @@
 package com.huawei.movie.http;
 
 import com.huawei.movie.config.Api;
-import poetry.jianjia.Call;
-import poetry.jianjia.http.GET;
-import poetry.jianjia.http.Path;
-import poetry.jianjia.http.Query;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface RequestService {
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    ohos:height="match_content"
+    ohos:width="match_parent"
+    xmlns:ohos="http://schemas.huawei.com/res/ohos">
+    <PageSlider
+        ohos:top_margin="10vp"
+        ohos:id="$+id:page_slider"
+        ohos:height="150vp"
+        ohos:width="match_parent"
+        ohos:layout_alignment="horizontal_center"/>
+</DirectionalLayout>

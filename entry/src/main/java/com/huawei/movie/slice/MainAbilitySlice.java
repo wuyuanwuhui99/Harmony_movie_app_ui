@@ -16,22 +16,16 @@ import ohos.aafwk.ability.DataAbilityHelper;
 import ohos.aafwk.ability.DataAbilityRemoteException;
 import ohos.aafwk.ability.fraction.FractionScheduler;
 import ohos.aafwk.content.Intent;
-import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
 import ohos.agp.utils.Color;
 import ohos.data.dataability.DataAbilityPredicates;
 import ohos.data.rdb.ValuesBucket;
 import ohos.data.resultset.ResultSet;
-import ohos.event.commonevent.*;
-import ohos.eventhandler.EventHandler;
-import ohos.eventhandler.EventRunner;
-import ohos.eventhandler.InnerEvent;
-import ohos.rpc.RemoteException;
 import ohos.utils.net.Uri;
-import poetry.jianjia.Call;
-import poetry.jianjia.Callback;
-import poetry.jianjia.LogUtils;
-import poetry.jianjia.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 import java.util.ArrayList;
 import java.util.List;

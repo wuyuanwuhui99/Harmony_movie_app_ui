@@ -10,10 +10,16 @@
         ohos:background_element="$graphic:box_decoration"
         ohos:id="$+id:avater_wrapper"
         ohos:orientation="horizontal"
-        ohos:padding="15vp"
+        ohos:padding="$string:container_padding_size"
         ohos:height="match_content"
         ohos:width="match_parent">
     </DirectionalLayout>
+    <DirectionalLayout
+        ohos:padding="$string:container_padding_size"
+        ohos:id="$+id:swriper_wrapper"
+        ohos:top_margin="$string:container_padding_size"
+        ohos:height="match_content"
+        ohos:width="match_parent"/>
     <DirectionalLayout
         ohos:height="match_content"
         ohos:background_element="$graphic:box_decoration"

@@ -1,20 +1,19 @@
 package com.huawei.movie.http;
 
 import com.huawei.movie.config.Api;
-import poerty.jianjian.converter.gson.GsonConverterFactory;
-import poetry.jianjia.JianJia;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.Retrofit;
 
 public  class  RequestUtils {
     private static RequestService instance;
 
     public static RequestService getInstance() {
-        if(instance == null){
-            instance = new JianJia.Builder()
-                    .baseUrl(Api.PROXY)
-                    .client(new TokenHeaderInterceptor().getClient().build())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build().create(RequestService.class);
-        }
+        if(instance == null)
+            instance =  new Retrofit.Builder()
+                .baseUrl(Api.PROXY)
+                .client(new TokenHeaderInterceptor().getClient().build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(RequestService.class);
         return instance;
     }
 }

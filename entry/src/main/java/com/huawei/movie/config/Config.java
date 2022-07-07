@@ -6,5 +6,6 @@ public class Config {
     public static String token = "";
     public static final String tokenUri = "dataability:///com.huawei.movie.ability.DataAbility/token";
     public static UserEntity userEntity;
-    public static final String ACTION="action.send.message";
+    public static final Integer INTERVAL = 3000;// 轮播时长
+    public static final String swiperrunner = "SwiperRunner";
 }

@@ -26,6 +26,7 @@ public class HomeFraction extends Fraction {
                 .startFractionScheduler()
                 .add(ResourceTable.Id_avater_wrapper, new AvaterFraction())
                 .add(ResourceTable.Id_avater_wrapper,new SearchFraction())
+                .add(ResourceTable.Id_swriper_wrapper,new SwiperFraction("电影"))
                 .submit();
         });
     }
