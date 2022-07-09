@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Image
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:scale_mode="zoom_center"
+    ohos:id="$+id:banner"
+    ohos:height="150vp"
+    ohos:width="match_parent"/>

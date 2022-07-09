@@ -1,5 +1,6 @@
 package com.huawei.movie.provider;
 
+import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Api;
 import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
@@ -25,14 +26,8 @@ public class SwiperPageSliderProvider extends PageSliderProvider {
     }
     @Override
     public Object createPageInContainer(ComponentContainer componentContainer, int i) {
-        Image image = new Image(context);
-        image.setLayoutConfig(
-            new StackLayout.LayoutConfig(
-                ComponentContainer.LayoutConfig.MATCH_PARENT,
-                ComponentContainer.LayoutConfig.MATCH_PARENT
-            )
-        );
-        image.setScaleMode(Image.ScaleMode.STRETCH);
+        LayoutScatter layoutScatter = LayoutScatter.getInstance(context);
+        Image image = (Image)layoutScatter.parse(ResourceTable.Layout_banner_item, null, false);
         componentContainer.addComponent(image);
         HttpRequest.loadImageData(image,Api.PROXY + movieEntityList.get(i).getLocalImg(),fraction);
         return image;
