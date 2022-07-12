@@ -15,22 +15,24 @@ public class SwiperPageSliderProvider extends PageSliderProvider {
     private List<MovieEntity> movieEntityList;
     private Context context;
     Fraction fraction;
+    PageSlider pageSlider;
     @Override
     public int getCount() {
         return movieEntityList.size();
     }
-    public SwiperPageSliderProvider(List<MovieEntity> movieEntityList, Context context, Fraction fraction){
+    public SwiperPageSliderProvider(PageSlider pageSlider,List<MovieEntity> movieEntityList, Context context, Fraction fraction){
         this.fraction = fraction;
         this.context = context;
         this.movieEntityList = movieEntityList;
+        this.pageSlider = pageSlider;
     }
     @Override
     public Object createPageInContainer(ComponentContainer componentContainer, int i) {
         LayoutScatter layoutScatter = LayoutScatter.getInstance(context);
         Image image = (Image)layoutScatter.parse(ResourceTable.Layout_banner_item, null, false);
         componentContainer.addComponent(image);
-        HttpRequest.loadImageData(image,Api.PROXY + movieEntityList.get(i).getLocalImg(),fraction);
         return image;
+//        HttpRequest.setImages(context,image,Api.PROXY + movieEntityList.get(i).getLocalImg());
     }
 
     @Override

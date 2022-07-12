@@ -25,7 +25,7 @@ public class AvaterFraction extends Fraction {
     protected void onStart(Intent intent) {
         super.onStart(intent);
         Image avaterImg = (Image) component.findComponentById(ResourceTable.Id_avater);
-        HttpRequest.loadImageData(avaterImg, Api.HOST + Config.userEntity.getAvater(),this);
+        HttpRequest.setImages( getContext(),avaterImg,Api.PROXY + Config.userEntity.getAvater());
         avaterImg.setCornerRadius(100f);
     }
 }

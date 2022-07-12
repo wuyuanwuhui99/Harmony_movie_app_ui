@@ -21,6 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 import java.util.List;
 
 public class SwiperFraction extends Fraction {
@@ -57,13 +58,13 @@ public class SwiperFraction extends Fraction {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                 List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieEntity.class);
-                // 初始化UI
+                 //初始化UI
                 getContext().getUITaskDispatcher().asyncDispatch(()->{
                     pageSlider = (PageSlider) component.findComponentById(ResourceTable.Id_page_slider);//查找组件
-                    SwiperPageSliderProvider swiperPageSliderProvider = new SwiperPageSliderProvider(movieEntityList, getContext(), SwiperFraction.this);
+                    SwiperPageSliderProvider swiperPageSliderProvider = new SwiperPageSliderProvider(pageSlider,movieEntityList, getContext(), SwiperFraction.this);
                     pageSlider.setProvider(swiperPageSliderProvider);
                     eventRunner = EventRunner.create(Config.swiperrunner);
-                    //初始化SwiperEventHandler
+                    // 初始化SwiperEventHandler
                     handler = new SwiperEventHandler(eventRunner);
                     InnerEvent normalInnerEvent = InnerEvent.get(0, 0, null);
                     handler.sendEvent(normalInnerEvent, Config.INTERVAL);//发送消息

@@ -2,7 +2,7 @@ package com.huawei.movie.config;
 
 public class Api {
     public static final String HOST = "http://192.168.0.102:5001";
-    public static final String PROXY = "http://290ebec7.nat123.fun:20285";// D代理
+    public static final String PROXY = "http://nzg2hd.natappfree.cc";// D代理
     public static final String GETUSERDATA = "/service/movie/getUserData";// 获取用户信息
     public static final String GETCATEGORYLIST = "/service/movie/getCategoryList";// 获取分类影片
     public static final String GETTOPMOVIELIST = "/service/movie/getTopMovieList";// 根据分类前20条影片数据

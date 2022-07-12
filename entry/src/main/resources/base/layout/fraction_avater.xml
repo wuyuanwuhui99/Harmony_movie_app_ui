@@ -7,7 +7,6 @@
     ohos:orientation="vertical">
     <Image
         ohos:scale_mode="zoom_center"
-        ohos:image_src="$media:avater_img"
         ohos:id="$+id:avater"
         ohos:height="match_parent"
         ohos:width="match_parent"/>
