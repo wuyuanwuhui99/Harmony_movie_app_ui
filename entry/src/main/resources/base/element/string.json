@@ -75,6 +75,14 @@
     {
       "name": "big_icon_size",
       "value": "40vp"
+    },
+    {
+      "name": "small_width",
+      "value": "3vp"
+    },
+    {
+      "name": "small_height",
+      "value": "15vp"
     }
   ]
 }

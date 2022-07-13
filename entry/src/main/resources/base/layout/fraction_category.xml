@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_content"
+    ohos:width="match_parent"
+    ohos:id="$+id:category_wrapper"
+    ohos:background_element="$graphic:box_decoration"
+    ohos:top_margin="$string:container_padding_size"
+    ohos:padding="$string:container_padding_size"
+    ohos:orientation="vertical">
+    <DirectionalLayout
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:id="$+id:title_wrapper"
+        ohos:alignment="vertical_center"
+        ohos:orientation="horizontal">
+        <DirectionalLayout
+            ohos:background_element="$color:active_color"
+            ohos:height="$string:small_height"
+            ohos:width="$string:small_width"/>
+        <Text
+            ohos:text_size="$string:normal_font_size"
+            ohos:text="热门电影"
+            ohos:left_margin="$string:small_margin_size"
+            ohos:id="$+id:category_title"
+            ohos:height="match_content"
+            ohos:width="match_content"/>
+    </DirectionalLayout>
+</DirectionalLayout>

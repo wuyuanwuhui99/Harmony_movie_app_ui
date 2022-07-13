@@ -4,6 +4,8 @@
 
 首次使用java语言编写的Harmony鸿蒙电影APP，有flutter、android、react-native、harmony四个版本的，正在努力开发中。。。
 
+![app首页](./预览图1.png)
+
 其他完整版本APP请查看个人主页
 
 后端接口项目和sql语句：https://github.com/wuyuanwuhui99/springboot-app-service

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="$string:middel_avater_size"
+    ohos:width="$string:middel_avater_size"
+    ohos:id="$+id:movie_list"
+    ohos:orientation="vertical">
+</DirectionalLayout>
