@@ -43,13 +43,16 @@ public class HomeFraction extends Fraction {
                 .add(ResourceTable.Id_swriper_wrapper,new SwiperFraction("电影"))
                 .submit();
         });
-        getAllCategory();
+        getAllCategoryListByPageName();
     }
 
-    private void getAllCategory(){
+    /**
+     * @des 获取首页所有分类电影
+     * @since 2022-07-014
+     * */
+    private void getAllCategoryListByPageName(){
         Call<ResultEntity> allCategoryListByPageName = RequestUtils.getInstance().getAllCategoryListByPageName("首页");
         allCategoryListByPageName.enqueue(new Callback<ResultEntity>() {
-
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                 List<CategoyEntity> categoyEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), CategoyEntity.class);
