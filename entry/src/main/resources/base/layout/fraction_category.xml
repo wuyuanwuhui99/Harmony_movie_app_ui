@@ -20,7 +20,6 @@
             ohos:width="$string:small_width"/>
         <Text
             ohos:text_size="$string:normal_font_size"
-            ohos:text="热门电影"
             ohos:left_margin="$string:small_margin_size"
             ohos:id="$+id:category_title"
             ohos:height="match_content"

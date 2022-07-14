@@ -1,6 +1,6 @@
 package com.huawei.movie.slice;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.ability.MainAbility;
 import com.huawei.movie.config.Config;
@@ -29,8 +29,6 @@ import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static ohos.data.search.schema.PhotoItem.TAG;
 
 public class MainAbilitySlice extends AbilitySlice {
     List<Component>navDirectionalLayout = new ArrayList<>();// 澳航布局
@@ -227,8 +225,7 @@ public class MainAbilitySlice extends AbilitySlice {
         userData.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                Gson gson = new Gson();
-                Config.userEntity = gson.fromJson(gson.toJson(response.body().getData()), UserEntity.class);
+                Config.userEntity = JSON.parseObject(JSON.toJSONString(response.body().getData()),UserEntity.class);
                 Config.token = response.body().getToken();
                 ValuesBucket valuesBucket = new ValuesBucket();
                 valuesBucket.putString("token",Config.token);
