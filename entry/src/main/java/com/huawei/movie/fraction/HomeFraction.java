@@ -39,7 +39,7 @@ public class HomeFraction extends Fraction {
             getFractionAbility().getFractionManager()
                 .startFractionScheduler()
                 .add(ResourceTable.Id_avater_wrapper, new AvaterFraction())
-                .add(ResourceTable.Id_avater_wrapper,new SearchFraction())
+                .add(ResourceTable.Id_avater_wrapper,new SearchFraction("电影"))
                 .add(ResourceTable.Id_swriper_wrapper,new SwiperFraction("电影"))
                 .submit();
         });
@@ -48,11 +48,11 @@ public class HomeFraction extends Fraction {
 
     /**
      * @des 获取首页所有分类电影
-     * @since 2022-07-014
+     * @since 2022-07-14
      * */
     private void getAllCategoryListByPageName(){
-        Call<ResultEntity> allCategoryListByPageName = RequestUtils.getInstance().getAllCategoryListByPageName("首页");
-        allCategoryListByPageName.enqueue(new Callback<ResultEntity>() {
+        Call<ResultEntity> allCategoryListByPageNameCall = RequestUtils.getInstance().getAllCategoryListByPageName("首页");
+        allCategoryListByPageNameCall.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                 List<CategoyEntity> categoyEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), CategoyEntity.class);
@@ -61,7 +61,7 @@ public class HomeFraction extends Fraction {
                     getFractionAbility().getUITaskDispatcher().asyncDispatch(()-> {
                         FractionScheduler fractionScheduler = getFractionAbility().getFractionManager().startFractionScheduler();
                         for (CategoyEntity categoyEntity:categoyEntityList){
-                            fractionScheduler.add(ResourceTable.Id_category_list,new CategoryFraction(categoyEntity.getCategory()));
+                            fractionScheduler.add(ResourceTable.Id_category_list,new CategoryFraction(categoyEntity));
                         }
                         fractionScheduler.submit();
                     });

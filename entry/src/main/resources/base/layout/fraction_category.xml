@@ -13,6 +13,7 @@
         ohos:width="match_parent"
         ohos:id="$+id:title_wrapper"
         ohos:alignment="vertical_center"
+        ohos:bottom_margin="$string:container_padding_size"
         ohos:orientation="horizontal">
         <DirectionalLayout
             ohos:background_element="$color:active_color"
@@ -25,4 +26,9 @@
             ohos:height="match_content"
             ohos:width="match_content"/>
     </DirectionalLayout>
+    <ListContainer
+        ohos:id="$+id:list_container"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:orientation="horizontal"/>
 </DirectionalLayout>

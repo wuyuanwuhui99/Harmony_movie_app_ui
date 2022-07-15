@@ -83,6 +83,14 @@
     {
       "name": "small_height",
       "value": "15vp"
+    },
+    {
+      "name": "movie_item_width_size",
+      "value": "100vp"
+    },
+    {
+      "name": "movie_item_height_size",
+      "value": "150vp"
     }
   ]
 }

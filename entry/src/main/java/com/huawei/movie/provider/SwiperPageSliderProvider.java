@@ -30,9 +30,10 @@ public class SwiperPageSliderProvider extends PageSliderProvider {
     public Object createPageInContainer(ComponentContainer componentContainer, int i) {
         LayoutScatter layoutScatter = LayoutScatter.getInstance(context);
         Image image = (Image)layoutScatter.parse(ResourceTable.Layout_banner_item, null, false);
+        image.setCornerRadius(Config.imgRadius);
         componentContainer.addComponent(image);
+//        HttpRequest.setImages(context,image, Api.PROXY + movieEntityList.get(i).getLocalImg());
         return image;
-//        HttpRequest.setImages(context,image,Api.PROXY + movieEntityList.get(i).getLocalImg());
     }
 
     @Override

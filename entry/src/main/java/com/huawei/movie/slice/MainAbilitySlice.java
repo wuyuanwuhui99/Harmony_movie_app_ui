@@ -221,8 +221,8 @@ public class MainAbilitySlice extends AbilitySlice {
             Config.token = resultSet.getString(0);
         };
         // 获取用户信息
-        Call<ResultEntity> userData = RequestUtils.getInstance().getUserData();
-        userData.enqueue(new Callback<ResultEntity>() {
+        Call<ResultEntity> userDataCall = RequestUtils.getInstance().getUserData();
+        userDataCall.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                 Config.userEntity = JSON.parseObject(JSON.toJSONString(response.body().getData()),UserEntity.class);

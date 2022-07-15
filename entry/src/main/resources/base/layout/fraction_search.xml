@@ -10,7 +10,7 @@
     ohos:background_element="$graphic:search_decoration"
     ohos:orientation="vertical">
     <Text
-        ohos:text="搜索"
+        ohos:id="$+id:search_text"
         ohos:text_size="$string:normal_font_size"
         ohos:text_color="$color:disable_color"
         ohos:height="match_parent"
