@@ -8,12 +8,13 @@
     ohos:orientation="vertical">
     <DirectionalLayout
         ohos:background_element="$graphic:box_decoration"
-        ohos:id="$+id:avater_wrapper"
+        ohos:id="$+id:home_avater_wrapper"
         ohos:orientation="horizontal"
         ohos:padding="$string:container_padding_size"
         ohos:height="match_content"
         ohos:width="match_parent"/>
     <ScrollView
+        ohos:id="$+id:home_scroll_view"
         ohos:weight="1"
         ohos:height="0vp"
         ohos:width="match_parent">
@@ -23,7 +24,7 @@
             ohos:orientation="vertical"
         >
             <DirectionalLayout
-                ohos:id="$+id:swriper_wrapper"
+                ohos:id="$+id:home_swriper_wrapper"
                 ohos:top_margin="$string:container_padding_size"
                 ohos:height="match_content"
                 ohos:width="match_parent"/>
@@ -110,7 +111,7 @@
             <DirectionalLayout
                 ohos:height="match_content"
                 ohos:width="match_parent"
-                ohos:id="$+id:category_list"/>
+                ohos:id="$+id:home_category_list"/>
         </DirectionalLayout>
     </ScrollView>
 </DirectionalLayout>

@@ -15,6 +15,7 @@ import ohos.agp.components.Component;
 import ohos.agp.components.ComponentContainer;
 import ohos.agp.components.LayoutScatter;
 import com.huawei.movie.ResourceTable;
+import ohos.agp.components.ScrollView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,12 +39,13 @@ public class HomeFraction extends Fraction {
         getFractionAbility().getUITaskDispatcher().asyncDispatch(()-> {
             getFractionAbility().getFractionManager()
                 .startFractionScheduler()
-                .add(ResourceTable.Id_avater_wrapper, new AvaterFraction())
-                .add(ResourceTable.Id_avater_wrapper,new SearchFraction("电影"))
-                .add(ResourceTable.Id_swriper_wrapper,new SwiperFraction("电影"))
+                .add(ResourceTable.Id_home_avater_wrapper, new AvaterFraction())
+                .add(ResourceTable.Id_home_avater_wrapper,new SearchFraction("电影"))
+                .add(ResourceTable.Id_home_swriper_wrapper,new SwiperFraction("电影"))
                 .submit();
         });
         getAllCategoryListByPageName();
+        setScroll();
     }
 
     /**
@@ -61,7 +63,7 @@ public class HomeFraction extends Fraction {
                     getFractionAbility().getUITaskDispatcher().asyncDispatch(()-> {
                         FractionScheduler fractionScheduler = getFractionAbility().getFractionManager().startFractionScheduler();
                         for (CategoyEntity categoyEntity:categoyEntityList){
-                            fractionScheduler.add(ResourceTable.Id_category_list,new CategoryFraction(categoyEntity));
+                            fractionScheduler.add(ResourceTable.Id_home_category_list,new CategoryFraction(categoyEntity));
                         }
                         fractionScheduler.submit();
                     });
@@ -71,6 +73,20 @@ public class HomeFraction extends Fraction {
             @Override
             public void onFailure(Call<ResultEntity> call, Throwable throwable) {
 
+            }
+        });
+    }
+
+    private void setScroll(){
+        ScrollView scrollView = (ScrollView)rootComponent.findComponentById(ResourceTable.Id_home_scroll_view);
+        scrollView.addScrolledListener(new Component.ScrolledListener() {
+            @Override
+            public void onContentScrolled(Component component, int i, int i1, int i2, int i3) {
+                System.out.println(scrollView.getHeight());
+                System.out.println(i);
+                System.out.println(i1);
+                System.out.println(i2);
+                System.out.println(i3);
             }
         });
     }

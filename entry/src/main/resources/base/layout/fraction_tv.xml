@@ -4,9 +4,32 @@
     ohos:height="match_parent"
     ohos:width="match_parent"
     ohos:orientation="vertical">
-    <Text
-        ohos:text="电视剧"
-        ohos:height="match_parent"
-        ohos:width="match_parent"
-        ohos:text_alignment="center"/>
+    <DirectionalLayout
+        ohos:background_element="$graphic:box_decoration"
+        ohos:id="$+id:tv_avater_wrapper"
+        ohos:orientation="horizontal"
+        ohos:padding="$string:container_padding_size"
+        ohos:height="match_content"
+        ohos:width="match_parent"/>
+    <ScrollView
+        ohos:id="$+id:tv_scroll_view"
+        ohos:weight="1"
+        ohos:height="0vp"
+        ohos:width="match_parent">
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent"
+            ohos:orientation="vertical"
+            >
+            <DirectionalLayout
+                ohos:id="$+id:tv_swriper_wrapper"
+                ohos:top_margin="$string:container_padding_size"
+                ohos:height="match_content"
+                ohos:width="match_parent"/>
+            <DirectionalLayout
+                ohos:height="match_content"
+                ohos:width="match_parent"
+                ohos:id="$+id:tv_category_list"/>
+        </DirectionalLayout>
+    </ScrollView>
 </DirectionalLayout>
