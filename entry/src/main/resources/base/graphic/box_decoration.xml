@@ -2,8 +2,6 @@
 <shape
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:shape="rectangle">
-    <!-- 设置输入框的圆角 -->
     <corners ohos:radius="$string:container_padding_size"/>
-    <!-- 设置输入框的边框颜色 -->
     <solid ohos:color="#FFFFFF"/>
 </shape>

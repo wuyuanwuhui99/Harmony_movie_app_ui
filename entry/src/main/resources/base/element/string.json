@@ -127,6 +127,22 @@
     {
       "name": "my_favorite_text",
       "value": "我的收藏"
+    },
+    {
+      "name": "my_view_text",
+      "value": "我浏览过的电影"
+    },
+    {
+      "name":"movie_moments",
+      "value": "电影圈"
+    },
+    {
+      "name":"my_music",
+      "value": "音乐"
+    },
+    {
+      "name":"my_small_app",
+      "value": "小程序"
     }
   ]
 }
