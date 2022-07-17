@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DirectionalLayout
+<Image
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:scale_mode="zoom_center"
+    ohos:id="$+id:avater"
     ohos:height="$string:middel_avater_size"
-    ohos:width="$string:middel_avater_size"
-    ohos:id="$+id:avater_layout"
-    ohos:orientation="vertical">
-    <Image
-        ohos:scale_mode="zoom_center"
-        ohos:id="$+id:avater"
-        ohos:height="match_parent"
-        ohos:width="match_parent"/>
-</DirectionalLayout>
+    ohos:width="$string:middel_avater_size"/>

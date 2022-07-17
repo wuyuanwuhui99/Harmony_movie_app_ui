@@ -23,6 +23,10 @@
     {
       "name": "active_color",
       "value": "#2196f6"
+    },
+    {
+      "name": "sub_title_color",
+      "value": "#999999"
     }
   ]
 }

@@ -49,8 +49,12 @@
       "value": "分类"
     },
     {
+      "name": "play_record_text",
+      "value": "观看记录"
+    },
+    {
       "name": "normal_font_size",
-      "value": "16vp"
+      "value": "16fp"
     },
     {
       "name": "container_padding_size",
@@ -63,6 +67,10 @@
     {
       "name": "small_margin_size",
       "value": "10vp"
+    },
+    {
+      "name": "middle_icon_size",
+      "value": "20vp"
     },
     {
       "name": "bottomBar_icon_size",
@@ -91,6 +99,34 @@
     {
       "name": "movie_item_height_size",
       "value": "150vp"
+    },
+    {
+      "name": "bia_avater_size",
+      "value": "80vp"
+    },
+    {
+      "name": "font_weight_size",
+      "value": "700"
+    },
+    {
+      "name": "my_age_count",
+      "value": "使用天数"
+    },
+    {
+      "name": "my_favorite_count",
+      "value": "收藏"
+    },
+    {
+      "name": "my_play_count",
+      "value": "观看记录"
+    },
+    {
+      "name": "my_view_count",
+      "value": "浏览记录"
+    },
+    {
+      "name": "my_favorite_text",
+      "value": "我的收藏"
     }
   ]
 }
