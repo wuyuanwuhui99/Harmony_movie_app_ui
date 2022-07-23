@@ -8,6 +8,7 @@
     ohos:right_margin="$string:container_padding_size"
     ohos:orientation="vertical">
     <Image
+        ohos:background_element="$graphic:img_border_radius"
         ohos:scale_mode="stretch"
         ohos:id="$+id:movie_img"
         ohos:height="$string:movie_item_height_size"

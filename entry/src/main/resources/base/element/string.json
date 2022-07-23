@@ -29,7 +29,11 @@
       "value": "我的"
     },
     {
-      "name": "big_radius_size",
+      "name": "middle_border_radius_size",
+      "value": "15vp"
+    },
+    {
+      "name": "big_border_radius_size",
       "value": "30vp"
     },
     {
@@ -73,6 +77,10 @@
       "value": "20vp"
     },
     {
+      "name": "bid_icon_size",
+      "value": "40vp"
+    },
+    {
       "name": "bottomBar_icon_size",
       "value": "30vp"
     },
@@ -94,11 +102,11 @@
     },
     {
       "name": "movie_item_width_size",
-      "value": "100vp"
+      "value": "150vp"
     },
     {
       "name": "movie_item_height_size",
-      "value": "150vp"
+      "value": "200vp"
     },
     {
       "name": "bia_avater_size",
