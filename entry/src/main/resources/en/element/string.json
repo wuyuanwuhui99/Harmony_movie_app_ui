@@ -59,6 +59,18 @@
     {
       "name": "myability_HelloWorld",
       "value": "Hello World"
+    },
+    {
+      "name": "entry_DetailAbility",
+      "value": "entry_DetailAbility"
+    },
+    {
+      "name": "detailability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "detailability_HelloWorld",
+      "value": "Hello World"
     }
   ]
 }

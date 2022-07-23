@@ -2,15 +2,13 @@ package com.huawei.movie.fraction;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.config.Api;
-import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.CategoyEntity;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import com.huawei.movie.provider.MovieItemProvider;
-import com.huawei.movie.utils.HttpRequest;
 import ohos.aafwk.ability.fraction.Fraction;
+import ohos.aafwk.ability.fraction.FractionAbility;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
 import retrofit2.Call;
@@ -52,7 +50,7 @@ public class CategoryFraction extends Fraction {
                 List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieEntity.class);
                 getContext().getUITaskDispatcher().asyncDispatch(()->{
                     ListContainer listContainer = (ListContainer)component.findComponentById(ResourceTable.Id_list_container);
-                    listContainer.setItemProvider(new MovieItemProvider(movieEntityList,getContext()));
+                    listContainer.setItemProvider(new MovieItemProvider(movieEntityList,getContext(),getFractionAbility()));
                 });
             }
 

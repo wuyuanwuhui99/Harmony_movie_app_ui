@@ -10,7 +10,7 @@
   "deviceConfig": {
     "default": {
       "network": {
-        "cleartextTraffic": true,
+        "cleartextTraffic": true
       }
     }
   },
@@ -43,7 +43,6 @@
     },
     "abilities": [
       {
-
         "skills": [
           {
             "entities": [
@@ -71,6 +70,15 @@
         "description": "$string:dataability_description",
         "type": "data",
         "uri": "dataability://com.huawei.movie.ability.DataAbility"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.huawei.movie.ability.DetailAbility",
+        "icon": "$media:icon",
+        "description": "$string:detailability_description",
+        "label": "$string:entry_DetailAbility",
+        "type": "page",
+        "launchType": "standard"
       }
     ],
     "metaData": {

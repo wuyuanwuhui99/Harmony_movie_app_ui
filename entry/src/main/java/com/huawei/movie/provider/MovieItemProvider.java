@@ -1,23 +1,31 @@
 package com.huawei.movie.provider;
 
+import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Api;
 import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
+import com.huawei.movie.slice.DetailAbilitySlice;
 import com.huawei.movie.utils.HttpRequest;
+import ohos.aafwk.ability.fraction.FractionAbility;
+import ohos.aafwk.content.Intent;
+import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
 import ohos.app.Context;
 
 import java.util.List;
+import java.util.Set;
 
 public class MovieItemProvider  extends BaseItemProvider  {
 
     List<MovieEntity>movieEntityList;
     Context context;
+    FractionAbility fractionAbility;
 
-    public MovieItemProvider(List<MovieEntity>movieEntityList, Context context){
+    public MovieItemProvider(List<MovieEntity>movieEntityList, Context context, FractionAbility fractionAbility){
         this.movieEntityList = movieEntityList;
         this.context = context;
+        this.fractionAbility = fractionAbility;
     }
 
     @Override
@@ -52,6 +60,29 @@ public class MovieItemProvider  extends BaseItemProvider  {
         Text text = (Text) cpt.findComponentById(ResourceTable.Id_movie_name);
         text.setText(movieEntityList.get(i).getMovieName());
         HttpRequest.setImages(context,image, Api.PROXY + movieEntityList.get(i).getLocalImg());
+        cpt.setClickedListener(ncomponent->{
+            //跳转到哪个页面中（意图）
+            Intent intent = new Intent();
+            //包含了页面跳转的信息
+            Operation operation = new Intent.OperationBuilder()
+                    //要跳转到哪个设备上，如果传递一个空的内容，表示跳转到本机
+                    .withDeviceId("")
+                    //要跳转到哪个应用上，小括号里面可以写包名
+                    .withBundleName("com.huawei.movie")
+                    //要跳转的页面
+                    .withAbilityName("com.huawei.movie.ability.DetailAbility")
+                    //表示将上面的三个信息进行打包
+                    .build();
+            //把打包之后的operation设置到意图当中
+            intent.setOperation(operation);
+            intent.setParam("movieItem", JSON.toJSONString(movieEntityList.get(i)));
+            //跳转页面
+            fractionAbility.startAbility(intent);
+        });
         return cpt;
+    }
+
+    private void set(){
+
     }
 }

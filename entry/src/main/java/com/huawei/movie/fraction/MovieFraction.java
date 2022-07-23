@@ -48,7 +48,6 @@ public class MovieFraction extends Fraction {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                 List<CategoyEntity> categoyEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), CategoyEntity.class);
-                System.out.println(categoyEntityList);
                 getContext().getUITaskDispatcher().asyncDispatch(()->{
                     getFractionAbility().getUITaskDispatcher().asyncDispatch(()-> {
                         FractionScheduler fractionScheduler = getFractionAbility().getFractionManager().startFractionScheduler();

@@ -88,7 +88,7 @@ public class MyFraction extends Fraction {
                 List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieEntity.class);
                 getContext().getUITaskDispatcher().asyncDispatch(()->{
                     ListContainer listContainer = (ListContainer)component.findComponentById(ResourceTable.Id_play_record_list);
-                    MovieItemProvider provider = new MovieItemProvider(movieEntityList,getContext());
+                    MovieItemProvider provider = new MovieItemProvider(movieEntityList,getContext(),getFractionAbility());
                     listContainer.setItemProvider(provider);
                 });
             }

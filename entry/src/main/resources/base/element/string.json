@@ -133,16 +133,28 @@
       "value": "我浏览过的电影"
     },
     {
-      "name":"movie_moments",
+      "name": "movie_moments",
       "value": "电影圈"
     },
     {
-      "name":"my_music",
+      "name": "my_music",
       "value": "音乐"
     },
     {
-      "name":"my_small_app",
+      "name": "my_small_app",
       "value": "小程序"
+    },
+    {
+      "name": "detailability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "detailability_HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "entry_DetailAbility",
+      "value": "entry_DetailAbility"
     }
   ]
 }

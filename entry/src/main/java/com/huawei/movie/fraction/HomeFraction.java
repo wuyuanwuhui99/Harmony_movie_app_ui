@@ -1,11 +1,7 @@
 package com.huawei.movie.fraction;
 
 import com.alibaba.fastjson.JSON;
-import com.google.gson.Gson;
-import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.CategoyEntity;
-import com.huawei.movie.entity.MovieEntity;
-import com.huawei.movie.entity.UserEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import ohos.aafwk.ability.fraction.Fraction;
