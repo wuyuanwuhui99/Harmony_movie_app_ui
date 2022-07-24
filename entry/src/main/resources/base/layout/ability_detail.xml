@@ -116,9 +116,8 @@
                                 ohos:width="match_content"/>
                         </DirectionalLayout>
                     </DirectionalLayout>
-
-
                 </DirectionalLayout>
+
                 <DirectionalLayout
                     ohos:top_margin="$string:container_padding_size"
                     ohos:background_element="$graphic:box_decoration"
@@ -129,7 +128,39 @@
                     <DirectionalLayout
                         ohos:height="match_content"
                         ohos:width="match_parent"
-                        ohos:id="$+id:title_wrapper"
+                        ohos:alignment="vertical_center"
+                        ohos:orientation="horizontal">
+                        <DirectionalLayout
+                            ohos:background_element="$color:active_color"
+                            ohos:height="$string:small_height"
+                            ohos:width="$string:small_width"/>
+                        <Text
+                            ohos:text="$string:detail_plot"
+                            ohos:text_size="$string:normal_font_size"
+                            ohos:left_margin="$string:small_margin_size"
+                            ohos:height="match_content"
+                            ohos:width="match_content"/>
+                    </DirectionalLayout>
+                    <Text
+                        ohos:id="$+id:detail_plot"
+                        ohos:text_color="$color:sub_title_color"
+                        ohos:text_size="$string:normal_font_size"
+                        ohos:multiple_lines="true"
+                        ohos:height="match_content"
+                        ohos:width="match_parent"/>
+                </DirectionalLayout>
+
+                <DirectionalLayout
+                    ohos:id="$+id:star_layout"
+                    ohos:top_margin="$string:container_padding_size"
+                    ohos:background_element="$graphic:box_decoration"
+                    ohos:orientation="vertical"
+                    ohos:padding="$string:container_padding_size"
+                    ohos:height="match_content"
+                    ohos:width="match_content">
+                    <DirectionalLayout
+                        ohos:height="match_content"
+                        ohos:width="match_parent"
                         ohos:alignment="vertical_center"
                         ohos:orientation="horizontal">
                         <DirectionalLayout
@@ -144,11 +175,9 @@
                             ohos:height="match_content"
                             ohos:width="match_content"/>
                     </DirectionalLayout>
-                    <Text
-                        ohos:id="$+id:detail_plot"
-                        ohos:text_color="$color:sub_title_color"
-                        ohos:text_size="$string:normal_font_size"
-                        ohos:multiple_lines="true"
+                    <ListContainer
+                        ohos:orientation="horizontal"
+                        ohos:id="$+id:detail_star_list"
                         ohos:height="match_content"
                         ohos:width="match_parent"/>
                 </DirectionalLayout>

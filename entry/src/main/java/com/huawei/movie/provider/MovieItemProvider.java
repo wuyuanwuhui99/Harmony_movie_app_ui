@@ -81,8 +81,4 @@ public class MovieItemProvider  extends BaseItemProvider  {
         });
         return cpt;
     }
-
-    private void set(){
-
-    }
 }
