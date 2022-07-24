@@ -24,7 +24,7 @@
             ohos:width="match_content"
             ohos:weight="1">
             <Text
-                ohos:text_weight="700"
+                ohos:text_weight="$string:font_weight_size"
                 ohos:id="$+id:user_name"
                 ohos:text_size="$string:normal_font_size"
                 ohos:height="match_content"

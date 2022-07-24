@@ -8,6 +8,7 @@ import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.utils.HttpRequest;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
+import ohos.agp.components.Component;
 import ohos.agp.components.Image;
 import ohos.agp.components.Text;
 
@@ -24,6 +25,32 @@ public class DetailAbilitySlice extends AbilitySlice {
         initUI();
     }
 
+    /**
+     * @desc 初始化UI
+     * @since 2022-07-23
+     * */
+    private void initUI(){
+        Text movieName = (Text)findComponentById(ResourceTable.Id_detail_movie_name);
+        movieName.setText(movieEntity.getMovieName());
+
+        Text description = (Text)findComponentById(ResourceTable.Id_detail_description);
+        if(movieEntity.getDescription() != null){
+            description.setText(movieEntity.getDescription().trim());
+        }else{
+            description.setVisibility(Component.HIDE);
+        }
+
+        Text star = (Text)findComponentById(ResourceTable.Id_detail_star);
+        star.setText(movieEntity.getStar());
+
+        Image image = (Image)findComponentById(ResourceTable.Id_detail_movie_img);
+        image.setCornerRadius(Config.imgRadius);
+        HttpRequest.setImages(this,image, Api.PROXY + movieEntity.getLocalImg());
+
+        Text plot = (Text)findComponentById(ResourceTable.Id_detail_plot);
+        plot.setText(movieEntity.getPlot().trim());
+    }
+
     @Override
     public void onActive() {
         super.onActive();
@@ -32,23 +59,5 @@ public class DetailAbilitySlice extends AbilitySlice {
     @Override
     public void onForeground(Intent intent) {
         super.onForeground(intent);
-    }
-
-    /**
-     * @desc 初始化UI
-     * @since 2022-07-23
-     * */
-    private void initUI(){
-        Text movieName = (Text)findComponentById(ResourceTable.Id_detail_movie_name);
-        movieName.setText(movieEntity.getMovieName());
-        if(movieEntity.getDescription() != null){
-            Text description = (Text)findComponentById(ResourceTable.Id_detail_description);
-            description.setText(movieEntity.getDescription());
-        }
-        Text star = (Text)findComponentById(ResourceTable.Id_detail_star);
-        star.setText(movieEntity.getStar());
-        Image image = (Image)findComponentById(ResourceTable.Id_detail_movie_img);
-        image.setCornerRadius(Config.imgRadius);
-        HttpRequest.setImages(this,image, Api.PROXY + movieEntity.getLocalImg());
     }
 }

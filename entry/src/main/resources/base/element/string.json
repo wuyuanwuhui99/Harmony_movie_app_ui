@@ -153,6 +153,10 @@
       "value": "小程序"
     },
     {
+      "name": "detail_plot",
+      "value": "剧情"
+    },
+    {
       "name": "detailability_description",
       "value": "Java_Empty Ability"
     },

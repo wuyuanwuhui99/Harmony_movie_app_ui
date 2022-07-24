@@ -27,6 +27,10 @@
     {
       "name": "sub_title_color",
       "value": "#999999"
+    },
+    {
+      "name": "score_color",
+      "value": "#ff0000"
     }
   ]
 }

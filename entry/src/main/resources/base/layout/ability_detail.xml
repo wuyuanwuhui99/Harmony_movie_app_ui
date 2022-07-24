@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<DirectionalLayout
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_content"
     ohos:width="match_parent"
@@ -7,55 +7,151 @@
     ohos:background_element="$color:page_background_color"
     ohos:padding="$string:container_padding_size"
     ohos:orientation="vertical">
-    <DirectionalLayout
-        ohos:height="match_content"
-        ohos:width="match_parent">
-        <DirectionalLayout
-            ohos:background_element="$graphic:box_decoration"
-            ohos:orientation="horizontal"
-            ohos:padding="$string:container_padding_size"
-            ohos:height="match_content"
+        <ScrollView
+            ohos:height="match_parent"
             ohos:width="match_parent">
-            <StackLayout
-                ohos:layout_alignment="center"
-                ohos:height="$string:movie_item_height_size"
-                ohos:width="$string:movie_item_width_size">
-                <Image
-                    ohos:background_element="$graphic:img_border_radius"
-                    ohos:id="$+id:detail_movie_img"
-                    ohos:scale_mode="stretch"
-                    ohos:height="match_parent"
-                    ohos:width="match_parent"/>
-                <Image
-                    ohos:image_src="$media:icon_play"
-                    ohos:id="$+id:detail_icon_play"
-                    ohos:height="$string:bid_icon_size"
-                    ohos:width="$string:bid_icon_size"/>
-            </StackLayout>
             <DirectionalLayout
                 ohos:height="match_content"
-                ohos:width="match_content"
-                ohos:orientation="horizontal"
-                ohos:left_margin="$string:container_padding_size"
-                ohos:weight="1">
-                <Text
-                    ohos:text_size="$string:normal_font_size"
-                    ohos:id="$+id:detail_movie_name"
+                ohos:width="match_parent">
+                <DirectionalLayout
+                    ohos:background_element="$graphic:box_decoration"
+                    ohos:orientation="horizontal"
+                    ohos:padding="$string:container_padding_size"
                     ohos:height="match_content"
-                    ohos:width="match_parent"/>
-                <Text
-                    ohos:text_size="$string:normal_font_size"
-                    ohos:id="$+id:detail_description"
+                    ohos:width="match_parent">
+                    <StackLayout
+                        ohos:height="$string:movie_item_height_size"
+                        ohos:width="$string:movie_item_width_size">
+                        <Image
+                            ohos:background_element="$graphic:img_border_radius"
+                            ohos:id="$+id:detail_movie_img"
+                            ohos:scale_mode="stretch"
+                            ohos:height="match_parent"
+                            ohos:width="match_parent"/>
+                        <DirectionalLayout
+                            ohos:alignment="center"
+                            ohos:height="match_parent"
+                            ohos:width="match_parent">
+                            <Image
+                                ohos:image_src="$media:icon_detail_play"
+                                ohos:id="$+id:detail_icon_play"
+                                ohos:height="$string:bid_icon_size"
+                                ohos:width="$string:bid_icon_size"/>
+                        </DirectionalLayout>
+                    </StackLayout>
+                    <DirectionalLayout
+                        ohos:height="match_content"
+                        ohos:width="0"
+                        ohos:orientation="vertical"
+                        ohos:left_margin="$string:container_padding_size"
+                        ohos:weight="1">
+                        <Text
+                            ohos:text_weight="$string:font_weight_size"
+                            ohos:text_size="$string:normal_font_size"
+                            ohos:id="$+id:detail_movie_name"
+                            ohos:height="match_content"
+                            ohos:width="match_parent"/>
+                        <Text
+                            ohos:text_color="$color:sub_title_color"
+                            ohos:top_margin="$string:small_margin_size"
+                            ohos:text_size="$string:normal_font_size"
+                            ohos:id="$+id:detail_description"
+                            ohos:height="match_content"
+                            ohos:width="match_parent"/>
+                        <Text
+                            ohos:text_color="$color:sub_title_color"
+                            ohos:top_margin="$string:small_margin_size"
+                            ohos:multiple_lines="true"
+                            ohos:text_size="$string:normal_font_size"
+                            ohos:id="$+id:detail_star"
+                            ohos:height="match_content"
+                            ohos:width="match_parent"/>
+                        <DirectionalLayout
+                            ohos:top_margin="$string:small_margin_size"
+                            ohos:id="$+id:detail_star_layout"
+                            ohos:orientation="horizontal"
+                            ohos:height="match_content"
+                            ohos:width="match_parent">
+                            <Image
+                                ohos:id="$+id:detail_start_1"
+                                ohos:scale_mode="stretch"
+                                ohos:height="$string:middle_icon_size"
+                                ohos:width="$string:middle_icon_size"
+                                ohos:image_src="$media:icon_full_star"/>
+                            <Image
+                                ohos:id="$+id:detail_start_2"
+                                ohos:left_margin="$string:small_margin_size"
+                                ohos:scale_mode="stretch"
+                                ohos:height="$string:middle_icon_size"
+                                ohos:width="$string:middle_icon_size"
+                                ohos:image_src="$media:icon_full_star"/>
+                            <Image
+                                ohos:id="$+id:detail_start_3"
+                                ohos:left_margin="$string:small_margin_size"
+                                ohos:scale_mode="stretch"
+                                ohos:height="$string:middle_icon_size"
+                                ohos:width="$string:middle_icon_size"
+                                ohos:image_src="$media:icon_full_star"/>
+                            <Image
+                                ohos:id="$+id:detail_start_4"
+                                ohos:left_margin="$string:small_margin_size"
+                                ohos:scale_mode="stretch"
+                                ohos:height="$string:middle_icon_size"
+                                ohos:width="$string:middle_icon_size"
+                                ohos:image_src="$media:icon_full_star"/>
+                            <Image
+                                ohos:id="$+id:detail_start_5"
+                                ohos:left_margin="$string:small_margin_size"
+                                ohos:scale_mode="stretch"
+                                ohos:height="$string:middle_icon_size"
+                                ohos:width="$string:middle_icon_size"
+                                ohos:image_src="$media:icon_full_star"/>
+                            <Text
+                                ohos:text="7.5"
+                                ohos:id="$+id:detail_score"
+                                ohos:left_margin="$string:small_margin_size"
+                                ohos:text_size="$string:normal_font_size"
+                                ohos:text_color="$color:score_color"
+                                ohos:height="match_content"
+                                ohos:width="match_content"/>
+                        </DirectionalLayout>
+                    </DirectionalLayout>
+
+
+                </DirectionalLayout>
+                <DirectionalLayout
+                    ohos:top_margin="$string:container_padding_size"
+                    ohos:background_element="$graphic:box_decoration"
+                    ohos:orientation="vertical"
+                    ohos:padding="$string:container_padding_size"
                     ohos:height="match_content"
-                    ohos:width="match_parent"/>
-                <Text
-                    ohos:text_size="$string:normal_font_size"
-                    ohos:id="$+id:detail_star"
-                    ohos:height="match_content"
-                    ohos:width="match_parent"/>
+                    ohos:width="match_content">
+                    <DirectionalLayout
+                        ohos:height="match_content"
+                        ohos:width="match_parent"
+                        ohos:id="$+id:title_wrapper"
+                        ohos:alignment="vertical_center"
+                        ohos:orientation="horizontal">
+                        <DirectionalLayout
+                            ohos:background_element="$color:active_color"
+                            ohos:height="$string:small_height"
+                            ohos:width="$string:small_width"/>
+                        <Text
+                            ohos:text="$string:detail_plot"
+                            ohos:text_size="$string:normal_font_size"
+                            ohos:left_margin="$string:small_margin_size"
+                            ohos:id="$+id:category_title"
+                            ohos:height="match_content"
+                            ohos:width="match_content"/>
+                    </DirectionalLayout>
+                    <Text
+                        ohos:id="$+id:detail_plot"
+                        ohos:text_color="$color:sub_title_color"
+                        ohos:text_size="$string:normal_font_size"
+                        ohos:multiple_lines="true"
+                        ohos:height="match_content"
+                        ohos:width="match_parent"/>
+                </DirectionalLayout>
             </DirectionalLayout>
-        </DirectionalLayout>
-    </DirectionalLayout>
-
-
-</ScrollView>
+        </ScrollView>
+</DirectionalLayout>
