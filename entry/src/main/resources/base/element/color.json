@@ -31,6 +31,10 @@
     {
       "name": "score_color",
       "value": "#ff0000"
+    },
+    {
+      "name": "play_webview_color",
+      "value": "#000000"
     }
   ]
 }

@@ -79,6 +79,15 @@
         "label": "$string:entry_DetailAbility",
         "type": "page",
         "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.huawei.movie.ability.PlayAbility",
+        "icon": "$media:icon",
+        "description": "$string:playability_description",
+        "label": "$string:entry_PlayAbility",
+        "type": "page",
+        "launchType": "standard"
       }
     ],
     "metaData": {

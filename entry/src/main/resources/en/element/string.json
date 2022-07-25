@@ -71,6 +71,18 @@
     {
       "name": "detailability_HelloWorld",
       "value": "Hello World"
+    },
+    {
+      "name": "entry_PlayAbility",
+      "value": "entry_PlayAbility"
+    },
+    {
+      "name": "playability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "playability_HelloWorld",
+      "value": "Hello World"
     }
   ]
 }

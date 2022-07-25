@@ -77,6 +77,10 @@
       "value": "20vp"
     },
     {
+      "name": "large_icon_size",
+      "value": "30vp"
+    },
+    {
       "name": "bid_icon_size",
       "value": "40vp"
     },
@@ -115,6 +119,10 @@
     {
       "name": "font_weight_size",
       "value": "700"
+    },
+    {
+      "name": "play_webview_size",
+      "value": "200vp"
     },
     {
       "name": "my_age_count",
@@ -157,8 +165,20 @@
       "value": "剧情"
     },
     {
+      "name": "detail_star",
+      "value": "主演"
+    },
+    {
+      "name": "detail_likes",
+      "value": "猜你喜欢"
+    },
+    {
+      "name": "detail_recommend",
+      "value": "推荐"
+    },
+    {
       "name": "detailability_description",
-      "value": "Java_Empty Ability"
+      "value": "电影详情"
     },
     {
       "name": "detailability_HelloWorld",
@@ -167,6 +187,18 @@
     {
       "name": "entry_DetailAbility",
       "value": "entry_DetailAbility"
+    },
+    {
+      "name": "playability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "playability_HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "entry_PlayAbility",
+      "value": "entry_PlayAbility"
     }
   ]
 }

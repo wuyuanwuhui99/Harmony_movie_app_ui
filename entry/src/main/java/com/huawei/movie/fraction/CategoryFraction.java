@@ -8,7 +8,6 @@ import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import com.huawei.movie.provider.MovieItemProvider;
 import ohos.aafwk.ability.fraction.Fraction;
-import ohos.aafwk.ability.fraction.FractionAbility;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
 import retrofit2.Call;

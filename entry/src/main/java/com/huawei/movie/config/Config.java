@@ -8,6 +8,6 @@ public class Config {
     public static UserEntity userEntity;
     public static final Integer INTERVAL = 3000;// 轮播时长
     public static final String swiperrunner = "SwiperRunner";
-    public static final float imgRadius = 20; // 图片圆角
+    public static final float imgRadius = 40; // 图片圆角
     public static final int bigAvaterSize = 200;// 大头像
 }

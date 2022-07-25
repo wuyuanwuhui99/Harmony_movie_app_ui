@@ -7,6 +7,7 @@ import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.slice.DetailAbilitySlice;
 import com.huawei.movie.utils.HttpRequest;
+import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.fraction.FractionAbility;
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
@@ -21,11 +22,18 @@ public class MovieItemProvider  extends BaseItemProvider  {
     List<MovieEntity>movieEntityList;
     Context context;
     FractionAbility fractionAbility;
+    AbilitySlice abilitySlice;
 
     public MovieItemProvider(List<MovieEntity>movieEntityList, Context context, FractionAbility fractionAbility){
         this.movieEntityList = movieEntityList;
         this.context = context;
         this.fractionAbility = fractionAbility;
+    }
+
+    public MovieItemProvider(List<MovieEntity>movieEntityList, Context context, AbilitySlice abilitySlice){
+        this.movieEntityList = movieEntityList;
+        this.context = context;
+        this.abilitySlice = abilitySlice;
     }
 
     @Override
@@ -77,7 +85,11 @@ public class MovieItemProvider  extends BaseItemProvider  {
             intent.setOperation(operation);
             intent.setParam("movieItem", JSON.toJSONString(movieEntityList.get(i)));
             //跳转页面
-            fractionAbility.startAbility(intent);
+            if(abilitySlice != null){
+                abilitySlice.startAbility(intent);
+            }else{
+                fractionAbility.startAbility(intent);
+            }
         });
         return cpt;
     }
