@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:top_margin="$string:container_padding_size"
+    ohos:background_element="$graphic:box_decoration"
+    ohos:orientation="vertical"
+    ohos:padding="$string:container_padding_size"
+    ohos:height="match_content"
+    ohos:width="match_parent">
+</DirectionalLayout>

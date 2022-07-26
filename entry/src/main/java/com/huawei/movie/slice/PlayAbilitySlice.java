@@ -8,11 +8,12 @@ import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
-import ohos.agp.components.Text;
+import ohos.agp.components.*;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayAbilitySlice extends AbilitySlice {
@@ -34,11 +35,47 @@ public class PlayAbilitySlice extends AbilitySlice {
      * @since 2022-07-25
      */
     private void getMovieUrl(){
-        Call<ResultEntity> getMovieUrlCall = RequestUtils.getInstance().getMovieUrl(movieEntity.getMovieId());
+//        Call<ResultEntity> getMovieUrlCall = RequestUtils.getInstance().getMovieUrl(movieEntity.getMovieId());
+        Call<ResultEntity> getMovieUrlCall = RequestUtils.getInstance().getMovieUrl(20144L);
         getMovieUrlCall.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                 List<MovieUrlEntity> movieUrlEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()),MovieUrlEntity.class);
+                getContext().getUITaskDispatcher().asyncDispatch(()->{
+                    List<List<MovieUrlEntity>> movieUrlGroup = new ArrayList<>();
+                    movieUrlEntityList.forEach(movieUrlEntity -> {
+                        int group = movieUrlEntity.getPlayGroup()-1;
+                        List<MovieUrlEntity> movieUrlEntities;
+                        if(movieUrlGroup.size()<=group){
+                            movieUrlEntities = new ArrayList<>();
+                            movieUrlGroup.add(movieUrlEntities);
+                        }else{
+                            movieUrlEntities = movieUrlGroup.get(group);
+                        }
+                        movieUrlEntities.add(movieUrlEntity);
+                    });
+                    DirectionalLayout urlGroupLayout = (DirectionalLayout) findComponentById(ResourceTable.Id_play_url_group_layout);
+                    LayoutScatter layoutScatter = LayoutScatter.getInstance(PlayAbilitySlice.this);
+                    for (int i = 0; i < movieUrlGroup.size(); i++){
+                        DirectionalLayout directionalLayout = (DirectionalLayout) layoutScatter.parse(ResourceTable.Layout_url_group, null, false);
+                        int rowNum = (int) Math.ceil(movieUrlGroup.get(i).size()/5.0); // 行数
+                        for(int j = 0; j < rowNum; j++){
+                            DirectionalLayout row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_row_url, null, false);
+                            if(j == 0)row.setMarginTop(0);
+                            for(int k = 0; k < 5; k++){
+                                Button button  = (Button) row.getComponentAt(k);
+                                if(j*5 + k < movieUrlGroup.get(i).size()){
+                                    if(k == 0)button.setMarginLeft(0);
+                                    button.setText(movieUrlGroup.get(i).get(j*5 + k).getLabel());
+                                }else{
+                                    button.setVisibility(Component.INVISIBLE);
+                                }
+                            }
+                            directionalLayout.addComponent(row);
+                        }
+                        urlGroupLayout.addComponent(directionalLayout);
+                    }
+                });
             }
 
             @Override

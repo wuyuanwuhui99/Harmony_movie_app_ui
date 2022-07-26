@@ -29,6 +29,10 @@
       "value": "#999999"
     },
     {
+      "name": "button_border_color",
+      "value": "#dddddd"
+    },
+    {
       "name": "score_color",
       "value": "#ff0000"
     },

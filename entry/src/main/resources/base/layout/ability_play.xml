@@ -55,6 +55,7 @@
                         ohos:height="$string:large_icon_size"
                         ohos:width="$string:large_icon_size"/>
                 </DirectionalLayout>
+
                 <DirectionalLayout
                     ohos:top_margin="$string:container_padding_size"
                     ohos:background_element="$graphic:box_decoration"
@@ -76,6 +77,12 @@
                         ohos:height="match_content"
                         ohos:width="match_content"/>
                 </DirectionalLayout>
+
+                <DirectionalLayout
+                    ohos:id="$+id:play_url_group_layout"
+                    ohos:orientation="vertical"
+                    ohos:height="match_content"
+                    ohos:width="match_parent"/>
             </DirectionalLayout>
         </DirectionalLayout>
     </ScrollView>

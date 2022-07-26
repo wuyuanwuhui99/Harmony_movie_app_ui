@@ -29,6 +29,10 @@
       "value": "我的"
     },
     {
+      "name": "small_border_radius_size",
+      "value": "10vp"
+    },
+    {
       "name": "middle_border_radius_size",
       "value": "15vp"
     },
@@ -123,6 +127,10 @@
     {
       "name": "play_webview_size",
       "value": "200vp"
+    },
+    {
+      "name": "button_border_size",
+      "value": "1vp"
     },
     {
       "name": "my_age_count",
