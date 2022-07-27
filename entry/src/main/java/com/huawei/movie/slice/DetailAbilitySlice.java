@@ -2,13 +2,14 @@ package com.huawei.movie.slice;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
+import com.huawei.movie.ability.DetailAbility;
 import com.huawei.movie.config.Api;
 import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.entity.MovieStarEntity;
+import com.huawei.movie.fraction.*;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
-import com.huawei.movie.provider.MovieItemProvider;
 import com.huawei.movie.provider.MovieStarItemProvider;
 import com.huawei.movie.utils.HttpRequest;
 import ohos.aafwk.ability.AbilitySlice;
@@ -32,10 +33,9 @@ public class DetailAbilitySlice extends AbilitySlice {
         initUI();
         setScore();
         getStarList();
-        getYourLikes();
-        getRecommend();
         saveViewRecord();
         setClickedListener();
+        initFraction();
     }
 
     /**
@@ -62,6 +62,19 @@ public class DetailAbilitySlice extends AbilitySlice {
 
         Text plot = (Text)findComponentById(ResourceTable.Id_detail_plot);
         plot.setText(movieEntity.getPlot().trim());
+    }
+
+    /**
+     * @desc 添加猜你喜欢和推荐模块
+     * @since 2022-07-27
+     */
+    private void initFraction(){
+        DetailAbility detailAbility = (DetailAbility) getAbility();
+        detailAbility.getFractionManager()
+                .startFractionScheduler()
+                .replace(ResourceTable.Id_detail_likes_layout,new LikesFraction(movieEntity))
+                .replace(ResourceTable.Id_detail_recommend_layout,new RecommenedFraction(movieEntity))
+                .submit();
     }
 
     /**
@@ -114,60 +127,6 @@ public class DetailAbilitySlice extends AbilitySlice {
                    }else{
                        findComponentById(ResourceTable.Id_star_layout).setVisibility(Component.HIDE);
                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Call<ResultEntity> call, Throwable throwable) {
-
-            }
-        });
-    }
-
-    /**
-     * @desc 猜你喜欢
-     * @since 2022-07-25
-     */
-    private void getYourLikes(){
-        Call<ResultEntity> yourLikesCall = RequestUtils.getInstance().getYourLikes(movieEntity.getLabel() != null ? movieEntity.getLabel() : movieEntity.getCategory(),movieEntity.getClassify());
-        yourLikesCall.enqueue(new Callback<ResultEntity>() {
-            @Override
-            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieEntity.class);
-                getContext().getUITaskDispatcher().asyncDispatch(()->{
-                    ListContainer listContainer = (ListContainer) findComponentById(ResourceTable.Id_detail_likes_list);
-                    if(movieEntityList.size()!=0){
-                        listContainer.setItemProvider(new MovieItemProvider(movieEntityList,getContext(),DetailAbilitySlice.this));
-                    }else{
-                        findComponentById(ResourceTable.Id_likes_layout).setVisibility(Component.HIDE);
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Call<ResultEntity> call, Throwable throwable) {
-
-            }
-        });
-    }
-
-    /**
-     * @desc 获取推荐影片
-     * @since 2022-07-25
-     */
-    private void getRecommend(){
-        Call<ResultEntity> yourLikesCall = RequestUtils.getInstance().getRecommend(movieEntity.getClassify());
-        yourLikesCall.enqueue(new Callback<ResultEntity>() {
-            @Override
-            public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieEntity.class);
-                getContext().getUITaskDispatcher().asyncDispatch(()->{
-                    ListContainer listContainer = (ListContainer) findComponentById(ResourceTable.Id_detail_recommend_list);
-                    if(movieEntityList.size()!=0){
-                        listContainer.setItemProvider(new MovieItemProvider(movieEntityList,getContext(),DetailAbilitySlice.this));
-                    }else{
-                        findComponentById(ResourceTable.Id_recommend_layout).setVisibility(Component.HIDE);
-                    }
                 });
             }
 

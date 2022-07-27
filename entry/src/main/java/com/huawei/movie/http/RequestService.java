@@ -58,4 +58,21 @@ public interface RequestService {
     // 保存浏览记录
     @POST(Api.SAVEPLAYRECORD)
     Call<ResultEntity> savePlayRecord(@Body MovieEntity movieEntity);
+
+    // 查询评论数量
+    @GET(Api.GETCOMMENTCOUNT)
+    Call<ResultEntity> getCommentCount(@Query("movieId") long movieId);
+
+    // 查询是否收藏
+    @GET(Api.ISFAVORITE)
+    Call<ResultEntity> isFavorite(@Query("movieId") long movieId);
+
+    // 添加收藏
+    @POST(Api.SAVEFAVORITE)
+    Call<ResultEntity> saveFavorite(@Body MovieEntity movieEntity);
+
+    // 添加收藏
+    @DELETE(Api.DELETEFAVORITE)
+    Call<ResultEntity> deleteFavorite(@Query("movieId") long movieId);
+
 }

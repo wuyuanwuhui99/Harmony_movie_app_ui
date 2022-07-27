@@ -36,7 +36,6 @@
                     <Text
                         ohos:left_margin="$string:container_padding_size"
                         ohos:text_size="$string:normal_font_size"
-                        ohos:text="0"
                         ohos:id="$+id:play_comment_count"
                         ohos:weight="1"
                         ohos:height="match_content"
@@ -44,7 +43,7 @@
                     <Image
                         ohos:scale_mode="stretch"
                         ohos:image_src="$media:icon_collection"
-                        ohos:id="$+id:play_icon_like"
+                        ohos:id="$+id:play_icon_favorite"
                         ohos:height="$string:large_icon_size"
                         ohos:width="$string:large_icon_size"/>
                     <Image
@@ -81,6 +80,16 @@
                 <DirectionalLayout
                     ohos:id="$+id:play_url_group_layout"
                     ohos:orientation="vertical"
+                    ohos:height="match_content"
+                    ohos:width="match_parent"/>
+
+                <DirectionalLayout
+                    ohos:id="$+id:play_likes_layout"
+                    ohos:height="match_content"
+                    ohos:width="match_parent"/>
+
+                <DirectionalLayout
+                    ohos:id="$+id:play_recommend_layout"
                     ohos:height="match_content"
                     ohos:width="match_parent"/>
             </DirectionalLayout>

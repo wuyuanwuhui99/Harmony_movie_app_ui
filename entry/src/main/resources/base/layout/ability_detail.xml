@@ -184,68 +184,14 @@
                 </DirectionalLayout>
 
                 <DirectionalLayout
-                    ohos:id="$+id:likes_layout"
-                    ohos:top_margin="$string:container_padding_size"
-                    ohos:background_element="$graphic:box_decoration"
-                    ohos:orientation="vertical"
-                    ohos:padding="$string:container_padding_size"
+                    ohos:id="$+id:detail_likes_layout"
                     ohos:height="match_content"
-                    ohos:width="match_parent">
-                    <DirectionalLayout
-                        ohos:height="match_content"
-                        ohos:width="match_parent"
-                        ohos:bottom_margin="$string:container_padding_size"
-                        ohos:alignment="vertical_center"
-                        ohos:orientation="horizontal">
-                        <DirectionalLayout
-                            ohos:background_element="$color:active_color"
-                            ohos:height="$string:small_height"
-                            ohos:width="$string:small_width"/>
-                        <Text
-                            ohos:text="$string:detail_likes"
-                            ohos:text_size="$string:normal_font_size"
-                            ohos:left_margin="$string:small_margin_size"
-                            ohos:height="match_content"
-                            ohos:width="match_content"/>
-                    </DirectionalLayout>
-                    <ListContainer
-                        ohos:orientation="horizontal"
-                        ohos:height="match_content"
-                        ohos:id="$+id:detail_likes_list"
-                        ohos:width="match_parent"/>
-                </DirectionalLayout>
+                    ohos:width="match_parent"/>
 
                 <DirectionalLayout
-                    ohos:id="$+id:recommend_layout"
-                    ohos:top_margin="$string:container_padding_size"
-                    ohos:background_element="$graphic:box_decoration"
-                    ohos:orientation="vertical"
-                    ohos:padding="$string:container_padding_size"
+                    ohos:id="$+id:detail_recommend_layout"
                     ohos:height="match_content"
-                    ohos:width="match_parent">
-                    <DirectionalLayout
-                        ohos:height="match_content"
-                        ohos:width="match_parent"
-                        ohos:bottom_margin="$string:container_padding_size"
-                        ohos:alignment="vertical_center"
-                        ohos:orientation="horizontal">
-                        <DirectionalLayout
-                            ohos:background_element="$color:active_color"
-                            ohos:height="$string:small_height"
-                            ohos:width="$string:small_width"/>
-                        <Text
-                            ohos:text="$string:detail_recommend"
-                            ohos:text_size="$string:normal_font_size"
-                            ohos:left_margin="$string:small_margin_size"
-                            ohos:height="match_content"
-                            ohos:width="match_content"/>
-                    </DirectionalLayout>
-                    <ListContainer
-                        ohos:orientation="horizontal"
-                        ohos:height="match_content"
-                        ohos:id="$+id:detail_recommend_list"
-                        ohos:width="match_parent"/>
-                </DirectionalLayout>
+                    ohos:width="match_parent"/>
             </DirectionalLayout>
         </ScrollView>
 </DirectionalLayout>

@@ -73,6 +73,10 @@
       "value": "50vp"
     },
     {
+      "name": "min_margin_size",
+      "value": "5vp"
+    },
+    {
       "name": "small_margin_size",
       "value": "10vp"
     },
@@ -177,16 +181,24 @@
       "value": "主演"
     },
     {
-      "name": "detail_likes",
+      "name": "likes_text",
       "value": "猜你喜欢"
     },
     {
-      "name": "detail_recommend",
+      "name": "recommend_text",
       "value": "推荐"
     },
     {
       "name": "detailability_description",
       "value": "电影详情"
+    },
+    {
+      "name": "toast_add_favorite_text",
+      "value": "添加收藏成功"
+    },
+    {
+      "name": "toast_delete_favorite_text",
+      "value": "取消收藏成功"
     },
     {
       "name": "detailability_HelloWorld",

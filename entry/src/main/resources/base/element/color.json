@@ -29,6 +29,14 @@
       "value": "#999999"
     },
     {
+      "name": "toast_bg_color",
+      "value": "#999999"
+    },
+    {
+      "name": "toast_text_color",
+      "value": "#ffffff"
+    },
+    {
       "name": "button_border_color",
       "value": "#dddddd"
     },
