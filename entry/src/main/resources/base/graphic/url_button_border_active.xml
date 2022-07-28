@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:shape="rectangle">
+    <!-- 设置输入框的圆角 -->
+    <corners ohos:radius="$string:small_border_radius_size"/>
+    <!-- 设置输入框的边框颜色 -->
+    <stroke ohos:color="$color:buttom_nav_active_color" ohos:width="$string:button_border_size"/>
+</shape>

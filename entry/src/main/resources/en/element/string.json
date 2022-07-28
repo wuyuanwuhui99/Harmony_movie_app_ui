@@ -83,6 +83,18 @@
     {
       "name": "playability_HelloWorld",
       "value": "Hello World"
+    },
+    {
+      "name": "entry_SearchAbility",
+      "value": "entry_SearchAbility"
+    },
+    {
+      "name": "searchability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "searchability_HelloWorld",
+      "value": "Hello World"
     }
   ]
 }

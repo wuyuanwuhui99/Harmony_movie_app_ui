@@ -13,14 +13,14 @@ import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
-import ohos.agp.utils.LayoutAlignment;
-import ohos.agp.window.dialog.ToastDialog;
+import ohos.agp.components.element.Element;
+import ohos.agp.components.element.ShapeElement;
+import ohos.agp.utils.Color;
 import ohos.global.resource.NotExistException;
 import ohos.global.resource.WrongTypeException;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,7 @@ public class PlayAbilitySlice extends AbilitySlice {
     MovieEntity movieEntity;
     Boolean isFavorite = false;
     Image favoriteIcon;
+    Button activeButton;// 当前播放的剧集
 
     @Override
     public void onStart(Intent intent) {
@@ -64,7 +65,7 @@ public class PlayAbilitySlice extends AbilitySlice {
      * @since 2022-07-25
      */
     private void getMovieUrl(){
-        Call<ResultEntity> getMovieUrlCall = RequestUtils.getInstance().getMovieUrl(movieEntity.getMovieId());
+        Call<ResultEntity> getMovieUrlCall = RequestUtils.getInstance().getMovieUrl(20144L/*movieEntity.getMovieId()*/);
         getMovieUrlCall.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
@@ -95,6 +96,7 @@ public class PlayAbilitySlice extends AbilitySlice {
                                 if(j*5 + k < movieUrlGroup.get(i).size()){
                                     if(k == 0)button.setMarginLeft(0);
                                     button.setText(movieUrlGroup.get(i).get(j*5 + k).getLabel());
+                                    setButtonClickListener(button);
                                 }else{
                                     button.setVisibility(Component.INVISIBLE);
                                 }
@@ -111,6 +113,28 @@ public class PlayAbilitySlice extends AbilitySlice {
 
             }
         });
+    }
+
+    private void setButtonClickListener(Button button){
+        button.setClickedListener((clickListener)->{
+            if(activeButton != button){
+                ShapeElement activeElement = new ShapeElement(PlayAbilitySlice.this, ResourceTable.Graphic_url_button_border_active);
+                ShapeElement normalElement = new ShapeElement(PlayAbilitySlice.this, ResourceTable.Graphic_url_button_border);
+                button.setBackground(activeElement);
+                button.setTextColor(new Color(getColor(ResourceTable.Color_buttom_nav_active_color)));
+                if(activeButton != null){
+                    activeButton.setBackground(normalElement);
+                    activeButton.setTextColor(Color.BLACK);
+                }
+                activeButton = button;
+            }
+        });
+        if(activeButton == null){
+            ShapeElement activeElement = new ShapeElement(PlayAbilitySlice.this, ResourceTable.Graphic_url_button_border_active);
+            button.setBackground(activeElement);
+            button.setTextColor(new Color(getColor(ResourceTable.Color_buttom_nav_active_color)));
+            activeButton = button;
+        }
     }
 
     /**
