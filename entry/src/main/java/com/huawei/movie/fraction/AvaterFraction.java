@@ -4,8 +4,6 @@ import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Api;
 import com.huawei.movie.config.Config;
 import com.huawei.movie.utils.Common;
-import com.huawei.movie.utils.HttpRequest;
-import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
@@ -32,7 +30,7 @@ public class AvaterFraction extends Fraction implements Component.ClickedListene
     protected void onStart(Intent intent) {
         super.onStart(intent);
         Image avaterImg = (Image) component.findComponentById(ResourceTable.Id_avater);
-        HttpRequest.setImages( getContext(),avaterImg,Api.PROXY + Config.userEntity.getAvater(),ResourceTable.String_middel_avater_size);
+        Common.setImages( getContext(),avaterImg,Api.PROXY + Config.userEntity.getAvater(),ResourceTable.String_middel_avater_size);
         if("big".equals(size)){
             int resIds[] = new int[]{ResourceTable.String_middel_avater_size,ResourceTable.String_big_avater_size};
             int size[] = Common.vp2px(getContext(),resIds);

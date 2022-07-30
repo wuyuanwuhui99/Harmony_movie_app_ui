@@ -3,10 +3,8 @@ package com.huawei.movie.provider;
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Api;
-import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
-import com.huawei.movie.slice.DetailAbilitySlice;
-import com.huawei.movie.utils.HttpRequest;
+import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.fraction.FractionAbility;
 import ohos.aafwk.content.Intent;
@@ -66,7 +64,7 @@ public class MovieItemProvider  extends BaseItemProvider  {
         Image image = (Image)cpt.findComponentById(ResourceTable.Id_movie_img);
         Text text = (Text) cpt.findComponentById(ResourceTable.Id_movie_name);
         text.setText(movieEntityList.get(i).getMovieName());
-        HttpRequest.setImages(context,image, Api.PROXY + movieEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
+        Common.setImages(context,image, Api.PROXY + movieEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
         cpt.setClickedListener(ncomponent->{
             //跳转到哪个页面中（意图）
             Intent intent = new Intent();

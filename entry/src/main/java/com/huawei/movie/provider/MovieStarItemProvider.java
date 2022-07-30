@@ -2,10 +2,8 @@ package com.huawei.movie.provider;
 
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Api;
-import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieStarEntity;
-import com.huawei.movie.utils.HttpRequest;
-import ohos.aafwk.ability.fraction.FractionAbility;
+import com.huawei.movie.utils.Common;
 import ohos.agp.components.*;
 import ohos.app.Context;
 
@@ -51,7 +49,7 @@ public class MovieStarItemProvider extends BaseItemProvider  {
         Image image = (Image)cpt.findComponentById(ResourceTable.Id_movie_img);
         Text text = (Text) cpt.findComponentById(ResourceTable.Id_movie_name);
         text.setText(movieStarEntityList.get(i).getStarName());
-        HttpRequest.setImages(context,image, Api.PROXY + movieStarEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
+        Common.setImages(context,image, Api.PROXY + movieStarEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
         return cpt;
     }
 }

@@ -3,20 +3,14 @@ package com.huawei.movie.provider;
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Api;
-import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.utils.Common;
-import com.huawei.movie.utils.HttpRequest;
 import ohos.aafwk.ability.AbilitySlice;
-import ohos.aafwk.ability.fraction.FractionAbility;
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
 import ohos.app.Context;
-import ohos.global.resource.NotExistException;
-import ohos.global.resource.WrongTypeException;
 
-import java.io.IOException;
 import java.util.List;
 
 public class SearchMovieRowProvider extends BaseItemProvider  {
@@ -74,7 +68,7 @@ public class SearchMovieRowProvider extends BaseItemProvider  {
                 Image image = (Image)itemLayout.getComponentAt(0);
                 image.setHeight(height);
                 image.setWidth(width);
-                HttpRequest.setImages(context,image,Api.PROXY + movieEntity.getLocalImg(),ResourceTable.String_middle_border_radius_size);
+                Common.setImages(context,image,Api.PROXY + movieEntity.getLocalImg(),ResourceTable.String_middle_border_radius_size);
                 Text text = (Text)itemLayout.getComponentAt(1);
                 text.setText(movieEntity.getMovieName());
                 itemLayout.setClickedListener(listener->{

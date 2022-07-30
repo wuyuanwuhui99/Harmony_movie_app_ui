@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="$string:movie_item_height_size"
+    ohos:width="match_parent"
+    ohos:orientation="vertical"
+    ohos:alignment="center"
+    ohos:background_element="$graphic:box_decoration">
+    <Text
+        ohos:text="$string:search_no_data_text"
+        ohos:text_color="$color:disable_color"
+        ohos:text_size="$string:normal_font_size"
+        ohos:bottom_margin="$string:small_margin_size"
+        ohos:height="match_content"
+        ohos:width="match_content"/>
+</DirectionalLayout>

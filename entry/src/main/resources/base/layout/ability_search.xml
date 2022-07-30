@@ -18,10 +18,27 @@
         <DirectionalLayout
             ohos:background_element="$graphic:search_decoration"
             ohos:height="$string:middel_avater_size"
+            ohos:orientation="horizontal"
+            ohos:alignment="vertical_center"
+            ohos:left_padding="$string:container_padding_size"
+            ohos:right_padding="$string:container_padding_size"
             ohos:width="0"
             ohos:weight="1">
+            <TextField
+                ohos:text_size="$string:normal_font_size"
+                ohos:id="$+id:search_input"
+                ohos:weight="1"
+                ohos:height="match_parent"
+                ohos:width="0"/>
+            <Image
+                ohos:image_src="$media:search_icon_clear"
+                ohos:scale_mode="stretch"
+                ohos:id="$+id:search_icon_clear"
+                ohos:height="$string:middle_icon_size"
+                ohos:width="$string:middle_icon_size"/>
         </DirectionalLayout>
         <Button
+            ohos:id="$+id:search_btn"
             ohos:text_color="$color:search_text_color"
             ohos:text_size="$string:normal_font_size"
             ohos:left_margin="$string:container_padding_size"
@@ -38,6 +55,12 @@
         <DirectionalLayout
             ohos:height="match_content"
             ohos:width="match_parent">
+            <ListContainer
+                ohos:id="$+id:search_result_list"
+                ohos:visibility="hide"
+                ohos:height="match_content"
+                ohos:bottom_margin="$string:container_padding_size"
+                ohos:width="match_parent"/>
             <ListContainer
                 ohos:bottom_margin="$string:container_padding_size"
                 ohos:padding="$string:container_padding_size"

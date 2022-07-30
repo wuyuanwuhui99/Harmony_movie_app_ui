@@ -1,17 +1,21 @@
 package com.huawei.movie.utils;
 
 import com.huawei.movie.ResourceTable;
-import ohos.agp.components.AttrHelper;
-import ohos.agp.components.DirectionalLayout;
-import ohos.agp.components.LayoutScatter;
-import ohos.agp.components.Text;
+import ohos.agp.components.*;
 import ohos.agp.utils.LayoutAlignment;
 import ohos.agp.window.dialog.ToastDialog;
 import ohos.app.Context;
 import ohos.global.resource.NotExistException;
 import ohos.global.resource.WrongTypeException;
+import ohos.media.image.ImageSource;
+import ohos.media.image.PixelMap;
+import ohos.media.image.common.PixelFormat;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.regex.Pattern;
 
 public class Common {
@@ -73,5 +77,38 @@ public class Common {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public final static void setImages(Context context, Image imageView, String url, int resId) {
+        System.out.println(url);
+        Request request =new Request.Builder().url(url).get().build();
+        new Thread(() -> {
+            OkHttpClient okHttpClient =new OkHttpClient();
+            try {
+                //异步网络请求
+                Response execute = okHttpClient.newCall(request).execute();
+                //获取流
+                InputStream inputStream = execute.body().byteStream();
+                //利用鸿蒙api将流解码为图片源
+                ImageSource imageSource = ImageSource.create(inputStream, new ImageSource.SourceOptions());
+                ImageSource.DecodingOptions decodingOptions =new ImageSource.DecodingOptions();
+                decodingOptions.desiredPixelFormat = PixelFormat.ARGB_8888;
+                //根据图片源创建位图
+                PixelMap pixelMap = imageSource.createPixelmap(decodingOptions);
+                //展示到组件上
+                context.getUITaskDispatcher().delayDispatch(()->{
+                    imageView.setPixelMap(pixelMap);
+                    if(resId != 0){
+                        float size = Common.vp2px(context,resId);
+                        imageView.setCornerRadius(size);
+                    }
+                    //释放位图
+                    pixelMap.release();
+                }, 0);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }).start();
     }
 }

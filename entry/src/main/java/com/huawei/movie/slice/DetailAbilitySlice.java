@@ -11,7 +11,7 @@ import com.huawei.movie.fraction.*;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import com.huawei.movie.provider.MovieStarItemProvider;
-import com.huawei.movie.utils.HttpRequest;
+import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
@@ -57,7 +57,7 @@ public class DetailAbilitySlice extends AbilitySlice {
         star.setText(movieEntity.getStar());
 
         Image image = (Image)findComponentById(ResourceTable.Id_detail_movie_img);
-        HttpRequest.setImages(this,image, Api.PROXY + movieEntity.getLocalImg(),ResourceTable.String_middle_border_radius_size);
+        Common.setImages(this,image, Api.PROXY + movieEntity.getLocalImg(),ResourceTable.String_middle_border_radius_size);
 
         Text plot = (Text)findComponentById(ResourceTable.Id_detail_plot);
         plot.setText(movieEntity.getPlot().trim());

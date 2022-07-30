@@ -217,6 +217,10 @@
       "value": "搜索"
     },
     {
+      "name": "search_no_data_text",
+      "value": "没有找到你想要的影片"
+    },
+    {
       "name": "detailability_HelloWorld",
       "value": "Hello World"
     },

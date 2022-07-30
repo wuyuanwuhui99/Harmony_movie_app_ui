@@ -4,8 +4,7 @@
     ohos:height="match_content"
     ohos:width="match_parent"
     ohos:orientation="horizontal"
-    ohos:top_margin="$string:small_margin_size"
-    ohos:id="$+id:row_url_layout">
+    ohos:top_margin="$string:small_margin_size">
     <DirectionalLayout
         ohos:id="$+id:search_movie_layout_1"
         ohos:height="match_content"
