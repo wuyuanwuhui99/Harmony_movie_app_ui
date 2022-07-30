@@ -13,15 +13,11 @@ import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
-import ohos.agp.components.element.Element;
 import ohos.agp.components.element.ShapeElement;
 import ohos.agp.utils.Color;
-import ohos.global.resource.NotExistException;
-import ohos.global.resource.WrongTypeException;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

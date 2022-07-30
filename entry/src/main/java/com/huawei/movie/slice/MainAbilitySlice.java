@@ -145,7 +145,7 @@ public class MainAbilitySlice extends AbilitySlice {
                 Image currentImage =  (Image)navComponents.get(finalI).get(0);
                 Text currentText = (Text) navComponents.get(finalI).get(1);
                 currentImage.setImageAndDecodeBounds(navResourceTables.get(finalI).get(1));
-                currentText.setTextColor(new Color(getColor(ResourceTable.Color_buttom_nav_active_color)));
+                    currentText.setTextColor(new Color(getColor(ResourceTable.Color_buttom_nav_active_color)));
 
                 currentTabIndex = finalI;
 

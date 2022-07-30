@@ -70,7 +70,11 @@
     },
     {
       "name": "middel_avater_size",
-      "value": "50vp"
+      "value": "40vp"
+    },
+    {
+      "name": "big_avater_size",
+      "value": "60vp"
     },
     {
       "name": "min_margin_size",
@@ -105,6 +109,10 @@
       "value": "40vp"
     },
     {
+      "name": "search_btn_width",
+      "value": "80vp"
+    },
+    {
       "name": "small_width",
       "value": "3vp"
     },
@@ -118,7 +126,7 @@
     },
     {
       "name": "movie_item_height_size",
-      "value": "200vp"
+      "value": "207vp"
     },
     {
       "name": "bia_avater_size",
@@ -135,6 +143,10 @@
     {
       "name": "button_border_size",
       "value": "1vp"
+    },
+    {
+      "name": "button_height_size",
+      "value": "40vp"
     },
     {
       "name": "my_age_count",
@@ -199,6 +211,10 @@
     {
       "name": "toast_delete_favorite_text",
       "value": "取消收藏成功"
+    },
+    {
+      "name": "search_btn_text",
+      "value": "搜索"
     },
     {
       "name": "detailability_HelloWorld",

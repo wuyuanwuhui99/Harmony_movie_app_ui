@@ -5,14 +5,15 @@
     ohos:width="0"
     ohos:weight="1"
     ohos:id="$+id:search_layout"
-    ohos:padding="$string:container_padding_size"
+    ohos:left_padding="$string:container_padding_size"
     ohos:left_margin="$string:container_padding_size"
     ohos:background_element="$graphic:search_decoration"
+    ohos:alignment="vertical_center"
     ohos:orientation="vertical">
     <Text
         ohos:id="$+id:search_text"
         ohos:text_size="$string:normal_font_size"
         ohos:text_color="$color:disable_color"
-        ohos:height="match_parent"
+        ohos:height="match_content"
         ohos:width="match_content"/>
 </DirectionalLayout>

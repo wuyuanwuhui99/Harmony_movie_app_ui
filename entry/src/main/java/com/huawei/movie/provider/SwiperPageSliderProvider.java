@@ -4,6 +4,7 @@ import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Api;
 import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
+import com.huawei.movie.utils.Common;
 import com.huawei.movie.utils.HttpRequest;
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.agp.components.*;
@@ -30,9 +31,9 @@ public class SwiperPageSliderProvider extends PageSliderProvider {
     public Object createPageInContainer(ComponentContainer componentContainer, int i) {
         LayoutScatter layoutScatter = LayoutScatter.getInstance(context);
         Image image = (Image)layoutScatter.parse(ResourceTable.Layout_banner_item, null, false);
-        image.setCornerRadius(Config.imgRadius);
         componentContainer.addComponent(image);
-//        HttpRequest.setImages(context,image, Api.PROXY + movieEntityList.get(i).getLocalImg());
+        image.setCornerRadius(Common.vp2px(context,ResourceTable.String_middle_border_radius_size));
+//        HttpRequest.setImages(context,image, Api.PROXY + movieEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
         return image;
     }
 

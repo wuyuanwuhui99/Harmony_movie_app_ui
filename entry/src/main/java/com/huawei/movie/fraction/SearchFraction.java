@@ -2,7 +2,7 @@ package com.huawei.movie.fraction;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.entity.KeyWordEntity;
+import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import ohos.aafwk.ability.fraction.Fraction;
@@ -16,7 +16,8 @@ import retrofit2.Response;
 public class SearchFraction extends Fraction {
     Component component;
     String classify;
-    String movieName;
+    MovieEntity keyWordEntity;
+
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
         component = scatter.parse(ResourceTable.Layout_fraction_search, container, false);
@@ -41,10 +42,10 @@ public class SearchFraction extends Fraction {
 
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                KeyWordEntity keyWordEntity = JSON.parseObject(JSON.toJSONString(response.body().getData()), KeyWordEntity.class);
+                keyWordEntity = JSON.parseObject(JSON.toJSONString(response.body().getData()), MovieEntity.class);
                 getContext().getUITaskDispatcher().asyncDispatch(()->{
                     Text text = (Text) component.findComponentById(ResourceTable.Id_search_text);
-                    text.setText(movieName = keyWordEntity.getMovieName());
+                    text.setText(keyWordEntity.getMovieName());
                 });
             }
 
@@ -71,7 +72,7 @@ public class SearchFraction extends Fraction {
                     .build();
             //把打包之后的operation设置到意图当中
             intent.setOperation(operation);
-            intent.setParam("movieName", movieName);
+            intent.setParam("movieItem",JSON.toJSONString(keyWordEntity));
             //跳转页面
             getFractionAbility().startAbility(intent);
         });

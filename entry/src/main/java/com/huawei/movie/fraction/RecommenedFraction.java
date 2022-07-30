@@ -44,8 +44,8 @@ public class RecommenedFraction extends Fraction {
      * @since 2022-07-25
      */
     private void getRecommend(){
-        Call<ResultEntity> yourLikesCall = RequestUtils.getInstance().getRecommend(movieEntity.getClassify());
-        yourLikesCall.enqueue(new Callback<ResultEntity>() {
+        Call<ResultEntity> getRecommendCall = RequestUtils.getInstance().getRecommend(movieEntity.getClassify());
+        getRecommendCall.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                 List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieEntity.class);

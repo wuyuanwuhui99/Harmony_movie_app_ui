@@ -57,8 +57,7 @@ public class DetailAbilitySlice extends AbilitySlice {
         star.setText(movieEntity.getStar());
 
         Image image = (Image)findComponentById(ResourceTable.Id_detail_movie_img);
-        image.setCornerRadius(Config.imgRadius);
-        HttpRequest.setImages(this,image, Api.PROXY + movieEntity.getLocalImg());
+        HttpRequest.setImages(this,image, Api.PROXY + movieEntity.getLocalImg(),ResourceTable.String_middle_border_radius_size);
 
         Text plot = (Text)findComponentById(ResourceTable.Id_detail_plot);
         plot.setText(movieEntity.getPlot().trim());

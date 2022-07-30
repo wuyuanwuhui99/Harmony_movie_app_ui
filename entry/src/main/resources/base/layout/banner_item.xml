@@ -4,5 +4,6 @@
     ohos:scale_mode="stretch"
     ohos:id="$+id:banner"
     ohos:height="150vp"
+    ohos:background_element="$graphic:img_border_radius"
     ohos:image_src="$media:banner"
     ohos:width="match_parent"/>

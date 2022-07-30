@@ -64,10 +64,9 @@ public class MovieItemProvider  extends BaseItemProvider  {
             cpt = component;
         }
         Image image = (Image)cpt.findComponentById(ResourceTable.Id_movie_img);
-        image.setCornerRadius(Config.imgRadius);
         Text text = (Text) cpt.findComponentById(ResourceTable.Id_movie_name);
         text.setText(movieEntityList.get(i).getMovieName());
-        HttpRequest.setImages(context,image, Api.PROXY + movieEntityList.get(i).getLocalImg());
+        HttpRequest.setImages(context,image, Api.PROXY + movieEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
         cpt.setClickedListener(ncomponent->{
             //跳转到哪个页面中（意图）
             Intent intent = new Intent();

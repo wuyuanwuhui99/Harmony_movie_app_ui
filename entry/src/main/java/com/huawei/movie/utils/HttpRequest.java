@@ -1,9 +1,15 @@
 package com.huawei.movie.utils;
 
 import com.bumptech.glide.util.LogUtil;
+import com.huawei.movie.ResourceTable;
+import com.huawei.movie.slice.PlayAbilitySlice;
 import ohos.aafwk.ability.fraction.Fraction;
+import ohos.agp.components.AttrHelper;
 import ohos.agp.components.Image;
+import ohos.agp.components.element.ShapeElement;
 import ohos.app.Context;
+import ohos.global.resource.NotExistException;
+import ohos.global.resource.WrongTypeException;
 import ohos.media.image.ImageSource;
 import ohos.media.image.PixelMap;
 import ohos.media.image.common.PixelFormat;
@@ -16,9 +22,10 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.regex.Pattern;
 
 public class HttpRequest {
-    public static void setImages(Context context, Image imageView, String url) {
+    public static void setImages(Context context, Image imageView, String url,int resId) {
         System.out.println(url);
         Request request =new Request.Builder().url(url).get().build();
         new Thread(() -> {
@@ -35,13 +42,14 @@ public class HttpRequest {
                 //根据图片源创建位图
                 PixelMap pixelMap = imageSource.createPixelmap(decodingOptions);
                 //展示到组件上
-                context.getUITaskDispatcher().delayDispatch(new Runnable() {
-                    @Override
-                    public void run() {
-                        imageView.setPixelMap(pixelMap);
-                        //释放位图
-                        pixelMap.release();
+                context.getUITaskDispatcher().delayDispatch(()->{
+                    imageView.setPixelMap(pixelMap);
+                    if(resId != 0){
+                        float size = Common.vp2px(context,resId);
+                        imageView.setCornerRadius(size);
                     }
+                    //释放位图
+                    pixelMap.release();
                 }, 0);
             }catch (IOException e) {
                 e.printStackTrace();

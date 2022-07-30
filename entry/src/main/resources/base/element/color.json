@@ -35,6 +35,9 @@
     {
       "name": "toast_text_color",
       "value": "#ffffff"
+    },{
+      "name": "search_text_color",
+      "value": "#ffffff"
     },
     {
       "name": "button_border_color",

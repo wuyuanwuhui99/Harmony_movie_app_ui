@@ -3,17 +3,50 @@
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:height="match_parent"
     ohos:width="match_parent"
-    ohos:alignment="center"
+    ohos:background_element="$color:page_background_color"
+    ohos:left_padding="$string:container_padding_size"
+    ohos:right_padding="$string:container_padding_size"
+    ohos:top_padding="$string:container_padding_size"
     ohos:orientation="vertical">
-
-    <Text
-        ohos:id="$+id:text_helloworld"
+    <DirectionalLayout
+        ohos:padding="$string:container_padding_size"
+        ohos:background_element="$graphic:box_decoration"
+        ohos:bottom_margin="$string:container_padding_size"
+        ohos:orientation="horizontal"
         ohos:height="match_content"
-        ohos:width="match_content"
-        ohos:background_element="$graphic:background_ability_search"
-        ohos:layout_alignment="horizontal_center"
-        ohos:text="$string:searchability_HelloWorld"
-        ohos:text_size="40vp"
-        />
+        ohos:width="match_parent">
+        <DirectionalLayout
+            ohos:background_element="$graphic:search_decoration"
+            ohos:height="$string:middel_avater_size"
+            ohos:width="0"
+            ohos:weight="1">
+        </DirectionalLayout>
+        <Button
+            ohos:text_color="$color:search_text_color"
+            ohos:text_size="$string:normal_font_size"
+            ohos:left_margin="$string:container_padding_size"
+            ohos:text_alignment="center"
+            ohos:text="$string:search_btn_text"
+            ohos:background_element="$graphic:search_btn_decoration"
+            ohos:height="$string:middel_avater_size"
+            ohos:width="$string:search_btn_width"/>
+    </DirectionalLayout>
+    <ScrollView
+        ohos:weight="1"
+        ohos:height="match_content"
+        ohos:width="match_parent">
+        <DirectionalLayout
+            ohos:height="match_content"
+            ohos:width="match_parent">
+            <ListContainer
+                ohos:bottom_margin="$string:container_padding_size"
+                ohos:padding="$string:container_padding_size"
+                ohos:background_element="$graphic:box_decoration"
+                ohos:id="$+id:search_movie_list"
+                ohos:height="match_content"
+                ohos:orientation="vertical"
+                ohos:width="match_parent"/>
+        </DirectionalLayout>
+    </ScrollView>
 
 </DirectionalLayout>

@@ -49,10 +49,9 @@ public class MovieStarItemProvider extends BaseItemProvider  {
             cpt = component;
         }
         Image image = (Image)cpt.findComponentById(ResourceTable.Id_movie_img);
-        image.setCornerRadius(Config.imgRadius);
         Text text = (Text) cpt.findComponentById(ResourceTable.Id_movie_name);
         text.setText(movieStarEntityList.get(i).getStarName());
-        HttpRequest.setImages(context,image, Api.PROXY + movieStarEntityList.get(i).getLocalImg());
+        HttpRequest.setImages(context,image, Api.PROXY + movieStarEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
         return cpt;
     }
 }
