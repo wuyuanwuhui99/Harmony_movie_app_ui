@@ -55,6 +55,40 @@
         <DirectionalLayout
             ohos:height="match_content"
             ohos:width="match_parent">
+
+            <DirectionalLayout
+                ohos:id="$+id:search_record_layout"
+                ohos:orientation="vertical"
+                ohos:padding="$string:container_padding_size"
+                ohos:background_element="$graphic:box_decoration"
+                ohos:bottom_margin="$string:container_padding_size"
+                ohos:height="match_content"
+                ohos:width="match_parent">
+                <DirectionalLayout
+                    ohos:height="match_content"
+                    ohos:width="match_parent"
+                    ohos:id="$+id:title_wrapper"
+                    ohos:alignment="vertical_center"
+                    ohos:bottom_margin="$string:container_padding_size"
+                    ohos:orientation="horizontal">
+                    <DirectionalLayout
+                        ohos:background_element="$color:active_color"
+                        ohos:height="$string:small_height"
+                        ohos:width="$string:small_width"/>
+                    <Text
+                        ohos:text="$string:search_record_text"
+                        ohos:text_size="$string:normal_font_size"
+                        ohos:left_margin="$string:small_margin_size"
+                        ohos:height="match_content"
+                        ohos:width="match_content"/>
+                </DirectionalLayout>
+                <DirectionalLayout
+                    ohos:orientation="vertical"
+                    ohos:id="$+id:search_record_label_layout"
+                    ohos:height="match_content"
+                    ohos:width="match_parent"/>
+            </DirectionalLayout>
+
             <ListContainer
                 ohos:id="$+id:search_result_list"
                 ohos:visibility="hide"

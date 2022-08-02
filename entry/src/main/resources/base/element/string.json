@@ -149,6 +149,10 @@
       "value": "40vp"
     },
     {
+      "name": "search_record_no_data_height_size",
+      "value": "80vp"
+    },
+    {
       "name": "my_age_count",
       "value": "使用天数"
     },
@@ -217,8 +221,16 @@
       "value": "搜索"
     },
     {
+      "name": "search_record_no_data_text",
+      "value": "暂无搜索记录"
+    },
+    {
       "name": "search_no_data_text",
       "value": "没有找到你想要的影片"
+    },
+    {
+      "name": "search_record_text",
+      "value": "最近搜索"
     },
     {
       "name": "detailability_HelloWorld",

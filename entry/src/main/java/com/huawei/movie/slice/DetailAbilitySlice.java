@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.ability.DetailAbility;
 import com.huawei.movie.config.Api;
-import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.entity.MovieStarEntity;
 import com.huawei.movie.fraction.*;
