@@ -36,6 +36,8 @@ public class SearchAbilitySlice extends AbilitySlice {
     Image clearIcon;
     TextField textField;
     DataAbilityHelper creator;
+    int total = 0;
+    List<MovieEntity> searchResultList;
 
     @Override
     public void onStart(Intent intent) {
@@ -46,6 +48,8 @@ public class SearchAbilitySlice extends AbilitySlice {
         getSearchRecord();
         setSearch();
         getRecommend();
+        setClearClickListener();
+        setScrolledListener();
     }
 
     /**
@@ -81,6 +85,8 @@ public class SearchAbilitySlice extends AbilitySlice {
                 searchLstContainer.setVisibility(Component.VISIBLE);
                 searchLstContainer.setItemProvider(new SearchListProvider(movieEntityList,SearchAbilitySlice.this,SearchAbilitySlice.this));
                 insertRecord(movieEntity.getMovieName());
+                recommendListContainer.setVisibility(Component.HIDE);
+                total = 1;
             }else{
                 // 根据关键字索索
                 Call<ResultEntity> searchCall = RequestUtils.getInstance().search(null,null,null,null,null,textField.getText(),pageSize,pageNum);
@@ -88,9 +94,11 @@ public class SearchAbilitySlice extends AbilitySlice {
                     @Override
                     public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                         getContext().getUITaskDispatcher().asyncDispatch(()->{
-                            List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieEntity.class);
+                            ResultEntity body = response.body();
+                            total = body.getTotal();
+                            searchResultList = JSON.parseArray(JSON.toJSONString(body.getData()), MovieEntity.class);
                             searchLstContainer.setVisibility(Component.VISIBLE);
-                            searchLstContainer.setItemProvider(new SearchListProvider(movieEntityList,SearchAbilitySlice.this,SearchAbilitySlice.this));
+                            searchLstContainer.setItemProvider(new SearchListProvider(searchResultList,SearchAbilitySlice.this,SearchAbilitySlice.this));
                             insertRecord(textField.getText());
                         });
 
@@ -102,9 +110,15 @@ public class SearchAbilitySlice extends AbilitySlice {
                     }
                 });
             }
-
-
         });
+
+    }
+
+    /**
+     * @desc 请求按钮的点击事件
+     * @since 2022-08-04
+     */
+    private void setClearClickListener(){
         clearIcon = (Image)findComponentById(ResourceTable.Id_search_icon_clear);
         clearIcon.setClickedListener(listener->{
             textField.setText(null);
@@ -112,6 +126,40 @@ public class SearchAbilitySlice extends AbilitySlice {
             // 显示搜索记录
             searchRecordlayout.setVisibility(Component.VISIBLE);
             getSearchRecord();
+            recommendListContainer.setVisibility(Component.VISIBLE);
+        });
+    }
+
+    /**
+     * @desc 监听滚动加载
+     * @since 2022-08-04
+     */
+    private void setScrolledListener(){
+        ScrollView scrollView = (ScrollView) findComponentById(ResourceTable.Id_search_scroll);
+        scrollView.setScrolledListener((Component component, int i, int i1, int i2, int i3)->{
+            if(i1 >= i3){ // 如果快滑到底部，加载更多
+                if(total > pageSize * pageNum){
+                    pageNum++;
+                    Call<ResultEntity> searchCall = RequestUtils.getInstance().search(null,null,null,null,null,textField.getText(),pageSize,pageNum);
+                    searchCall.enqueue(new Callback<ResultEntity>() {
+                        @Override
+                        public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
+                            getContext().getUITaskDispatcher().asyncDispatch(()->{
+                                ResultEntity body = response.body();
+                                total = body.getTotal();
+                                List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(body.getData()), MovieEntity.class);
+                                searchResultList.addAll(movieEntityList);
+                                searchLstContainer.setItemProvider(new SearchListProvider(searchResultList,SearchAbilitySlice.this,SearchAbilitySlice.this));
+                            });
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResultEntity> call, Throwable throwable) {
+
+                        }
+                    });
+                }
+            }
         });
     }
 

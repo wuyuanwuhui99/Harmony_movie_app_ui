@@ -49,6 +49,7 @@
             ohos:width="$string:search_btn_width"/>
     </DirectionalLayout>
     <ScrollView
+        ohos:id="$+id:search_scroll"
         ohos:weight="1"
         ohos:height="match_content"
         ohos:width="match_parent">
