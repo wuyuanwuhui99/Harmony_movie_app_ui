@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Text
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:id="$+id:search_record_label"
+    ohos:text_size="$string:normal_font_size"
+    ohos:left_margin="$string:container_padding_size"
+    ohos:text_alignment="center"
+    ohos:text="$string:search_record_no_data_text"
+    ohos:height="$string:search_record_no_data_height_size"
+    ohos:width="match_parent"/>
