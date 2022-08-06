@@ -97,6 +97,15 @@
         "label": "$string:entry_SearchAbility",
         "type": "page",
         "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.huawei.movie.ability.UserAbility",
+        "icon": "$media:icon",
+        "description": "$string:userability_description",
+        "label": "$string:entry_UserAbility",
+        "type": "page",
+        "launchType": "standard"
       }
     ],
     "metaData": {

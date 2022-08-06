@@ -36,7 +36,7 @@
       "name": "toast_text_color",
       "value": "#ffffff"
     },{
-      "name": "search_text_color",
+      "name": "button_text_color",
       "value": "#ffffff"
     },
     {
@@ -50,6 +50,10 @@
     {
       "name": "play_webview_color",
       "value": "#000000"
+    },
+    {
+      "name": "button_logout",
+      "value": "#eb412e"
     }
   ]
 }

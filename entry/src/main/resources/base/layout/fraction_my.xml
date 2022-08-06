@@ -37,6 +37,7 @@
                 ohos:width="match_content"/>
         </DirectionalLayout>
         <Image
+            ohos:id="$+id:icon_edit"
             ohos:image_src="$media:icon_edit"
             ohos:height="$string:middle_icon_size"
             ohos:width="$string:middle_icon_size"/>

@@ -39,7 +39,7 @@
         </DirectionalLayout>
         <Button
             ohos:id="$+id:search_btn"
-            ohos:text_color="$color:search_text_color"
+            ohos:text_color="$color:button_text_color"
             ohos:text_size="$string:normal_font_size"
             ohos:left_margin="$string:container_padding_size"
             ohos:text_alignment="center"

@@ -13,22 +13,6 @@
       "value": "Hello World"
     },
     {
-      "name": "bottomBar_home",
-      "value": "首页"
-    },
-    {
-      "name": "bottomBar_movie",
-      "value": "电影"
-    },
-    {
-      "name": "bottomBar_tv",
-      "value": "电视剧"
-    },
-    {
-      "name": "bottomBar_my",
-      "value": "我的"
-    },
-    {
       "name": "small_border_radius_size",
       "value": "10vp"
     },
@@ -39,26 +23,6 @@
     {
       "name": "big_border_radius_size",
       "value": "30vp"
-    },
-    {
-      "name": "hot_text",
-      "value": "热门"
-    },
-    {
-      "name": "play_text",
-      "value": "预告"
-    },
-    {
-      "name": "new_text",
-      "value": "最新"
-    },
-    {
-      "name": "classify_text",
-      "value": "分类"
-    },
-    {
-      "name": "play_record_text",
-      "value": "观看记录"
     },
     {
       "name": "normal_font_size",
@@ -153,6 +117,42 @@
       "value": "80vp"
     },
     {
+      "name": "bottomBar_home",
+      "value": "首页"
+    },
+    {
+      "name": "bottomBar_movie",
+      "value": "电影"
+    },
+    {
+      "name": "bottomBar_tv",
+      "value": "电视剧"
+    },
+    {
+      "name": "bottomBar_my",
+      "value": "我的"
+    },
+    {
+      "name": "hot_text",
+      "value": "热门"
+    },
+    {
+      "name": "play_text",
+      "value": "预告"
+    },
+    {
+      "name": "new_text",
+      "value": "最新"
+    },
+    {
+      "name": "classify_text",
+      "value": "分类"
+    },
+    {
+      "name": "play_record_text",
+      "value": "观看记录"
+    },
+    {
       "name": "my_age_count",
       "value": "使用天数"
     },
@@ -233,6 +233,42 @@
       "value": "最近搜索"
     },
     {
+      "name": "user_edit_avater",
+      "value": "头像"
+    },
+    {
+      "name": "user_edit_user_name",
+      "value": "昵称"
+    },
+    {
+      "name": "user_edit_tel",
+      "value": "电话"
+    },
+    {
+      "name": "user_edit_email",
+      "value": "邮箱"
+    },
+    {
+      "name": "user_edit_birthday",
+      "value": "出生年月日"
+    },
+    {
+      "name": "user_edit_sex",
+      "value": "出生年月日"
+    },
+    {
+      "name": "user_edit_sign",
+      "value": "个性签名"
+    },
+    {
+      "name": "user_edit_region",
+      "value": "地区"
+    },
+    {
+      "name": "user_edit_logout",
+      "value": "退出登录"
+    },
+    {
       "name": "detailability_HelloWorld",
       "value": "Hello World"
     },
@@ -263,6 +299,18 @@
     {
       "name": "entry_SearchAbility",
       "value": "entry_SearchAbility"
+    },
+    {
+      "name": "userability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "userability_HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "entry_UserAbility",
+      "value": "entry_UserAbility"
     }
   ]
 }
