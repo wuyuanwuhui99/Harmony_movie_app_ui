@@ -19,6 +19,25 @@ public class UserEntity extends OrmObject {
     private String sign;// 个性签名
     private String region;// 地区
     private String disabled;// 是否禁用，0表示不不禁用，1表示禁用
+
+
+    public UserEntity(UserEntity userEntity) {
+        this.userId = userEntity.userId;
+        this.password = userEntity.password;
+        this.createDate = userEntity.createDate;
+        this.updateDate = userEntity.updateDate;
+        this.username = userEntity.username;
+        this.telephone = userEntity.telephone;
+        this.email = userEntity.email;
+        this.avater = userEntity.avater;
+        this.birthday = userEntity.birthday;
+        this.sex = userEntity.sex;
+        this.role = userEntity.role;
+        this.sign = userEntity.sign;
+        this.region = userEntity.region;
+        this.disabled = userEntity.disabled;
+    }
+
     public String getUserId() {
         return userId;
     }

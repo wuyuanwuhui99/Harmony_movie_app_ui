@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:padding="$string:container_padding_size"
+    ohos:background_element="$color:page_background_color"
+    ohos:orientation="vertical">
+
+    <DirectionalLayout
+        ohos:padding="$string:container_padding_size"
+        ohos:background_element="$graphic:box_decoration"
+        ohos:orientation="vertical"
+        ohos:height="match_parent"
+        ohos:width="match_parent">
+        <DirectionalLayout
+            ohos:alignment="vertical_center"
+            ohos:orientation="horizontal"
+            ohos:height="match_content"
+            ohos:width="match_parent">
+            <Text
+                ohos:right_margin="$string:container_padding_size"
+                ohos:text_size="$string:normal_font_size"
+                ohos:id="$+id:edit_title"
+                ohos:height="match_content"
+                ohos:width="match_content"/>
+            <DirectionalLayout
+                ohos:orientation="vertical"
+                ohos:weight="1"
+                ohos:height="match_content"
+                ohos:width="0">
+                <TextField
+                    ohos:text_size="$string:normal_font_size"
+                    ohos:id="$+id:edit_value"
+                    ohos:height="$string:button_height_size"
+                    ohos:width="match_parent"/>
+                <DirectionalLayout
+                    ohos:background_element="$color:page_background_color"
+                    ohos:height="$string:button_border_size"
+                    ohos:width="match_parent"/>
+            </DirectionalLayout>
+        </DirectionalLayout>
+        <Button
+            ohos:background_element="$graphic:background_logout"
+            ohos:bottom_margin="$string:container_padding_size"
+            ohos:text_color="$color:button_text_color"
+            ohos:text_size="$string:normal_font_size"
+            ohos:text="$string:edit_save"
+            ohos:id="$+id:btn_save"
+            ohos:height="$string:button_height_size"
+            ohos:width="match_parent"/>
+    </DirectionalLayout>
+
+</DirectionalLayout>

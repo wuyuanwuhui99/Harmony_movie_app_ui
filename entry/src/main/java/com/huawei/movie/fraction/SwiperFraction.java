@@ -48,7 +48,7 @@ public class SwiperFraction extends Fraction {
         getSwiperData();
     }
 
-    /*
+    /**
     * @desc 获取轮播数据
     * @since 2022-07-07
     * */

@@ -106,6 +106,15 @@
         "label": "$string:entry_UserAbility",
         "type": "page",
         "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.huawei.movie.ability.EditAbility",
+        "icon": "$media:icon",
+        "description": "$string:editability_description",
+        "label": "$string:entry_EditAbility",
+        "type": "page",
+        "launchType": "standard"
       }
     ],
     "metaData": {

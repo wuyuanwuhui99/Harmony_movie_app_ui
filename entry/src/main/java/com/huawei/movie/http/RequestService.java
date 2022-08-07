@@ -2,6 +2,7 @@ package com.huawei.movie.http;
 
 import com.huawei.movie.config.Api;
 import com.huawei.movie.entity.MovieEntity;
+import com.huawei.movie.entity.UserEntity;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -74,6 +75,10 @@ public interface RequestService {
     // 添加收藏
     @DELETE(Api.DELETEFAVORITE)
     Call<ResultEntity> deleteFavorite(@Query("movieId") long movieId);
+
+    // 添加收藏
+    @POST(Api.UPDATEUSER)
+    Call<ResultEntity> updateUser(@Body UserEntity userEntity);
 
     // 搜索
     @GET(Api.GETSEARCHRESULT)

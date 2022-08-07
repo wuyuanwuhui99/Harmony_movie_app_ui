@@ -107,6 +107,18 @@
     {
       "name": "userability_HelloWorld",
       "value": "Hello World"
+    },
+    {
+      "name": "entry_EditAbility",
+      "value": "entry_EditAbility"
+    },
+    {
+      "name": "editability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "editability_HelloWorld",
+      "value": "Hello World"
     }
   ]
 }

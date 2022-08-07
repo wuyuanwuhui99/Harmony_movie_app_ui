@@ -254,7 +254,7 @@
     },
     {
       "name": "user_edit_sex",
-      "value": "出生年月日"
+      "value": "性别"
     },
     {
       "name": "user_edit_sign",
@@ -267,6 +267,10 @@
     {
       "name": "user_edit_logout",
       "value": "退出登录"
+    },
+    {
+      "name": "edit_save",
+      "value": "保存"
     },
     {
       "name": "detailability_HelloWorld",
@@ -311,6 +315,18 @@
     {
       "name": "entry_UserAbility",
       "value": "entry_UserAbility"
+    },
+    {
+      "name": "editability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "editability_HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "entry_EditAbility",
+      "value": "entry_EditAbility"
     }
   ]
 }

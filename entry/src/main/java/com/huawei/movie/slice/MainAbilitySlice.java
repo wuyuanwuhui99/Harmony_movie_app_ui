@@ -64,7 +64,7 @@ public class MainAbilitySlice extends AbilitySlice {
     }
 
     /**
-     * @desc初始化首页布局
+     * @desc 初始化首页布局
      * @since 2022-06-25
      * */
     private void initUI(){
@@ -202,7 +202,7 @@ public class MainAbilitySlice extends AbilitySlice {
     }
 
     /**
-     * @desc获取用户数据
+     * @desc 获取用户数据
      * @since 2022-07-05
      * */
     private void getUserData() {

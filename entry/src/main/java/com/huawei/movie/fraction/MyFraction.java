@@ -40,7 +40,7 @@ public class MyFraction extends Fraction {
         });
         setUserName();
         getUserMsg();
-        getPlayRecord();
+//        getPlayRecord();
         useUserPage();
     }
 
