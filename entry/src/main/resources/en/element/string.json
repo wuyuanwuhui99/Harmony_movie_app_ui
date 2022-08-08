@@ -119,6 +119,18 @@
     {
       "name": "editability_HelloWorld",
       "value": "Hello World"
+    },
+    {
+      "name": "entry_LoginAbility",
+      "value": "entry_LoginAbility"
+    },
+    {
+      "name": "loginability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "loginability_HelloWorld",
+      "value": "Hello World"
     }
   ]
 }

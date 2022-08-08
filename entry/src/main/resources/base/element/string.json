@@ -113,6 +113,10 @@
       "value": "40vp"
     },
     {
+      "name": "logo_size",
+      "value": "80vp"
+    },
+    {
       "name": "search_record_no_data_height_size",
       "value": "80vp"
     },
@@ -269,8 +273,24 @@
       "value": "退出登录"
     },
     {
+      "name": "login_btn",
+      "value": "登录"
+    },
+    {
+      "name": "register_btn",
+      "value": "登录"
+    },
+    {
       "name": "edit_save",
       "value": "保存"
+    },
+    {
+      "name": "login_user_hint",
+      "value": "请输入账号"
+    },
+    {
+      "name": "login_password_hint",
+      "value": "请输入密码"
     },
     {
       "name": "detailability_HelloWorld",
@@ -327,6 +347,18 @@
     {
       "name": "entry_EditAbility",
       "value": "entry_EditAbility"
+    },
+    {
+      "name": "loginability_description",
+      "value": "Java_Empty Ability"
+    },
+    {
+      "name": "loginability_HelloWorld",
+      "value": "Hello World"
+    },
+    {
+      "name": "entry_LoginAbility",
+      "value": "entry_LoginAbility"
     }
   ]
 }

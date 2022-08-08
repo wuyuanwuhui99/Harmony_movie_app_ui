@@ -310,7 +310,7 @@
         ohos:text_color="$color:button_text_color"
         ohos:text_size="$string:normal_font_size"
         ohos:text="$string:user_edit_logout"
-        ohos:id="$+id:logout"
+        ohos:id="$+id:user_logout"
         ohos:height="$string:button_height_size"
         ohos:width="match_parent"/>
 </DirectionalLayout>

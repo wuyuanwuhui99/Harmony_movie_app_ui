@@ -8,10 +8,7 @@ import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
-import ohos.agp.components.Component;
-import ohos.agp.components.DirectionalLayout;
-import ohos.agp.components.Image;
-import ohos.agp.components.Text;
+import ohos.agp.components.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +20,7 @@ public class UserAbilitySlice extends AbilitySlice {
         super.setUIContent(ResourceTable.Layout_ability_user);
         initUI();
         setClickListener();
+        logout();
     }
 
     /**
@@ -117,9 +115,36 @@ public class UserAbilitySlice extends AbilitySlice {
         }
     }
 
+    /**
+     * @desc 退出登录
+     * @since 2022-08-08
+     * */
+    private void logout(){
+        Button button = (Button) findComponentById(ResourceTable.Id_user_logout);
+        button.setClickedListener(listener->{
+            Config.userEntity = null;
+            //跳转到哪个页面中（意图）
+            Intent intent = new Intent();
+            //包含了页面跳转的信息
+            Operation operation = new Intent.OperationBuilder()
+                    //要跳转到哪个设备上，如果传递一个空的内容，表示跳转到本机
+                    .withDeviceId("")
+                    //要跳转到哪个应用上，小括号里面可以写包名
+                    .withBundleName("com.huawei.movie")
+                    //要跳转的页面
+                    .withAbilityName("com.huawei.movie.ability.LoginAbility")
+                    //表示将上面的三个信息进行打包
+                    .build();
+            //把打包之后的operation设置到意图当中
+            intent.setOperation(operation);
+            startAbility(intent);
+        });
+    }
+
     @Override
     public void onActive() {
         super.onActive();
+        initUI();
     }
 
     @Override

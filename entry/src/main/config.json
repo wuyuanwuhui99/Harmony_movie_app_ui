@@ -115,6 +115,15 @@
         "label": "$string:entry_EditAbility",
         "type": "page",
         "launchType": "standard"
+      },
+      {
+        "orientation": "unspecified",
+        "name": "com.huawei.movie.LoginAbility",
+        "icon": "$media:icon",
+        "description": "$string:loginability_description",
+        "label": "$string:entry_LoginAbility",
+        "type": "page",
+        "launchType": "standard"
       }
     ],
     "metaData": {
