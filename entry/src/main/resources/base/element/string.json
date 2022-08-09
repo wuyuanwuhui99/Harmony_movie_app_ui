@@ -293,6 +293,14 @@
       "value": "请输入密码"
     },
     {
+      "name": "login_success",
+      "value": "登录成功"
+    },
+    {
+      "name": "login_fail",
+      "value": "账号或密码不正确"
+    },
+    {
       "name": "detailability_HelloWorld",
       "value": "Hello World"
     },

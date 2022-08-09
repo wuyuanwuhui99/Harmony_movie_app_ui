@@ -20,6 +20,7 @@ public class UserEntity extends OrmObject {
     private String region;// 地区
     private String disabled;// 是否禁用，0表示不不禁用，1表示禁用
 
+    public UserEntity() {}
 
     public UserEntity(UserEntity userEntity) {
         this.userId = userEntity.userId;

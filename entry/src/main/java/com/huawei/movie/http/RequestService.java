@@ -94,4 +94,8 @@ public interface RequestService {
 
     );
 
+    // 添加收藏
+    @POST(Api.LOGIN)
+    Call<ResultEntity> login(@Body UserEntity userEntity);
+
 }

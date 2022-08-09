@@ -26,6 +26,8 @@
             ohos:height="match_content"
             ohos:width="match_parent">
             <Image
+                ohos:left_margin="$string:small_margin_size"
+                ohos:right_margin="$string:small_margin_size"
                 ohos:image_src="$media:icon_user_active"
                 ohos:height="$string:middle_icon_size"
                 ohos:width="$string:middle_icon_size"
@@ -46,6 +48,8 @@
             ohos:height="match_content"
             ohos:width="match_parent">
             <Image
+                ohos:left_margin="$string:small_margin_size"
+                ohos:right_margin="$string:small_margin_size"
                 ohos:image_src="$media:icon_password"
                 ohos:height="$string:middle_icon_size"
                 ohos:width="$string:middle_icon_size"

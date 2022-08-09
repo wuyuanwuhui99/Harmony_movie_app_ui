@@ -168,19 +168,8 @@ public class DetailAbilitySlice extends AbilitySlice {
             //跳转到哪个页面中（意图）
             Intent intent = new Intent();
             //包含了页面跳转的信息
-            Operation operation = new Intent.OperationBuilder()
-                    //要跳转到哪个设备上，如果传递一个空的内容，表示跳转到本机
-                    .withDeviceId("")
-                    //要跳转到哪个应用上，小括号里面可以写包名
-                    .withBundleName("com.huawei.movie")
-                    //要跳转的页面
-                    .withAbilityName("com.huawei.movie.ability.PlayAbility")
-                    //表示将上面的三个信息进行打包
-                    .build();
-            //把打包之后的operation设置到意图当中
-            intent.setOperation(operation);
             intent.setParam("movieItem", JSON.toJSONString(movieEntity));
-            startAbility(intent);
+            present(new PlayAbilitySlice(),intent);
         });
     }
 
