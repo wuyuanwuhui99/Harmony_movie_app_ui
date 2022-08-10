@@ -16,6 +16,7 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.MessageDigest;
 import java.util.regex.Pattern;
 
 public class Common {
@@ -110,5 +111,24 @@ public class Common {
             }
 
         }).start();
+    }
+
+    public final static String encryptToMD5(String val){
+        try {
+            // 此 MessageDigest 类为应用程序提供信息摘要算法的功能
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            md5.update(val.getBytes());
+            byte[] bytearray = md5.digest();// 加密
+            StringBuffer sb = new StringBuffer();
+            for (byte b : bytearray) {
+                int i = (b & 0xFF);
+                if (i < 0x10) sb.append('0');
+                sb.append(Integer.toHexString(i));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

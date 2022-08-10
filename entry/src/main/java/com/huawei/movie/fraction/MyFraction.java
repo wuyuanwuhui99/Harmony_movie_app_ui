@@ -2,6 +2,7 @@ package com.huawei.movie.fraction;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
+import com.huawei.movie.ability.UserAbility;
 import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.CategoyEntity;
 import com.huawei.movie.entity.MovieEntity;
@@ -116,9 +117,9 @@ public class MyFraction extends Fraction {
                     //要跳转到哪个设备上，如果传递一个空的内容，表示跳转到本机
                     .withDeviceId("")
                     //要跳转到哪个应用上，小括号里面可以写包名
-                    .withBundleName("com.huawei.movie")
+                    .withBundleName(getBundleName())
                     //要跳转的页面
-                    .withAbilityName("com.huawei.movie.ability.UserAbility")
+                    .withAbilityName(UserAbility.class.getName())
                     //表示将上面的三个信息进行打包
                     .build();
             //把打包之后的operation设置到意图当中

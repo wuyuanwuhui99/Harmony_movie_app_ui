@@ -118,7 +118,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.huawei.movie.LoginAbility",
+        "name": "com.huawei.movie.ability.LoginAbility",
         "icon": "$media:icon",
         "description": "$string:loginability_description",
         "label": "$string:entry_LoginAbility",

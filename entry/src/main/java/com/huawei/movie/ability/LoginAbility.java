@@ -1,4 +1,4 @@
-package com.huawei.movie;
+package com.huawei.movie.ability;
 
 import com.huawei.movie.slice.LoginAbilitySlice;
 import ohos.aafwk.ability.Ability;

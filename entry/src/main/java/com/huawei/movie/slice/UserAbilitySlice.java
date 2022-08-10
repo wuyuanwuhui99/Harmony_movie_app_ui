@@ -2,12 +2,13 @@ package com.huawei.movie.slice;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
+import com.huawei.movie.components.CustomDialog;
+import com.huawei.movie.components.DialogClickListener;
 import com.huawei.movie.config.Api;
 import com.huawei.movie.config.Config;
 import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
-import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
 
 import java.util.HashMap;
@@ -94,23 +95,11 @@ public class UserAbilitySlice extends AbilitySlice {
             layoutItem.setClickedListener(listener->{
                 //跳转到哪个页面中（意图）
                 Intent intent = new Intent();
-                //包含了页面跳转的信息
-                Operation operation = new Intent.OperationBuilder()
-                        //要跳转到哪个设备上，如果传递一个空的内容，表示跳转到本机
-                        .withDeviceId("")
-                        //要跳转到哪个应用上，小括号里面可以写包名
-                        .withBundleName("com.huawei.movie")
-                        //要跳转的页面
-                        .withAbilityName("com.huawei.movie.ability.EditAbility")
-                        //表示将上面的三个信息进行打包
-                        .build();
-                //把打包之后的operation设置到意图当中
-                intent.setOperation(operation);
                 Map<String,String> map = new HashMap<>();
                 map.put("title",title.getText());
                 map.put("value",vavlue.getText());
                 intent.setParam("data", JSON.toJSONString(map));
-                startAbility(intent);
+                present(new EditAbilitySlice(),intent);
             });
         }
     }
@@ -122,22 +111,19 @@ public class UserAbilitySlice extends AbilitySlice {
     private void logout(){
         Button button = (Button) findComponentById(ResourceTable.Id_user_logout);
         button.setClickedListener(listener->{
-            Config.userEntity = null;
-            //跳转到哪个页面中（意图）
-            Intent intent = new Intent();
-            //包含了页面跳转的信息
-            Operation operation = new Intent.OperationBuilder()
-                    //要跳转到哪个设备上，如果传递一个空的内容，表示跳转到本机
-                    .withDeviceId("")
-                    //要跳转到哪个应用上，小括号里面可以写包名
-                    .withBundleName("com.huawei.movie")
-                    //要跳转的页面
-                    .withAbilityName("com.huawei.movie.ability.LoginAbility")
-                    //表示将上面的三个信息进行打包
-                    .build();
-            //把打包之后的operation设置到意图当中
-            intent.setOperation(operation);
-            startAbility(intent);
+            CustomDialog customDialog = new CustomDialog(this,ResourceTable.String_user_logout_tip);
+            customDialog.setOnClickListener(new DialogClickListener() {
+                @Override
+                public void onSureListener() {
+                    present(new LoginAbilitySlice(),new Intent());
+                }
+
+                @Override
+                public void onCancelListener() {
+
+                }
+            });
+
         });
     }
 

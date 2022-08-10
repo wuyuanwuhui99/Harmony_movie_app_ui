@@ -10,30 +10,37 @@ import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Button;
-import ohos.agp.components.Text;
+import ohos.agp.components.TextField;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class LoginAbilitySlice extends AbilitySlice {
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
         super.setUIContent(ResourceTable.Layout_ability_login);
+        useLogin();
     }
+
+
 
     /**
      * @desc 点击登录
      * @since 2022-08-09
      * */
     private void useLogin(){
+        TextField userText = (TextField) findComponentById(ResourceTable.Id_login_user);
+        userText.setText(Config.userEntity.getUserId());
+        Config.userEntity = null;
         Button loginBtn = (Button) findComponentById(ResourceTable.Id_login_btn);
         loginBtn.setClickedListener(listener->{
-            Text userText = (Text) findComponentById(ResourceTable.Id_login_user);
-            Text passwordText = (Text) findComponentById(ResourceTable.Id_login_password);
+            TextField passwordText = (TextField) findComponentById(ResourceTable.Id_login_password);
             String userId = userText.getText();
             String password = passwordText.getText();
-
             if(userId== null || "".equals(userId)){
                 Common.showToast(ResourceTable.String_login_user_hint,this);
             }else if(password == null || "".equals(password)){
@@ -41,7 +48,7 @@ public class LoginAbilitySlice extends AbilitySlice {
             }else{
                 UserEntity userEntity = new UserEntity();
                 userEntity.setUserId(userId);
-                userEntity.setPassword(password);
+                userEntity.setPassword(Common.encryptToMD5(password));
                 Call<ResultEntity> loginCall = RequestUtils.getInstance().login(userEntity);
                 loginCall.enqueue(new Callback<ResultEntity>() {
                     @Override

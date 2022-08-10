@@ -11,12 +11,14 @@
         ohos:background_element="$graphic:box_decoration"
         ohos:bottom_margin="$string:container_padding_size"
         ohos:orientation="vertical"
-        ohos:alignment="center"
         ohos:height="match_parent"
+        ohos:alignment="horizontal_center"
         ohos:width="match_parent">
         <Image
             ohos:image_src="$media:icon_logo"
             ohos:scale_mode="stretch"
+            ohos:bottom_margin="$string:logo_size"
+            ohos:top_margin="$string:logo_size"
             ohos:height="$string:logo_size"
             ohos:width="$string:logo_size"/>
         <DirectionalLayout
@@ -65,6 +67,7 @@
         </DirectionalLayout>
 
         <Button
+            ohos:top_margin="$string:container_padding_size"
             ohos:background_element="$graphic:background_logout"
             ohos:bottom_margin="$string:container_padding_size"
             ohos:text_color="$color:button_text_color"
@@ -75,9 +78,8 @@
             ohos:width="match_parent"/>
 
         <Button
-            ohos:background_element="$graphic:background_logout"
+            ohos:background_element="$graphic:input_decoration"
             ohos:bottom_margin="$string:container_padding_size"
-            ohos:text_color="$color:button_text_color"
             ohos:text_size="$string:normal_font_size"
             ohos:text="$string:register_btn"
             ohos:id="$+id:register_btn"

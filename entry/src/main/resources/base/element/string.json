@@ -121,6 +121,10 @@
       "value": "80vp"
     },
     {
+      "name": "dialog_margin",
+      "value": "30vp"
+    },
+    {
       "name": "bottomBar_home",
       "value": "首页"
     },
@@ -273,12 +277,16 @@
       "value": "退出登录"
     },
     {
+      "name": "user_logout_tip",
+      "value": "您确定要退出登录吗？"
+    },
+    {
       "name": "login_btn",
       "value": "登录"
     },
     {
       "name": "register_btn",
-      "value": "登录"
+      "value": "注册"
     },
     {
       "name": "edit_save",
@@ -299,6 +307,14 @@
     {
       "name": "login_fail",
       "value": "账号或密码不正确"
+    },
+    {
+      "name": "dialog_sure",
+      "value": "确定"
+    },
+    {
+      "name": "dialog_cancel",
+      "value": "取消"
     },
     {
       "name": "detailability_HelloWorld",
