@@ -205,8 +205,8 @@
                     ohos:width="$string:middle_icon_size"/>
             </DirectionalLayout>
             <DirectionalLayout
-                ohos:background_element="$color:disable_color"
-                ohos:height="1vp"
+                ohos:background_element="$color:page_background_color"
+                ohos:height="$string:button_border_size"
                 ohos:width="match_parent"/>
         </DirectionalLayout>
         <DirectionalLayout
@@ -239,8 +239,8 @@
                     ohos:width="$string:middle_icon_size"/>
             </DirectionalLayout>
             <DirectionalLayout
-                ohos:background_element="$color:disable_color"
-                ohos:height="1vp"
+                ohos:background_element="$color:page_background_color"
+                ohos:height="$string:button_border_size"
                 ohos:width="match_parent"/>
         </DirectionalLayout>
         <DirectionalLayout
@@ -311,8 +311,8 @@
                     ohos:width="$string:middle_icon_size"/>
             </DirectionalLayout>
             <DirectionalLayout
-                ohos:background_element="$color:disable_color"
-                ohos:height="1vp"
+                ohos:background_element="$color:page_background_color"
+                ohos:height="$string:button_border_size"
                 ohos:width="match_parent"/>
         </DirectionalLayout>
         <DirectionalLayout
