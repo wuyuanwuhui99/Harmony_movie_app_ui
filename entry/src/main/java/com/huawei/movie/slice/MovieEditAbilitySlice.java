@@ -3,17 +3,13 @@ package com.huawei.movie.slice;
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Config;
-import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.entity.UserEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
-import com.huawei.movie.provider.SearchListProvider;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Button;
-import ohos.agp.components.Component;
 import ohos.agp.components.Text;
-import ohos.global.resource.Element;
 import ohos.global.resource.NotExistException;
 import ohos.global.resource.ResourceManager;
 import ohos.global.resource.WrongTypeException;
@@ -24,7 +20,7 @@ import retrofit2.Response;
 import java.io.IOException;
 import java.util.Map;
 
-public class EditAbilitySlice extends AbilitySlice {
+public class MovieEditAbilitySlice extends AbilitySlice {
     Map map;
     @Override
     public void onStart(Intent intent) {

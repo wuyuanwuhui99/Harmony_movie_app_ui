@@ -1,13 +1,13 @@
 package com.huawei.movie.ability;
 
-import com.huawei.movie.slice.UserAbilitySlice;
+import com.huawei.movie.slice.MovieEditAbilitySlice;
 import ohos.aafwk.ability.Ability;
 import ohos.aafwk.content.Intent;
 
-public class UserAbility extends Ability {
+public class MovieEditAbility extends Ability {
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
-        super.setMainRoute(UserAbilitySlice.class.getName());
+        super.setMainRoute(MovieEditAbilitySlice.class.getName());
     }
 }

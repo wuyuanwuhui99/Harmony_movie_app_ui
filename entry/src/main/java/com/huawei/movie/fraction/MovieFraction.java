@@ -30,9 +30,9 @@ public class MovieFraction extends Fraction {
         getFractionAbility().getUITaskDispatcher().asyncDispatch(()-> {
             getFractionAbility().getFractionManager()
                     .startFractionScheduler()
-                    .add(ResourceTable.Id_movie_avater_wrapper, new AvaterFraction())
-                    .add(ResourceTable.Id_movie_avater_wrapper,new SearchFraction("电影"))
-                    .add(ResourceTable.Id_movie_swriper_wrapper,new SwiperFraction("电影"))
+                    .add(ResourceTable.Id_movie_avater_wrapper, new MovieAvaterFraction())
+                    .add(ResourceTable.Id_movie_avater_wrapper,new MovieSearchFraction("电影"))
+                    .add(ResourceTable.Id_movie_swriper_wrapper,new MovieSwiperFraction("电影"))
                     .submit();
         });
         getAllCategoryListByPageName();
@@ -52,7 +52,7 @@ public class MovieFraction extends Fraction {
                     getFractionAbility().getUITaskDispatcher().asyncDispatch(()-> {
                         FractionScheduler fractionScheduler = getFractionAbility().getFractionManager().startFractionScheduler();
                         for (CategoyEntity categoyEntity:categoyEntityList){
-                            fractionScheduler.add(ResourceTable.Id_movie_category_list,new CategoryFraction(categoyEntity));
+                            fractionScheduler.add(ResourceTable.Id_movie_category_list,new MovieCategoryFraction(categoyEntity));
                         }
                         fractionScheduler.submit();
                     });

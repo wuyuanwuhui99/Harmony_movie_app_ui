@@ -10,13 +10,13 @@ import ohos.app.Context;
 
 import java.util.List;
 
-public class SearchListProvider extends BaseItemProvider  {
+public class MovieSearchListProvider extends BaseItemProvider  {
 
     List<MovieEntity>movieEntityList;
     Context context;
     AbilitySlice abilitySlice;
 
-    public SearchListProvider(List<MovieEntity>movieEntityList, Context context, AbilitySlice abilitySlice) {
+    public MovieSearchListProvider(List<MovieEntity>movieEntityList, Context context, AbilitySlice abilitySlice) {
         this.movieEntityList = movieEntityList;
         this.context = context;
         this.abilitySlice = abilitySlice;

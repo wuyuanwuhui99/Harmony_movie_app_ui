@@ -18,7 +18,7 @@ import retrofit2.Response;
 
 import java.util.List;
 
-public class LikesFraction extends Fraction {
+public class MovieLikesFraction extends Fraction {
     Component component;
     String classify;
     MovieEntity movieEntity;
@@ -35,7 +35,7 @@ public class LikesFraction extends Fraction {
         getYourLikes();
     }
 
-    public LikesFraction(MovieEntity movieEntity){
+    public MovieLikesFraction(MovieEntity movieEntity){
         this.movieEntity = movieEntity;
     }
 

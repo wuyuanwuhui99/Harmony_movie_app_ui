@@ -8,7 +8,7 @@ import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
 
-public class AvaterFraction extends Fraction implements Component.ClickedListener {
+public class MovieAvaterFraction extends Fraction implements Component.ClickedListener {
     Component component;
     String size;
     @Override
@@ -18,11 +18,11 @@ public class AvaterFraction extends Fraction implements Component.ClickedListene
         return component;
     }
 
-    public AvaterFraction(String size){
+    public MovieAvaterFraction(String size){
         this.size = size;
     }
 
-    public AvaterFraction(){
+    public MovieAvaterFraction(){
 
     }
 

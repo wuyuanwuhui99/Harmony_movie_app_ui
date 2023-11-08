@@ -7,7 +7,7 @@ import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
-import com.huawei.movie.provider.SwiperPageSliderProvider;
+import com.huawei.movie.provider.MovieSwiperPageSliderProvider;
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Component;
@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 import java.util.List;
 
-public class SwiperFraction extends Fraction {
+public class MovieSwiperFraction extends Fraction {
     Component component;
     String classify;
     PageSlider pageSlider;
@@ -38,7 +38,7 @@ public class SwiperFraction extends Fraction {
         return component;
     }
 
-    public SwiperFraction(String classify){
+    public MovieSwiperFraction(String classify){
         this.classify = classify;
     }
 
@@ -61,7 +61,7 @@ public class SwiperFraction extends Fraction {
                  //初始化UI
                 getContext().getUITaskDispatcher().asyncDispatch(()->{
                     pageSlider = (PageSlider) component.findComponentById(ResourceTable.Id_page_slider);//查找组件
-                    SwiperPageSliderProvider swiperPageSliderProvider = new SwiperPageSliderProvider(pageSlider,movieEntityList, getContext(), SwiperFraction.this);
+                    MovieSwiperPageSliderProvider swiperPageSliderProvider = new MovieSwiperPageSliderProvider(pageSlider,movieEntityList, getContext(), MovieSwiperFraction.this);
                     pageSlider.setProvider(swiperPageSliderProvider);
                     eventRunner = EventRunner.create(Config.swiperrunner);
                     // 初始化SwiperEventHandler

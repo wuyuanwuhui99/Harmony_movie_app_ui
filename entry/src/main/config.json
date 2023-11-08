@@ -31,7 +31,7 @@
     ],
     "package": "com.huawei.movie",
     "name": ".MyApplication",
-    "mainAbility": "com.huawei.movie.ability.MainAbility",
+    "mainAbility": "com.huawei.movie.ability.MovieMainAbility",
     "deviceType": [
       "phone"
     ],
@@ -54,7 +54,7 @@
           }
         ],
         "orientation": "unspecified",
-        "name": "com.huawei.movie.ability.MainAbility",
+        "name": "com.huawei.movie.ability.MovieMainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:entry_MainAbility",
@@ -73,7 +73,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.huawei.movie.ability.DetailAbility",
+        "name": "com.huawei.movie.ability.MovieDetailAbility",
         "icon": "$media:icon",
         "description": "$string:detailability_description",
         "label": "$string:entry_DetailAbility",
@@ -82,7 +82,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.huawei.movie.ability.PlayAbility",
+        "name": "com.huawei.movie.ability.MoviePlayAbility",
         "icon": "$media:icon",
         "description": "$string:playability_description",
         "label": "$string:entry_PlayAbility",
@@ -91,7 +91,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.huawei.movie.ability.SearchAbility",
+        "name": "com.huawei.movie.ability.MovieSearchAbility",
         "icon": "$media:icon",
         "description": "$string:searchability_description",
         "label": "$string:entry_SearchAbility",
@@ -100,7 +100,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.huawei.movie.ability.UserAbility",
+        "name": "com.huawei.movie.ability.MovieUserAbility",
         "icon": "$media:icon",
         "description": "$string:userability_description",
         "label": "$string:entry_UserAbility",
@@ -109,7 +109,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.huawei.movie.ability.EditAbility",
+        "name": "com.huawei.movie.ability.MovieEditAbility",
         "icon": "$media:icon",
         "description": "$string:editability_description",
         "label": "$string:entry_EditAbility",
@@ -118,7 +118,7 @@
       },
       {
         "orientation": "unspecified",
-        "name": "com.huawei.movie.ability.LoginAbility",
+        "name": "com.huawei.movie.ability.MovieLoginAbility",
         "icon": "$media:icon",
         "description": "$string:loginability_description",
         "label": "$string:entry_LoginAbility",

@@ -13,7 +13,7 @@ import ohos.app.Context;
 
 import java.util.List;
 
-public class SearchMovieRowProvider extends BaseItemProvider  {
+public class MovieSearchRowProvider extends BaseItemProvider  {
 
     List<MovieEntity>movieEntityList;
     Context context;
@@ -21,7 +21,7 @@ public class SearchMovieRowProvider extends BaseItemProvider  {
     int width;
     int height;
 
-    public SearchMovieRowProvider(List<MovieEntity>movieEntityList, Context context, AbilitySlice abilitySlice, ListContainer listContainer) {
+    public MovieSearchRowProvider(List<MovieEntity>movieEntityList, Context context, AbilitySlice abilitySlice, ListContainer listContainer) {
         this.movieEntityList = movieEntityList;
         this.context = context;
         this.abilitySlice = abilitySlice;

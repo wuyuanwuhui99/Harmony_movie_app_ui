@@ -2,7 +2,7 @@ package com.huawei.movie.fraction;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.ability.SearchAbility;
+import com.huawei.movie.ability.MovieSearchAbility;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
@@ -14,7 +14,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchFraction extends Fraction {
+public class MovieSearchFraction extends Fraction {
     Component component;
     String classify;
     MovieEntity keyWordEntity;
@@ -33,7 +33,7 @@ public class SearchFraction extends Fraction {
         addClickListener();
     }
 
-    public SearchFraction(String classify){
+    public MovieSearchFraction(String classify){
         this.classify = classify;
     }
 
@@ -68,7 +68,7 @@ public class SearchFraction extends Fraction {
                     //要跳转到哪个应用上，小括号里面可以写包名
                     .withBundleName(getBundleName())
                     //要跳转的页面
-                    .withAbilityName(SearchAbility.class.getName())
+                    .withAbilityName(MovieSearchAbility.class.getName())
                     //表示将上面的三个信息进行打包
                     .build();
             //把打包之后的operation设置到意图当中

@@ -16,7 +16,7 @@ import retrofit2.Response;
 
 import java.util.List;
 
-public class CategoryFraction extends Fraction {
+public class MovieCategoryFraction extends Fraction {
     Component component;
     CategoyEntity categoyEntity;
     @Override
@@ -27,7 +27,7 @@ public class CategoryFraction extends Fraction {
         return component;
     }
 
-    public CategoryFraction(CategoyEntity categoyEntity){
+    public MovieCategoryFraction(CategoyEntity categoyEntity){
         this.categoyEntity = categoyEntity;
     }
 

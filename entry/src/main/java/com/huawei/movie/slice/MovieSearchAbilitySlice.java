@@ -6,8 +6,8 @@ import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
-import com.huawei.movie.provider.SearchListProvider;
-import com.huawei.movie.provider.SearchMovieRowProvider;
+import com.huawei.movie.provider.MovieSearchListProvider;
+import com.huawei.movie.provider.MovieSearchRowProvider;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.ability.DataAbilityHelper;
 import ohos.aafwk.ability.DataAbilityRemoteException;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class SearchAbilitySlice extends AbilitySlice {
+public class MovieSearchAbilitySlice extends AbilitySlice {
     MovieEntity movieEntity;
     ListContainer searchLstContainer;
     ListContainer recommendListContainer;
@@ -83,7 +83,7 @@ public class SearchAbilitySlice extends AbilitySlice {
                 movieEntityList.add(movieEntity);
                 textField.setText(movieEntity.getMovieName());
                 searchLstContainer.setVisibility(Component.VISIBLE);
-                searchLstContainer.setItemProvider(new SearchListProvider(movieEntityList,SearchAbilitySlice.this,SearchAbilitySlice.this));
+                searchLstContainer.setItemProvider(new MovieSearchListProvider(movieEntityList, MovieSearchAbilitySlice.this, MovieSearchAbilitySlice.this));
                 insertRecord(movieEntity.getMovieName());
                 recommendListContainer.setVisibility(Component.HIDE);
                 total = 1;
@@ -98,7 +98,7 @@ public class SearchAbilitySlice extends AbilitySlice {
                             total = body.getTotal();
                             searchResultList = JSON.parseArray(JSON.toJSONString(body.getData()), MovieEntity.class);
                             searchLstContainer.setVisibility(Component.VISIBLE);
-                            searchLstContainer.setItemProvider(new SearchListProvider(searchResultList,SearchAbilitySlice.this,SearchAbilitySlice.this));
+                            searchLstContainer.setItemProvider(new MovieSearchListProvider(searchResultList, MovieSearchAbilitySlice.this, MovieSearchAbilitySlice.this));
                             insertRecord(textField.getText());
                         });
 
@@ -149,7 +149,7 @@ public class SearchAbilitySlice extends AbilitySlice {
                                 total = body.getTotal();
                                 List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(body.getData()), MovieEntity.class);
                                 searchResultList.addAll(movieEntityList);
-                                searchLstContainer.setItemProvider(new SearchListProvider(searchResultList,SearchAbilitySlice.this,SearchAbilitySlice.this));
+                                searchLstContainer.setItemProvider(new MovieSearchListProvider(searchResultList, MovieSearchAbilitySlice.this, MovieSearchAbilitySlice.this));
                             });
                         }
 
@@ -192,7 +192,7 @@ public class SearchAbilitySlice extends AbilitySlice {
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                 List<MovieEntity> movieEntityList = JSON.parseArray(JSON.toJSONString(response.body().getData()), MovieEntity.class);
                 getContext().getUITaskDispatcher().asyncDispatch(()->{
-                    recommendListContainer.setItemProvider(new SearchMovieRowProvider(movieEntityList,SearchAbilitySlice.this,SearchAbilitySlice.this,recommendListContainer));
+                    recommendListContainer.setItemProvider(new MovieSearchRowProvider(movieEntityList, MovieSearchAbilitySlice.this, MovieSearchAbilitySlice.this,recommendListContainer));
                 });
             }
 
@@ -222,7 +222,7 @@ public class SearchAbilitySlice extends AbilitySlice {
         searchRecordlayout = (DirectionalLayout) findComponentById(ResourceTable.Id_search_record_layout);
         DirectionalLayout searchRecordLabellayout = (DirectionalLayout) searchRecordlayout.findComponentById(ResourceTable.Id_search_record_label_layout);
         searchRecordLabellayout.removeAllComponents();
-        LayoutScatter layoutScatter = LayoutScatter.getInstance(SearchAbilitySlice.this);
+        LayoutScatter layoutScatter = LayoutScatter.getInstance(MovieSearchAbilitySlice.this);
         if(length > 0){
             resultSet.goToFirstRow();
             do {

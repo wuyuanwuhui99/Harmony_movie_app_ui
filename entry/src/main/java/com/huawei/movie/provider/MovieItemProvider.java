@@ -2,7 +2,7 @@ package com.huawei.movie.provider;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.ability.DetailAbility;
+import com.huawei.movie.ability.MovieDetailAbility;
 import com.huawei.movie.config.Api;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.utils.Common;
@@ -14,7 +14,6 @@ import ohos.agp.components.*;
 import ohos.app.Context;
 
 import java.util.List;
-import java.util.Set;
 
 public class MovieItemProvider  extends BaseItemProvider  {
 
@@ -76,7 +75,7 @@ public class MovieItemProvider  extends BaseItemProvider  {
                     //要跳转到哪个应用上，小括号里面可以写包名
                     .withBundleName(abilitySlice.getBundleName())
                     //要跳转的页面
-                    .withAbilityName(DetailAbility.class.getName())
+                    .withAbilityName(MovieDetailAbility.class.getName())
                     //表示将上面的三个信息进行打包
                     .build();
             //把打包之后的operation设置到意图当中

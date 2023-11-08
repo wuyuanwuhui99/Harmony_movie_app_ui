@@ -2,16 +2,14 @@ package com.huawei.movie.fraction;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.ability.UserAbility;
+import com.huawei.movie.ability.MovieUserAbility;
 import com.huawei.movie.config.Config;
-import com.huawei.movie.entity.CategoyEntity;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.entity.UserMsgEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import com.huawei.movie.provider.MovieItemProvider;
 import ohos.aafwk.ability.fraction.Fraction;
-import ohos.aafwk.ability.fraction.FractionScheduler;
 import ohos.aafwk.content.Intent;
 import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
@@ -21,7 +19,7 @@ import retrofit2.Response;
 
 import java.util.List;
 
-public class MyFraction extends Fraction {
+public class MovieMyFraction extends Fraction {
     Component component;
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
@@ -36,7 +34,7 @@ public class MyFraction extends Fraction {
         getFractionAbility().getUITaskDispatcher().asyncDispatch(()-> {
             getFractionAbility().getFractionManager()
                     .startFractionScheduler()
-                    .add(ResourceTable.Id_my_avater_layout, new AvaterFraction("big"))
+                    .add(ResourceTable.Id_my_avater_layout, new MovieAvaterFraction("big"))
                     .submit();
         });
         setUserName();
@@ -119,7 +117,7 @@ public class MyFraction extends Fraction {
                     //要跳转到哪个应用上，小括号里面可以写包名
                     .withBundleName(getBundleName())
                     //要跳转的页面
-                    .withAbilityName(UserAbility.class.getName())
+                    .withAbilityName(MovieUserAbility.class.getName())
                     //表示将上面的三个信息进行打包
                     .build();
             //把打包之后的operation设置到意图当中

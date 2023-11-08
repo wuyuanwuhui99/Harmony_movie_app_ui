@@ -6,7 +6,6 @@ import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import com.huawei.movie.provider.MovieItemProvider;
-import com.huawei.movie.slice.DetailAbilitySlice;
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.Component;
@@ -19,7 +18,7 @@ import retrofit2.Response;
 
 import java.util.List;
 
-public class RecommenedFraction extends Fraction {
+public class MovieRecommenedFraction extends Fraction {
     Component component;
     MovieEntity movieEntity;
     @Override
@@ -35,7 +34,7 @@ public class RecommenedFraction extends Fraction {
         getRecommend();
     }
 
-    public RecommenedFraction(MovieEntity movieEntity){
+    public MovieRecommenedFraction(MovieEntity movieEntity){
         this.movieEntity = movieEntity;
     }
 

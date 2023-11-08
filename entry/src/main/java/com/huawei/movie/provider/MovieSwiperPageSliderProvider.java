@@ -9,7 +9,7 @@ import ohos.app.Context;
 
 import java.util.List;
 
-public class SwiperPageSliderProvider extends PageSliderProvider {
+public class MovieSwiperPageSliderProvider extends PageSliderProvider {
     private List<MovieEntity> movieEntityList;
     private Context context;
     Fraction fraction;
@@ -18,7 +18,7 @@ public class SwiperPageSliderProvider extends PageSliderProvider {
     public int getCount() {
         return movieEntityList.size();
     }
-    public SwiperPageSliderProvider(PageSlider pageSlider,List<MovieEntity> movieEntityList, Context context, Fraction fraction){
+    public MovieSwiperPageSliderProvider(PageSlider pageSlider, List<MovieEntity> movieEntityList, Context context, Fraction fraction){
         this.fraction = fraction;
         this.context = context;
         this.movieEntityList = movieEntityList;

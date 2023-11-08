@@ -2,11 +2,11 @@ package com.huawei.movie.slice;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.ability.PlayAbility;
+import com.huawei.movie.ability.MoviePlayAbility;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.entity.MovieUrlEntity;
-import com.huawei.movie.fraction.LikesFraction;
-import com.huawei.movie.fraction.RecommenedFraction;
+import com.huawei.movie.fraction.MovieLikesFraction;
+import com.huawei.movie.fraction.MovieRecommenedFraction;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import com.huawei.movie.utils.Common;
@@ -21,7 +21,7 @@ import retrofit2.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayAbilitySlice extends AbilitySlice {
+public class MoviePlayAbilitySlice extends AbilitySlice {
     MovieEntity movieEntity;
     Boolean isFavorite = false;
     Image favoriteIcon;
@@ -48,10 +48,10 @@ public class PlayAbilitySlice extends AbilitySlice {
      * @since 2022-07-27
      */
     private void initFraction(){
-        PlayAbility playAbility = (PlayAbility) getAbility();
+        MoviePlayAbility playAbility = (MoviePlayAbility) getAbility();
         playAbility.getFractionManager().startFractionScheduler()
-                .replace(ResourceTable.Id_play_likes_layout,new LikesFraction(movieEntity))
-                .replace(ResourceTable.Id_play_recommend_layout,new RecommenedFraction(movieEntity))
+                .replace(ResourceTable.Id_play_likes_layout,new MovieLikesFraction(movieEntity))
+                .replace(ResourceTable.Id_play_recommend_layout,new MovieRecommenedFraction(movieEntity))
                 .submit();
 
     }
@@ -80,7 +80,7 @@ public class PlayAbilitySlice extends AbilitySlice {
                         movieUrlEntities.add(movieUrlEntity);
                     });
                     DirectionalLayout urlGroupLayout = (DirectionalLayout) findComponentById(ResourceTable.Id_play_url_group_layout);
-                    LayoutScatter layoutScatter = LayoutScatter.getInstance(PlayAbilitySlice.this);
+                    LayoutScatter layoutScatter = LayoutScatter.getInstance(MoviePlayAbilitySlice.this);
                     for (int i = 0; i < movieUrlGroup.size(); i++){
                         DirectionalLayout directionalLayout = (DirectionalLayout) layoutScatter.parse(ResourceTable.Layout_url_group, null, false);
                         int rowNum = (int) Math.ceil(movieUrlGroup.get(i).size()/5.0); // 行数
@@ -114,8 +114,8 @@ public class PlayAbilitySlice extends AbilitySlice {
     private void setButtonClickListener(Button button){
         button.setClickedListener((clickListener)->{
             if(activeButton != button){
-                ShapeElement activeElement = new ShapeElement(PlayAbilitySlice.this, ResourceTable.Graphic_url_button_border_active);
-                ShapeElement normalElement = new ShapeElement(PlayAbilitySlice.this, ResourceTable.Graphic_url_button_border);
+                ShapeElement activeElement = new ShapeElement(MoviePlayAbilitySlice.this, ResourceTable.Graphic_url_button_border_active);
+                ShapeElement normalElement = new ShapeElement(MoviePlayAbilitySlice.this, ResourceTable.Graphic_url_button_border);
                 button.setBackground(activeElement);
                 button.setTextColor(new Color(getColor(ResourceTable.Color_buttom_nav_active_color)));
                 if(activeButton != null){
@@ -126,7 +126,7 @@ public class PlayAbilitySlice extends AbilitySlice {
             }
         });
         if(activeButton == null){
-            ShapeElement activeElement = new ShapeElement(PlayAbilitySlice.this, ResourceTable.Graphic_url_button_border_active);
+            ShapeElement activeElement = new ShapeElement(MoviePlayAbilitySlice.this, ResourceTable.Graphic_url_button_border_active);
             button.setBackground(activeElement);
             button.setTextColor(new Color(getColor(ResourceTable.Color_buttom_nav_active_color)));
             activeButton = button;
@@ -235,7 +235,7 @@ public class PlayAbilitySlice extends AbilitySlice {
                         // 如果是已经收藏过，点击之后取消收藏，反之则收藏
                         favoriteIcon.setImageAndDecodeBounds(isFavorite ? ResourceTable.Media_icon_collection : ResourceTable.Media_icon_collection_active);
                         isFavorite = !isFavorite;
-                        Common.showToast(isFavorite ? ResourceTable.String_toast_add_favorite_text : ResourceTable.String_toast_delete_favorite_text,PlayAbilitySlice.this);
+                        Common.showToast(isFavorite ? ResourceTable.String_toast_add_favorite_text : ResourceTable.String_toast_delete_favorite_text, MoviePlayAbilitySlice.this);
                     });
                 }
 

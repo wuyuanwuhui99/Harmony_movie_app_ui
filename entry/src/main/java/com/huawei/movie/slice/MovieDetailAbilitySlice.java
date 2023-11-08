@@ -2,7 +2,7 @@ package com.huawei.movie.slice;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.ability.DetailAbility;
+import com.huawei.movie.ability.MovieDetailAbility;
 import com.huawei.movie.config.Api;
 import com.huawei.movie.entity.MovieEntity;
 import com.huawei.movie.entity.MovieStarEntity;
@@ -13,7 +13,6 @@ import com.huawei.movie.provider.MovieStarItemProvider;
 import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
-import ohos.aafwk.content.Operation;
 import ohos.agp.components.*;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,7 +20,7 @@ import retrofit2.Response;
 
 import java.util.List;
 
-public class DetailAbilitySlice extends AbilitySlice {
+public class MovieDetailAbilitySlice extends AbilitySlice {
     MovieEntity movieEntity;
     @Override
     public void onStart(Intent intent) {
@@ -67,11 +66,11 @@ public class DetailAbilitySlice extends AbilitySlice {
      * @since 2022-07-27
      */
     private void initFraction(){
-        DetailAbility detailAbility = (DetailAbility) getAbility();
+        MovieDetailAbility detailAbility = (MovieDetailAbility) getAbility();
         detailAbility.getFractionManager()
                 .startFractionScheduler()
-                .replace(ResourceTable.Id_detail_likes_layout,new LikesFraction(movieEntity))
-                .replace(ResourceTable.Id_detail_recommend_layout,new RecommenedFraction(movieEntity))
+                .replace(ResourceTable.Id_detail_likes_layout,new MovieLikesFraction(movieEntity))
+                .replace(ResourceTable.Id_detail_recommend_layout,new MovieRecommenedFraction(movieEntity))
                 .submit();
     }
 
@@ -169,7 +168,7 @@ public class DetailAbilitySlice extends AbilitySlice {
             Intent intent = new Intent();
             //包含了页面跳转的信息
             intent.setParam("movieItem", JSON.toJSONString(movieEntity));
-            present(new PlayAbilitySlice(),intent);
+            present(new MoviePlayAbilitySlice(),intent);
         });
     }
 

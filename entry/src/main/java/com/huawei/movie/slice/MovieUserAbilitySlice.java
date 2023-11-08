@@ -14,7 +14,7 @@ import ohos.agp.components.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserAbilitySlice extends AbilitySlice {
+public class MovieUserAbilitySlice extends AbilitySlice {
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
@@ -99,7 +99,7 @@ public class UserAbilitySlice extends AbilitySlice {
                 map.put("title",title.getText());
                 map.put("value",vavlue.getText());
                 intent.setParam("data", JSON.toJSONString(map));
-                present(new EditAbilitySlice(),intent);
+                present(new MovieEditAbilitySlice(),intent);
             });
         }
     }
@@ -115,7 +115,7 @@ public class UserAbilitySlice extends AbilitySlice {
             customDialog.setOnClickListener(new DialogClickListener() {
                 @Override
                 public void onSureListener() {
-                    present(new LoginAbilitySlice(),new Intent());
+                    present(new MovieLoginAbilitySlice(),new Intent());
                 }
 
                 @Override

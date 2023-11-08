@@ -15,10 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-public class LoginAbilitySlice extends AbilitySlice {
+public class MovieLoginAbilitySlice extends AbilitySlice {
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
@@ -56,11 +53,11 @@ public class LoginAbilitySlice extends AbilitySlice {
                         UserEntity myUserEntity = JSON.parseObject(JSON.toJSONString(response.body().getData()),UserEntity.class);
                         getUITaskDispatcher().asyncDispatch(()->{
                             if(myUserEntity != null){
-                                Common.showToast(ResourceTable.String_login_success,LoginAbilitySlice.this);
+                                Common.showToast(ResourceTable.String_login_success, MovieLoginAbilitySlice.this);
                                 Config.userEntity = myUserEntity;
-                                present(new MainAbilitySlice(),new Intent());
+                                present(new MovieMainAbilitySlice(),new Intent());
                             } else {
-                                Common.showToast(ResourceTable.String_login_fail,LoginAbilitySlice.this);
+                                Common.showToast(ResourceTable.String_login_fail, MovieLoginAbilitySlice.this);
                             }
                         });
                     }

@@ -2,13 +2,13 @@ package com.huawei.movie.slice;
 
 import com.alibaba.fastjson.JSON;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.ability.MainAbility;
+import com.huawei.movie.ability.MovieMainAbility;
 import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.UserEntity;
-import com.huawei.movie.fraction.HomeFraction;
+import com.huawei.movie.fraction.MovieHomeFraction;
 import com.huawei.movie.fraction.MovieFraction;
-import com.huawei.movie.fraction.MyFraction;
-import com.huawei.movie.fraction.TvFraction;
+import com.huawei.movie.fraction.MovieMyFraction;
+import com.huawei.movie.fraction.MovieTvFraction;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
 import ohos.aafwk.ability.AbilitySlice;
@@ -30,16 +30,16 @@ import retrofit2.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainAbilitySlice extends AbilitySlice {
+public class MovieMainAbilitySlice extends AbilitySlice {
     List<Component>navDirectionalLayout = new ArrayList<>();// 澳航布局
     List<List<Component>> navComponents = new ArrayList<>();//底部导航栏
     List<List<Integer>> navResourceTables = new ArrayList<>();// 导航图标集合
     int currentTabIndex = 0;
 
-    HomeFraction homeFraction;
+    MovieHomeFraction movieHomeFraction;
     MovieFraction movieFraction;
-    MyFraction myFraction;
-    TvFraction tvFraction;
+    MovieMyFraction movieMyFraction;
+    MovieTvFraction movieTvFraction;
 
     int oldCurrentIndex = 0;
 
@@ -161,15 +161,15 @@ public class MainAbilitySlice extends AbilitySlice {
      * */
     private void loadFraction(int type){
         //获取小部分的管理器
-        MainAbility mainAbility = (MainAbility) getAbility();
+        MovieMainAbility mainAbility = (MovieMainAbility) getAbility();
         //获取FractionScheduler对象
         FractionScheduler scheduler=mainAbility.getFractionManager().startFractionScheduler();
         //建立FractionScheduler和Fraction之间的关系
         switch (type) {
             case 0 :{
-                if(homeFraction == null){
-                    homeFraction = new HomeFraction();
-                    scheduler.replace(ResourceTable.Id_home_layout,homeFraction);
+                if(movieHomeFraction == null){
+                    movieHomeFraction = new MovieHomeFraction();
+                    scheduler.replace(ResourceTable.Id_home_layout,movieHomeFraction);
                 }
                 break;
             }
@@ -181,16 +181,16 @@ public class MainAbilitySlice extends AbilitySlice {
                 break;
             }
             case 2 :{
-                if(tvFraction == null){
-                    tvFraction = new TvFraction();
-                    scheduler.replace(ResourceTable.Id_tv_layout,tvFraction);
+                if(movieTvFraction == null){
+                    movieTvFraction = new MovieTvFraction();
+                    scheduler.replace(ResourceTable.Id_tv_layout,movieTvFraction);
                 }
                 break;
             }
             case 3 :{
-                if(myFraction == null){
-                    myFraction = new MyFraction();
-                    scheduler.replace(ResourceTable.Id_my_layout,myFraction);
+                if(movieMyFraction == null){
+                    movieMyFraction = new MovieMyFraction();
+                    scheduler.replace(ResourceTable.Id_my_layout,movieMyFraction);
                 }
                 break;
             }
