@@ -54,7 +54,7 @@ public class MovieSearchRowProvider extends BaseItemProvider  {
         final DirectionalLayout row;
         if (component == null) {
             LayoutScatter layoutScatter = LayoutScatter.getInstance(context);
-            row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_search_movie_row, null, false);
+            row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_movie_search_movie_row, null, false);
         }else{
             row = (DirectionalLayout)component;
         }

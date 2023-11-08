@@ -21,7 +21,7 @@ public class MovieSearchFraction extends Fraction {
 
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
-        component = scatter.parse(ResourceTable.Layout_fraction_search, container, false);
+        component = scatter.parse(ResourceTable.Layout_fraction_movie_search, container, false);
         //指定布局文件
         return component;
     }

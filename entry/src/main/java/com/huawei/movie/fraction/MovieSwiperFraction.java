@@ -33,7 +33,7 @@ public class MovieSwiperFraction extends Fraction {
     int currentIndex = 0;
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
-        component = scatter.parse(ResourceTable.Layout_fraction_swiper, container, false);
+        component = scatter.parse(ResourceTable.Layout_fraction_movie_swiper, container, false);
         //指定布局文件
         return component;
     }

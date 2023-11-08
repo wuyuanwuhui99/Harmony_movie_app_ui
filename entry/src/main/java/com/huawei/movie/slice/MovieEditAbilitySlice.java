@@ -25,7 +25,7 @@ public class MovieEditAbilitySlice extends AbilitySlice {
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
-        super.setUIContent(ResourceTable.Layout_ability_edit);
+        super.setUIContent(ResourceTable.Layout_ability_movie_edit);
         map = JSON.parseObject( getAbility().getIntent().getStringParam("data"), Map.class);
         initUI();
         setSaveClickListener();

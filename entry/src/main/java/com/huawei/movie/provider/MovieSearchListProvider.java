@@ -46,7 +46,7 @@ public class MovieSearchListProvider extends BaseItemProvider  {
         if (component == null) {
             LayoutScatter layoutScatter = LayoutScatter.getInstance(context);
             if(movieEntityList.size() > 0){
-                row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_search_list_row, null, false);
+                row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_movie_search_list_row, null, false);
                 Text movieName = (Text) row.findComponentById(ResourceTable.Id_search_item_movie_name);
                 movieName.setText(movieEntityList.get(i).getMovieName());
                 Text star = (Text) row.findComponentById(ResourceTable.Id_search_item_star);
@@ -60,7 +60,7 @@ public class MovieSearchListProvider extends BaseItemProvider  {
                 Image image = (Image)row.findComponentById(ResourceTable.Id_search_item_img);
                 Common.setImages(context,image,Api.HOST + movieEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
             }else{
-                row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_search_list_no_data, null, false);
+                row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_movie_search_list_no_data, null, false);
             }
         }else{
             row = (DirectionalLayout)component;

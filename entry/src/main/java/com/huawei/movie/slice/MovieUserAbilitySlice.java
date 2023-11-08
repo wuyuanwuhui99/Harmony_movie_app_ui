@@ -18,7 +18,7 @@ public class MovieUserAbilitySlice extends AbilitySlice {
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
-        super.setUIContent(ResourceTable.Layout_ability_user);
+        super.setUIContent(ResourceTable.Layout_ability_movie_user);
         initUI();
         setClickListener();
         logout();

@@ -30,7 +30,7 @@ public class MoviePlayAbilitySlice extends AbilitySlice {
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
-        super.setUIContent(ResourceTable.Layout_ability_play);
+        super.setUIContent(ResourceTable.Layout_ability_movie_play);
         String movieItem = getAbility().getIntent().getStringParam("movieItem");
         favoriteIcon= (Image) findComponentById(ResourceTable.Id_play_icon_favorite);
         movieEntity = JSON.parseObject(movieItem, MovieEntity.class);
@@ -82,10 +82,10 @@ public class MoviePlayAbilitySlice extends AbilitySlice {
                     DirectionalLayout urlGroupLayout = (DirectionalLayout) findComponentById(ResourceTable.Id_play_url_group_layout);
                     LayoutScatter layoutScatter = LayoutScatter.getInstance(MoviePlayAbilitySlice.this);
                     for (int i = 0; i < movieUrlGroup.size(); i++){
-                        DirectionalLayout directionalLayout = (DirectionalLayout) layoutScatter.parse(ResourceTable.Layout_url_group, null, false);
+                        DirectionalLayout directionalLayout = (DirectionalLayout) layoutScatter.parse(ResourceTable.Layout_movie_url_group, null, false);
                         int rowNum = (int) Math.ceil(movieUrlGroup.get(i).size()/5.0); // 行数
                         for(int j = 0; j < rowNum; j++){
-                            DirectionalLayout row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_row_url, null, false);
+                            DirectionalLayout row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_movie_row_url, null, false);
                             if(j == 0)row.setMarginTop(0);
                             for(int k = 0; k < 5; k++){
                                 Button button  = (Button) row.getComponentAt(k);

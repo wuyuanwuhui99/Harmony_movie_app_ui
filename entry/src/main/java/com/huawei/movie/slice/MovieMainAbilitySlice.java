@@ -48,7 +48,7 @@ public class MovieMainAbilitySlice extends AbilitySlice {
     @Override
     public void onStart(Intent intent) {
         super.onStart(intent);
-        super.setUIContent(ResourceTable.Layout_ability_main);
+        super.setUIContent(ResourceTable.Layout_ability_movie_main);
         getUserData();
     }
 

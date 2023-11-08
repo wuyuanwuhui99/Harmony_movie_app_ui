@@ -23,7 +23,7 @@ public class MovieHomeFraction extends Fraction {
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
         if(rootComponent == null){
-            rootComponent = scatter.parse(ResourceTable.Layout_fraction_home, container, false);
+            rootComponent = scatter.parse(ResourceTable.Layout_fraction_movie_home, container, false);
         }
         //指定布局文件
         return rootComponent;

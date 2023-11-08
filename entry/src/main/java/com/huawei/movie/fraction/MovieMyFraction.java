@@ -24,7 +24,7 @@ public class MovieMyFraction extends Fraction {
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
         //指定布局文件
-        component = scatter.parse(ResourceTable.Layout_fraction_my, container, false);
+        component = scatter.parse(ResourceTable.Layout_fraction_movie_my, container, false);
         return component;
     }
 

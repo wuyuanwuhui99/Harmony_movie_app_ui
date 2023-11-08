@@ -21,7 +21,7 @@ public class MovieTvFraction extends Fraction {
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
         //指定布局文件
-        return scatter.parse(ResourceTable.Layout_fraction_tv, container, false);
+        return scatter.parse(ResourceTable.Layout_fraction_movie_tv, container, false);
     }
 
     @Override

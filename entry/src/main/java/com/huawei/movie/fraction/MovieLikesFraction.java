@@ -24,7 +24,7 @@ public class MovieLikesFraction extends Fraction {
     MovieEntity movieEntity;
     @Override
     protected Component onComponentAttached(LayoutScatter scatter, ComponentContainer container, Intent intent) {
-        component = scatter.parse(ResourceTable.Layout_fraction_likes, container, false);
+        component = scatter.parse(ResourceTable.Layout_fraction_movie_likes, container, false);
         //指定布局文件
         return component;
     }
