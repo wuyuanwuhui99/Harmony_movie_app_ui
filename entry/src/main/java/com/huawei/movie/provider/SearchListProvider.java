@@ -58,7 +58,7 @@ public class SearchListProvider extends BaseItemProvider  {
                 Text releaseTime = (Text) row.findComponentById(ResourceTable.Id_search_item_release_time);
                 releaseTime.setText("上映时间：" + movieEntityList.get(i).getReleaseTime());
                 Image image = (Image)row.findComponentById(ResourceTable.Id_search_item_img);
-                Common.setImages(context,image,Api.PROXY + movieEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
+                Common.setImages(context,image,Api.HOST + movieEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
             }else{
                 row = (DirectionalLayout)layoutScatter.parse(ResourceTable.Layout_search_list_no_data, null, false);
             }

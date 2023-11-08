@@ -30,7 +30,7 @@ public class SwiperPageSliderProvider extends PageSliderProvider {
         Image image = (Image)layoutScatter.parse(ResourceTable.Layout_banner_item, null, false);
         componentContainer.addComponent(image);
         image.setCornerRadius(Common.vp2px(context,ResourceTable.String_middle_border_radius_size));
-//        Common.setImages(context,image, Api.PROXY + movieEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
+//        Common.setImages(context,image, Api.HOST + movieEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
         return image;
     }
 

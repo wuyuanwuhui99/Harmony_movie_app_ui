@@ -49,7 +49,7 @@ public class MovieStarItemProvider extends BaseItemProvider  {
         Image image = (Image)cpt.findComponentById(ResourceTable.Id_movie_img);
         Text text = (Text) cpt.findComponentById(ResourceTable.Id_movie_name);
         text.setText(movieStarEntityList.get(i).getStarName());
-        Common.setImages(context,image, Api.PROXY + movieStarEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
+        Common.setImages(context,image, Api.HOST + movieStarEntityList.get(i).getLocalImg(),ResourceTable.String_middle_border_radius_size);
         return cpt;
     }
 }

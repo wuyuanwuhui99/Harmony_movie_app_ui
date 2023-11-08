@@ -30,7 +30,7 @@ public class UserAbilitySlice extends AbilitySlice {
      * */
     private void initUI(){
         Image avaterImg = (Image) findComponentById(ResourceTable.Id_user_edit_avater);
-        Common.setImages(this,avaterImg, Api.PROXY + Config.userEntity.getAvater(),0);
+        Common.setImages(this,avaterImg, Api.HOST + Config.userEntity.getAvater(),0);
         int i = Common.vp2px(this, ResourceTable.String_middel_avater_size);
         avaterImg.setCornerRadius(i*2);
 

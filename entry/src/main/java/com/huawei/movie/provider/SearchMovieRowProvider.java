@@ -68,7 +68,7 @@ public class SearchMovieRowProvider extends BaseItemProvider  {
                 Image image = (Image)itemLayout.getComponentAt(0);
                 image.setHeight(height);
                 image.setWidth(width);
-                Common.setImages(context,image,Api.PROXY + movieEntity.getLocalImg(),ResourceTable.String_middle_border_radius_size);
+                Common.setImages(context,image,Api.HOST + movieEntity.getLocalImg(),ResourceTable.String_middle_border_radius_size);
                 Text text = (Text)itemLayout.getComponentAt(1);
                 text.setText(movieEntity.getMovieName());
                 itemLayout.setClickedListener(listener->{
