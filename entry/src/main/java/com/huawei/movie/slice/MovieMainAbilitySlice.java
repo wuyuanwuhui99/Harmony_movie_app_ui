@@ -1,6 +1,7 @@
 package com.huawei.movie.slice;
 
 import com.alibaba.fastjson.JSON;
+import com.huawei.movie.MyApplication;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.ability.MovieMainAbility;
 import com.huawei.movie.config.Config;
@@ -18,6 +19,8 @@ import ohos.aafwk.ability.fraction.FractionScheduler;
 import ohos.aafwk.content.Intent;
 import ohos.agp.components.*;
 import ohos.agp.utils.Color;
+import ohos.app.Context;
+import ohos.bundle.ApplicationInfo;
 import ohos.data.dataability.DataAbilityPredicates;
 import ohos.data.rdb.ValuesBucket;
 import ohos.data.resultset.ResultSet;
@@ -206,7 +209,6 @@ public class MovieMainAbilitySlice extends AbilitySlice {
      * @since 2022-07-05
      * */
     private void getUserData() {
-
         DataAbilityHelper creator = DataAbilityHelper.creator(getContext());
         String[] columns = {"token"};
         DataAbilityPredicates predicates = new DataAbilityPredicates();
@@ -218,17 +220,17 @@ public class MovieMainAbilitySlice extends AbilitySlice {
         }
         if(resultSet.getRowCount() > 0){
             resultSet.goToFirstRow();
-            Config.token = resultSet.getString(0);
+            MyApplication.getInstance().setToken(resultSet.getString(0));
         };
         // 获取用户信息
         Call<ResultEntity> userDataCall = RequestUtils.getInstance().getUserData();
         userDataCall.enqueue(new Callback<ResultEntity>() {
             @Override
             public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
-                Config.userEntity = JSON.parseObject(JSON.toJSONString(response.body().getData()),UserEntity.class);
-                Config.token = response.body().getToken();
+                MyApplication.getInstance().setUserEntity(JSON.parseObject(JSON.toJSONString(response.body().getData()),UserEntity.class));
+                MyApplication.getInstance().setToken(response.body().getToken());
                 ValuesBucket valuesBucket = new ValuesBucket();
-                valuesBucket.putString("token",Config.token);
+                valuesBucket.putString("token",MyApplication.getInstance().getToken());
                 // 保存token
                 try {
                     creator.insert(Uri.parse(Config.tokenUri),valuesBucket);

@@ -1,8 +1,8 @@
 package com.huawei.movie.slice;
 
 import com.alibaba.fastjson.JSON;
+import com.huawei.movie.MyApplication;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.UserEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
@@ -31,8 +31,9 @@ public class MovieLoginAbilitySlice extends AbilitySlice {
      * */
     private void useLogin(){
         TextField userText = (TextField) findComponentById(ResourceTable.Id_login_user);
-        userText.setText(Config.userEntity.getUserId());
-        Config.userEntity = null;
+        UserEntity userEntity = MyApplication.getInstance().getUserEntity();
+        userText.setText(userEntity.getUserId());
+        MyApplication.getInstance().setUserEntity(null);
         Button loginBtn = (Button) findComponentById(ResourceTable.Id_login_btn);
         loginBtn.setClickedListener(listener->{
             TextField passwordText = (TextField) findComponentById(ResourceTable.Id_login_password);
@@ -43,10 +44,10 @@ public class MovieLoginAbilitySlice extends AbilitySlice {
             }else if(password == null || "".equals(password)){
                 Common.showToast(ResourceTable.String_login_password_hint,this);
             }else{
-                UserEntity userEntity = new UserEntity();
-                userEntity.setUserId(userId);
-                userEntity.setPassword(Common.encryptToMD5(password));
-                Call<ResultEntity> loginCall = RequestUtils.getInstance().login(userEntity);
+                UserEntity userEntity1 = new UserEntity();
+                userEntity1.setUserId(userId);
+                userEntity1.setPassword(Common.encryptToMD5(password));
+                Call<ResultEntity> loginCall = RequestUtils.getInstance().login(userEntity1);
                 loginCall.enqueue(new Callback<ResultEntity>() {
                     @Override
                     public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
@@ -54,7 +55,7 @@ public class MovieLoginAbilitySlice extends AbilitySlice {
                         getUITaskDispatcher().asyncDispatch(()->{
                             if(myUserEntity != null){
                                 Common.showToast(ResourceTable.String_login_success, MovieLoginAbilitySlice.this);
-                                Config.userEntity = myUserEntity;
+                                MyApplication.getInstance().setUserEntity(myUserEntity);
                                 present(new MovieMainAbilitySlice(),new Intent());
                             } else {
                                 Common.showToast(ResourceTable.String_login_fail, MovieLoginAbilitySlice.this);

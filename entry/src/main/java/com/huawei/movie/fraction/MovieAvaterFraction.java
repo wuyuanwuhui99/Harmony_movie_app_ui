@@ -1,8 +1,9 @@
 package com.huawei.movie.fraction;
 
+import com.huawei.movie.MyApplication;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.config.Api;
-import com.huawei.movie.config.Config;
+import com.huawei.movie.entity.UserEntity;
 import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.fraction.Fraction;
 import ohos.aafwk.content.Intent;
@@ -30,7 +31,8 @@ public class MovieAvaterFraction extends Fraction implements Component.ClickedLi
     protected void onStart(Intent intent) {
         super.onStart(intent);
         Image avaterImg = (Image) component.findComponentById(ResourceTable.Id_avater);
-        Common.setImages( getContext(),avaterImg,Api.HOST + Config.userEntity.getAvater(),ResourceTable.String_middel_avater_size);
+        UserEntity userEntity = MyApplication.getInstance().getUserEntity();
+        Common.setImages( getContext(),avaterImg,Api.HOST + userEntity.getAvater(),ResourceTable.String_middel_avater_size);
         if("big".equals(size)){
             int resIds[] = new int[]{ResourceTable.String_middel_avater_size,ResourceTable.String_big_avater_size};
             int size[] = Common.vp2px(getContext(),resIds);

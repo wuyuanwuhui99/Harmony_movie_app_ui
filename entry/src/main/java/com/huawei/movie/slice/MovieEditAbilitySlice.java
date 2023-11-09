@@ -1,8 +1,8 @@
 package com.huawei.movie.slice;
 
 import com.alibaba.fastjson.JSON;
+import com.huawei.movie.MyApplication;
 import com.huawei.movie.ResourceTable;
-import com.huawei.movie.config.Config;
 import com.huawei.movie.entity.UserEntity;
 import com.huawei.movie.http.RequestUtils;
 import com.huawei.movie.http.ResultEntity;
@@ -49,7 +49,7 @@ public class MovieEditAbilitySlice extends AbilitySlice {
     private void setSaveClickListener(){
         Button button = (Button) findComponentById(ResourceTable.Id_btn_save);
         button.setClickedListener(listner->{
-            UserEntity userEntity = new UserEntity(Config.userEntity);
+            UserEntity userEntity = new UserEntity(MyApplication.getInstance().getUserEntity());
             String title = (String) map.get("title");
             Text valueText = (Text) findComponentById(ResourceTable.Id_edit_value);
             String value = valueText.getText();
@@ -83,20 +83,21 @@ public class MovieEditAbilitySlice extends AbilitySlice {
                     @Override
                     public void onResponse(Call<ResultEntity> call, Response<ResultEntity> response) {
                         getContext().getUITaskDispatcher().asyncDispatch(()->{
+                            UserEntity userEntity1 = MyApplication.getInstance().getUserEntity();
                             if(userName.equals(title)){
-                                Config.userEntity.setUsername(value);
+                                userEntity1.setUsername(value);
                             }else if(tel.equals(title)){
-                                Config.userEntity.setTelephone(value);
+                                userEntity1.setTelephone(value);
                             }else if(email.equals(title)){
-                                Config.userEntity.setEmail(value);
+                                userEntity1.setEmail(value);
                             }else if(birthday.equals(title)){
-                                Config.userEntity.setBirthday(birthday);
+                                userEntity1.setBirthday(birthday);
                             }else if(sex.equals(title)){
-                                Config.userEntity.setSex(birthday);
+                                userEntity1.setSex(birthday);
                             }else if(sign.equals(title)){
-                                Config.userEntity.setSign(birthday);
+                                userEntity1.setSign(birthday);
                             }else if(region.equals(title)){
-                                Config.userEntity.setRegion(birthday);
+                                userEntity1.setRegion(birthday);
                             }
                         });
                     }

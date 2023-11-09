@@ -1,11 +1,13 @@
 package com.huawei.movie.slice;
 
 import com.alibaba.fastjson.JSON;
+import com.huawei.movie.MyApplication;
 import com.huawei.movie.ResourceTable;
 import com.huawei.movie.components.CustomDialog;
 import com.huawei.movie.components.DialogClickListener;
 import com.huawei.movie.config.Api;
 import com.huawei.movie.config.Config;
+import com.huawei.movie.entity.UserEntity;
 import com.huawei.movie.utils.Common;
 import ohos.aafwk.ability.AbilitySlice;
 import ohos.aafwk.content.Intent;
@@ -29,31 +31,32 @@ public class MovieUserAbilitySlice extends AbilitySlice {
      * @since 2022-08-06
      * */
     private void initUI(){
+        UserEntity userEntity = ((MyApplication)getApplicationContext()).getUserEntity();
         Image avaterImg = (Image) findComponentById(ResourceTable.Id_user_edit_avater);
-        Common.setImages(this,avaterImg, Api.HOST + Config.userEntity.getAvater(),0);
+        Common.setImages(this,avaterImg, Api.HOST + userEntity.getAvater(),0);
         int i = Common.vp2px(this, ResourceTable.String_middel_avater_size);
         avaterImg.setCornerRadius(i*2);
 
         Text userName = (Text) findComponentById(ResourceTable.Id_user_edit_name_value);
-        userName.setText(Config.userEntity.getUsername());
+        userName.setText(userEntity.getUsername());
 
         Text tel = (Text)findComponentById(ResourceTable.Id_user_edit_tel_value);
-        tel.setText(Config.userEntity.getTelephone());
+        tel.setText(userEntity.getTelephone());
 
         Text emial = (Text)findComponentById(ResourceTable.Id_user_edit_emial_value);
-        emial.setText(Config.userEntity.getEmail());
+        emial.setText(userEntity.getEmail());
 
         Text birthday = (Text)findComponentById(ResourceTable.Id_user_edit_birthday_value);
-        birthday.setText(Config.userEntity.getBirthday());
+        birthday.setText(userEntity.getBirthday());
 
         Text sex = (Text)findComponentById(ResourceTable.Id_user_edit_sex_value);
-        sex.setText(Config.userEntity.getSex());
+        sex.setText(userEntity.getSex());
 
         Text sign = (Text)findComponentById(ResourceTable.Id_user_edit_sign_value);
-        sign.setText(Config.userEntity.getSign());
+        sign.setText(userEntity.getSign());
 
         Text region = (Text)findComponentById(ResourceTable.Id_user_edit_region_value);
-        region.setText(Config.userEntity.getRegion());
+        region.setText(userEntity.getRegion());
     }
 
     /**
