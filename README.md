@@ -2,6 +2,8 @@
 
 开发者：吴怨吴悔
 
+由于鸿蒙官方停止了对java语言版本的维护，本项目也将停止更新，根据官方推荐使用arkTS语言开发
+
 首次使用java语言编写的Harmony鸿蒙电影APP，有flutter、android、react-native、harmony四个版本的，正在努力开发中。。。
 
 ![app首页](./代码预览.png)
